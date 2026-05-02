@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="study-header">
+  <div class="container">
+    <a href="index.html" style="white-space:nowrap;font-size:13px;color:var(--muted)">◄ Home</a>
+    <div class="study-progress-wrap">
+      <div class="study-progress-text">
+        <span id="progress-label">0 / 0</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="session-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <span class="study-domain-label" id="domain-label">—</span>
+    <button class="btn-ghost" id="end-btn">End</button>
+  </div>
+</header>
+
+<div class="card-area">
+
+  <div class="card-scene" id="card-scene">
+    <div class="card-inner" id="card-inner">
+
+      <!-- Front -->
+      <div class="card-face front">
+        <div class="card-top-row">
+          <span class="card-hint" id="card-id-front">—</span>
+          <span id="diff-badge-front"></span>
+          <span class="leech-badge" id="leech-badge" style="display:none">Leech</span>
+          <button class="star-btn" id="star-btn" title="Star this card">☆</button>
+        </div>
+        <div class="card-question" id="card-question">—</div>
+        <div class="card-options" id="card-options-front"></div>
+        <div class="card-flip-hint">
+          Space / → / click to reveal &nbsp;<span class="kb-hint">S</span> star
+        </div>
+      </div>
+
+      <!-- Back -->
+      <div class="card-face back">
+        <div class="card-top-row">
+          <span class="card-hint" id="card-id-back">—</span>
+          <span id="diff-badge-back"></span>
+          <span class="leech-badge" id="leech-badge-back" style="display:none">Leech</span>
+        </div>
+        <div class="card-question back-question" id="card-question-back">—</div>
+        <div class="card-options" id="card-options-back"></div>
+        <div class="card-explanation" id="card-explanation">—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rating-area" id="rating-area">
+    <button class="rate-btn rate-again" data-q="0">Again<span class="key-hint">key: 1</span></button>
+    <button class="rate-btn rate-hard"  data-q="1">Hard<span class="key-hint">key: 2</span></button>
+    <button class="rate-btn rate-good"  data-q="3">Good<span class="key-hint">key: 3</span></button>
+    <button class="rate-btn rate-easy"  data-q="5">Easy<span class="key-hint">key: 4</span></button>
+  </div>
+
+</div>
+
+<!-- Session Summary Overlay -->
+<div class="session-summary" id="session-summary">
+  <div class="summary-card">
+    <h2>Session Complete</h2>
+    <p class="sub" id="summary-domain">—</p>
+    <div class="summary-stats">
+      <div class="summary-stat-box">
+        <div class="val" id="sum-reviewed">0</div>
+        <div class="lbl">Cards reviewed</div>
+      </div>
+      <div class="summary-stat-box">
+        <div class="val" id="sum-accuracy">—</div>
+        <div class="lbl">Retention rate</div>
+      </div>
+      <div class="summary-stat-box">
+        <div class="val" id="sum-time">0m</div>
+        <div class="lbl">Time spent</div>
+      </div>
+      <div class="summary-stat-box">
+        <div class="val" id="sum-leeches">0</div>
+        <div class="lbl">Leeches surfaced</div>
+      </div>
+    </div>
+    <div class="summary-ratings">
+      <span class="rating-pill pill-again" id="sum-again">0 Again</span>
+      <span class="rating-pill pill-hard"  id="sum-hard">0 Hard</span>
+      <span class="rating-pill pill-good"  id="sum-good">0 Good</span>
+      <span class="rating-pill pill-easy"  id="sum-easy">0 Easy</span>
+    </div>
+    <div id="sum-leech-list" style="margin-bottom:20px;text-align:left;display:none">
+      <p class="section-title" style="margin-bottom:8px">Leeches this session</p>
+      <div id="leech-items"></div>
+    </div>
+    <div class="summary-actions">
+      <a href="index.html"><button class="btn-secondary">Home</button></a>
+      <button class="btn-primary" id="study-again-btn">Study Again</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+(async () => {
+  await Storage.initCards();
+  const allCards = Storage.getCards();
+  const cardMap = Object.fromEntries(allCards.map(c => [c.id, c]));
+
+  let queueIds = [];
+  try { queueIds = JSON.parse(sessionStorage.getItem("ciip_queue") || "[]"); } catch {}
+  const domainLabel = sessionStorage.getItem("ciip_study_label") || "Study Session";
+
+  el("domain-label").textContent = domainLabel;
+  el("summary-domain").textContent = domainLabel;
+
+  if (queueIds.length === 0) window.location.href = "index.html";
+
+  let queue = queueIds.map(id => cardMap[id]).filter(Boolean);
+  const totalCards = queue.length;
+  let currentIndex = 0;
+  let isFlipped = false;
+  let startTime = Date.now();
+  const session = { reviewed: 0, again: 0, hard: 0, good: 0, easy: 0, leeches: [] };
+
+  function renderOptions(containerId, options, correctAnswer, revealed) {
+    const container = el(containerId);
+    container.innerHTML = "";
+    ["A", "B", "C", "D"].forEach(letter => {
+      const div = document.createElement("div");
+      div.className = "mc-option";
+      if (revealed) {
+        if (letter === correctAnswer) div.classList.add("mc-correct");
+        else div.classList.add("mc-wrong");
+      }
+      div.innerHTML = `<span class="mc-letter">${letter}</span><span class="mc-text">${options[letter]}</span>`;
+      container.appendChild(div);
+    });
+  }
+
+  function renderCard() {
+    if (currentIndex >= queue.length) { showSummary(); return; }
+
+    const card = queue[currentIndex];
+    const progress = Storage.getProgress();
+    const state = progress[card.id] || {};
+    const isLeech = (state.failCount || 0) >= 4;
+    const isStarred = state.starred || false;
+
+    // Front
+    el("card-id-front").textContent = card.id;
+    el("diff-badge-front").innerHTML = difficultyBadge(card.difficulty);
+    el("card-question").textContent = card.front.question;
+    renderOptions("card-options-front", card.back.options, card.back.answer, false);
+    el("leech-badge").style.display = isLeech ? "inline-flex" : "none";
+
+    // Back
+    el("card-id-back").textContent = card.id;
+    el("diff-badge-back").innerHTML = difficultyBadge(card.difficulty);
+    el("card-question-back").textContent = card.back.question;
+    renderOptions("card-options-back", card.back.options, card.back.answer, true);
+    el("card-explanation").innerHTML = `<strong>Correct: ${card.back.answer}.</strong> ${card.back.explanation}`;
+    el("leech-badge-back").style.display = isLeech ? "inline-flex" : "none";
+
+    // Star
+    const starBtn = el("star-btn");
+    starBtn.textContent = isStarred ? "★" : "☆";
+    starBtn.className = "star-btn" + (isStarred ? " starred" : "");
+
+    isFlipped = false;
+    el("card-inner").classList.remove("flipped");
+    el("rating-area").classList.remove("visible");
+
+    el("progress-label").textContent = `${currentIndex + 1} / ${totalCards}`;
+    el("session-fill").style.width = ((currentIndex / totalCards) * 100) + "%";
+  }
+
+  function flipCard() {
+    if (isFlipped) return;
+    isFlipped = true;
+    el("card-inner").classList.add("flipped");
+    el("rating-area").classList.add("visible");
+  }
+
+  function rateCard(quality) {
+    if (!isFlipped) { flipCard(); return; }
+
+    const card = queue[currentIndex];
+    const progress = Storage.getProgress();
+    const oldState = progress[card.id] || {};
+    const newSM2 = sm2(oldState, quality);
+    const failCount = quality < 3
+      ? (oldState.failCount || 0) + 1
+      : Math.max(0, (oldState.failCount || 0) - 1);
+    const history = [...(oldState.history || []), { date: Date.now(), quality }];
+
+    Storage.updateCard(card.id, { ...newSM2, failCount, history, starred: oldState.starred || false });
+
+    session.reviewed++;
+    if (quality === 0) session.again++;
+    else if (quality === 1) session.hard++;
+    else if (quality === 3) session.good++;
+    else if (quality === 5) session.easy++;
+    if (failCount >= 4 && !session.leeches.includes(card.id)) session.leeches.push(card.id);
+
+    currentIndex++;
+    renderCard();
+  }
+
+  function showSummary() {
+    const elapsed = Math.round((Date.now() - startTime) / 60000);
+    const total = session.reviewed;
+    const goodRate = total > 0 ? Math.round(((session.good + session.easy) / total) * 100) : 0;
+
+    el("sum-reviewed").textContent = total;
+    el("sum-accuracy").textContent = total > 0 ? goodRate + "%" : "—";
+    el("sum-time").textContent = elapsed + "m";
+    el("sum-leeches").textContent = session.leeches.length;
+    el("sum-again").textContent = session.again + " Again";
+    el("sum-hard").textContent = session.hard + " Hard";
+    el("sum-good").textContent = session.good + " Good";
+    el("sum-easy").textContent = session.easy + " Easy";
+    el("session-fill").style.width = "100%";
+    el("progress-label").textContent = `${totalCards} / ${totalCards}`;
+
+    if (session.leeches.length > 0) {
+      el("leech-items").innerHTML = session.leeches.map(id => {
+        const c = cardMap[id];
+        return c ? `<div style="font-size:13px;color:var(--again);margin-bottom:4px">${c.front.question}</div>` : "";
+      }).join("");
+      el("sum-leech-list").style.display = "block";
+    }
+
+    el("session-summary").classList.add("visible");
+  }
+
+  // Star toggle
+  el("star-btn").addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (currentIndex >= queue.length) return;
+    const card = queue[currentIndex];
+    const state = Storage.getProgress()[card.id] || {};
+    Storage.updateCard(card.id, { starred: !state.starred });
+    renderCard();
+  });
+
+  el("card-scene").addEventListener("click", () => { if (!isFlipped) flipCard(); });
+
+  el("rating-area").querySelectorAll(".rate-btn").forEach(btn => {
+    btn.addEventListener("click", () => rateCard(parseInt(btn.dataset.q)));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+    if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); if (!isFlipped) flipCard(); }
+    else if (e.key === "ArrowLeft") {
+      if (isFlipped) {
+        isFlipped = false;
+        el("card-inner").classList.remove("flipped");
+        el("rating-area").classList.remove("visible");
+      }
+    }
+    else if (e.key === "1") rateCard(0);
+    else if (e.key === "2") rateCard(1);
+    else if (e.key === "3") rateCard(3);
+    else if (e.key === "4") rateCard(5);
+    else if (e.key === "s" || e.key === "S") {
+      if (currentIndex < queue.length) {
+        const card = queue[currentIndex];
+        const state = Storage.getProgress()[card.id] || {};
+        Storage.updateCard(card.id, { starred: !state.starred });
+        renderCard();
+      }
+    }
+    else if (e.key === "Escape") showSummary();
+  });
+
+  el("end-btn").addEventListener("click", showSummary);
+
+  el("study-again-btn").addEventListener("click", () => {
+    queue = queueIds.map(id => cardMap[id]).filter(Boolean);
+    currentIndex = 0;
+    startTime = Date.now();
+    session.reviewed = session.again = session.hard = session.good = session.easy = 0;
+    session.leeches = [];
+    el("session-summary").classList.remove("visible");
+    renderCard();
+  });
+
+  renderCard();
+})();
+</script>
+</body>
+</html>

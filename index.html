@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="container">
+    <h1>CIIP Flashcards</h1>
+    <div class="header-actions">
+      <a href="stats.html"><button class="icon-btn" title="Stats">📊</button></a>
+      <button class="icon-btn" id="settings-btn" title="Settings">⚙️</button>
+    </div>
+  </div>
+</header>
+
+<div class="banner">
+  <div class="container">
+    <div class="banner-stat">
+      <span class="icon">🔥</span>
+      <strong id="streak-count">0</strong>
+      <span>day streak</span>
+    </div>
+    <div class="banner-stat">
+      <span class="icon">📅</span>
+      <strong id="countdown-val">—</strong>
+      <span id="countdown-label">days to exam</span>
+    </div>
+    <div class="daily-goal-bar">
+      <div class="label">
+        <span>Today</span>
+        <span id="goal-text">0 / 20</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="goal-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <div class="study-all-bar">
+      <button class="btn-primary" id="study-all-btn">Study All Due (<span id="total-due">0</span>)</button>
+      <a href="stats.html"><button class="btn-secondary">View Stats</button></a>
+    </div>
+
+    <p class="section-title">Domains</p>
+    <div class="domain-grid" id="domain-grid"></div>
+
+  </div>
+</main>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal-box">
+    <h2>Settings</h2>
+    <p>Set your exam date and daily study goal.</p>
+    <div class="form-group">
+      <label class="form-label" for="exam-date-input">Exam Date</label>
+      <input class="form-input" type="date" id="exam-date-input">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="daily-goal-input">Daily Card Goal</label>
+      <input class="form-input" type="number" id="daily-goal-input" value="20" min="1" max="200">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="settings-cancel">Cancel</button>
+      <button class="btn-primary" id="settings-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+(async () => {
+  await Storage.initCards();
+  const allCards = Storage.getCards();
+  const progress = Storage.getProgress();
+  const settings = Storage.getSettings();
+
+  // ── Banner ──
+  el("streak-count").textContent = Stats.getStreak(progress);
+
+  const countdown = Stats.getCountdown(settings);
+  if (countdown !== null) {
+    el("countdown-val").textContent = countdown > 0 ? countdown : "Today!";
+    el("countdown-label").textContent = countdown > 1 ? "days to exam" : countdown === 1 ? "day to exam" : "Exam day!";
+  } else {
+    el("countdown-val").textContent = "—";
+  }
+
+  const todayCount = Stats.getTodayCount(progress);
+  const dailyGoal = settings.dailyGoal || 20;
+  el("goal-text").textContent = `${todayCount} / ${dailyGoal}`;
+  el("goal-fill").style.width = Math.min(100, (todayCount / dailyGoal) * 100) + "%";
+
+  // ── Domain grid ──
+  const now = Date.now();
+  let totalDue = 0;
+
+  const grid = el("domain-grid");
+  DOMAINS.forEach(domain => {
+    const stats = Stats.getDomainStats(domain.id, allCards, progress);
+    totalDue += stats.dueCount;
+
+    const { new: nw, learning: lrn, review: rev, mastered: mst } = stats.counts;
+    const total = stats.total || 1;
+
+    const retHtml = stats.total === 0
+      ? '<span class="ret-none">No cards yet</span>'
+      : fmtRetention(stats.retention);
+
+    const isWeak = stats.retention !== null && stats.retention < 70;
+
+    const tile = document.createElement("div");
+    tile.className = "domain-tile" + (isWeak ? " weak" : "");
+    tile.innerHTML = `
+      <div class="domain-num">Domain ${domain.id}</div>
+      <div class="domain-name">${domain.name}</div>
+      <div class="domain-meta">
+        <div class="domain-due ${stats.dueCount === 0 ? 'zero' : ''}">
+          ${stats.dueCount > 0 ? `${stats.dueCount} due` : stats.total === 0 ? "No cards" : "All caught up"}
+        </div>
+        <div class="domain-retention">
+          Retention: ${retHtml}
+        </div>
+        <div class="domain-retention" style="font-size:11px; color:var(--muted)">
+          ${nw}N &nbsp;${lrn}L &nbsp;${rev}R &nbsp;${mst}M
+        </div>
+      </div>
+      <div class="maturity-bar">
+        <div class="mat-new" style="flex:${nw}"></div>
+        <div class="mat-learning" style="flex:${lrn}"></div>
+        <div class="mat-review" style="flex:${rev}"></div>
+        <div class="mat-mastered" style="flex:${mst}"></div>
+        ${total === 0 ? '<div style="flex:1;background:var(--border)"></div>' : ''}
+      </div>
+    `;
+
+    tile.addEventListener("click", () => {
+      if (stats.total === 0) return;
+      const queue = buildQueue(allCards.filter(c => {
+        const prefix = domain.id.replace(/^0/, "") + "-";
+        const prefix2 = domain.id + "-";
+        return c.id.startsWith(prefix) || c.id.startsWith(prefix2);
+      }), progress);
+      sessionStorage.setItem("ciip_queue", JSON.stringify(queue.map(c => c.id)));
+      sessionStorage.setItem("ciip_study_label", `Domain ${domain.id}: ${domain.name}`);
+      window.location.href = "study.html";
+    });
+
+    grid.appendChild(tile);
+  });
+
+  el("total-due").textContent = totalDue;
+
+  el("study-all-btn").addEventListener("click", () => {
+    if (totalDue === 0) return;
+    const queue = buildQueue(allCards, progress);
+    sessionStorage.setItem("ciip_queue", JSON.stringify(queue.map(c => c.id)));
+    sessionStorage.setItem("ciip_study_label", "All Domains");
+    window.location.href = "study.html";
+  });
+
+  // ── Settings modal ──
+  el("settings-btn").addEventListener("click", () => {
+    const s = Storage.getSettings();
+    if (s.examDate) el("exam-date-input").value = s.examDate;
+    el("daily-goal-input").value = s.dailyGoal || 20;
+    el("settings-modal").classList.add("visible");
+  });
+  el("settings-cancel").addEventListener("click", () => {
+    el("settings-modal").classList.remove("visible");
+  });
+  el("settings-save").addEventListener("click", () => {
+    const s = Storage.getSettings();
+    s.examDate = el("exam-date-input").value;
+    s.dailyGoal = parseInt(el("daily-goal-input").value) || 20;
+    Storage.setSettings(s);
+    el("settings-modal").classList.remove("visible");
+    location.reload();
+  });
+
+  // Open settings on first visit if no exam date set
+  if (!settings.examDate) {
+    el("settings-modal").classList.add("visible");
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="stats-nav">
+  <div class="container">
+    <a href="index.html" style="font-size:13px;color:var(--muted)">◄ Home</a>
+    <div class="stats-tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="browser">Cards</button>
+      <button class="tab-btn" data-tab="leeches">Leeches</button>
+      <button class="tab-btn" data-tab="starred">Starred</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="container" style="padding-top:24px">
+
+  <!-- OVERVIEW TAB -->
+  <div class="tab-panel active" id="tab-overview">
+
+    <div class="heatmap-wrap">
+      <div class="heatmap-title">Study Activity — Last 365 Days</div>
+      <div class="heatmap-grid" id="heatmap-grid"></div>
+      <div class="heatmap-legend">
+        Less
+        <div class="heatmap-cell"></div>
+        <div class="heatmap-cell" data-level="1"></div>
+        <div class="heatmap-cell" data-level="2"></div>
+        <div class="heatmap-cell" data-level="3"></div>
+        <div class="heatmap-cell" data-level="4"></div>
+        More
+      </div>
+    </div>
+
+    <p class="section-title" style="margin-bottom:12px">Domain Performance</p>
+    <table class="domain-table" id="domain-table">
+      <thead>
+        <tr>
+          <th>Domain</th>
+          <th>Cards</th>
+          <th>Due</th>
+          <th>New</th>
+          <th>Learning</th>
+          <th>Review</th>
+          <th>Mastered</th>
+          <th>Retention</th>
+          <th>Avg EF</th>
+        </tr>
+      </thead>
+      <tbody id="domain-tbody"></tbody>
+    </table>
+
+  </div>
+
+  <!-- CARD BROWSER TAB -->
+  <div class="tab-panel" id="tab-browser">
+    <div class="search-bar">
+      <input class="search-input" type="text" id="search-input" placeholder="Search cards…">
+      <select class="filter-select" id="filter-domain">
+        <option value="">All Domains</option>
+      </select>
+      <select class="filter-select" id="filter-status">
+        <option value="">All Status</option>
+        <option value="new">New</option>
+        <option value="learning">Learning</option>
+        <option value="review">Review</option>
+        <option value="mastered">Mastered</option>
+        <option value="due">Due Now</option>
+      </select>
+    </div>
+    <div class="card-list" id="card-list"></div>
+  </div>
+
+  <!-- LEECHES TAB -->
+  <div class="tab-panel" id="tab-leeches">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">
+      Cards you've failed 4+ times. Study these deliberately.
+    </p>
+    <div class="card-list" id="leech-list"></div>
+    <div class="empty-state" id="leech-empty" style="display:none">
+      <div class="icon">🎉</div>
+      <p>No leeches yet — keep it that way.</p>
+    </div>
+  </div>
+
+  <!-- STARRED TAB -->
+  <div class="tab-panel" id="tab-starred">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">
+      Cards you've bookmarked during study sessions.
+    </p>
+    <div class="card-list" id="starred-list"></div>
+    <div class="empty-state" id="starred-empty" style="display:none">
+      <div class="icon">☆</div>
+      <p>No starred cards yet. Press <span class="kb-hint">S</span> during a session to star a card.</p>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<!-- Edit Card Modal -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal-box">
+    <h2>Edit Card</h2>
+    <p>Changes update your local card data.</p>
+    <div class="form-group">
+      <label class="form-label">Front (Question)</label>
+      <textarea class="form-input" id="edit-front" rows="3" style="resize:vertical"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Back (Answer)</label>
+      <textarea class="form-input" id="edit-back" rows="3" style="resize:vertical"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Context</label>
+      <textarea class="form-input" id="edit-context" rows="2" style="resize:vertical"></textarea>
+    </div>
+    <input type="hidden" id="edit-card-id">
+    <div class="modal-actions">
+      <button class="btn-ghost" id="edit-cancel">Cancel</button>
+      <button class="btn-primary" id="edit-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+(async () => {
+  await Storage.initCards();
+  let allCards = Storage.getCards();
+  const progress = Storage.getProgress();
+  const now = Date.now();
+
+  // ── Tabs ──
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      el("tab-" + btn.dataset.tab).classList.add("active");
+    });
+  });
+
+  // ── Heatmap ──
+  (function buildHeatmap() {
+    const heatData = Stats.getHeatmapData(progress);
+    const grid = el("heatmap-grid");
+    const days = 364;
+    const endDate = new Date();
+    endDate.setHours(23, 59, 59, 999);
+
+    // Start from 364 days ago on the correct weekday start
+    const startDate = new Date(endDate);
+    startDate.setDate(startDate.getDate() - days);
+
+    for (let i = 0; i <= days; i++) {
+      const d = new Date(startDate);
+      d.setDate(d.getDate() + i);
+      const key = d.toDateString();
+      const count = heatData[key] || 0;
+
+      let level = 0;
+      if (count >= 20) level = 4;
+      else if (count >= 10) level = 3;
+      else if (count >= 5) level = 2;
+      else if (count >= 1) level = 1;
+
+      const cell = document.createElement("div");
+      cell.className = "heatmap-cell";
+      if (level > 0) cell.dataset.level = level;
+      cell.title = `${d.toLocaleDateString()}: ${count} reviews`;
+      grid.appendChild(cell);
+    }
+  })();
+
+  // ── Domain table ──
+  (function buildDomainTable() {
+    const tbody = el("domain-tbody");
+    DOMAINS.forEach(domain => {
+      const stats = Stats.getDomainStats(domain.id, allCards, progress);
+      const { new: nw, learning: lrn, review: rev, mastered: mst } = stats.counts;
+      const isWeak = stats.retention !== null && stats.retention < 70;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><strong>${domain.id}. ${domain.name}</strong>${isWeak ? ' <span style="color:var(--again);font-size:11px">⚠</span>' : ''}</td>
+        <td>${stats.total}</td>
+        <td style="color:var(--accent);font-weight:${stats.dueCount > 0 ? 600 : 400}">${stats.dueCount}</td>
+        <td class="tag-new">${nw}</td>
+        <td class="tag-learning">${lrn}</td>
+        <td class="tag-review">${rev}</td>
+        <td class="tag-mastered">${mst}</td>
+        <td>${fmtRetention(stats.retention)}</td>
+        <td style="color:var(--muted)">${stats.total > 0 ? stats.avgEF : '—'}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  })();
+
+  // ── Card list helpers ──
+  function cardListItem(card, extraClass = "") {
+    const state = progress[card.id] || {};
+    const maturity = Stats.getMaturity(state);
+    const isLeech = (state.failCount || 0) >= 4;
+    const isStarred = state.starred || false;
+    const isDue = !state.nextDue || state.nextDue <= now;
+
+    const div = document.createElement("div");
+    div.className = `card-list-item ${extraClass} ${isLeech ? "leech" : ""} ${isStarred ? "starred-item" : ""}`;
+    div.dataset.cardId = card.id;
+
+    const tags = (card.tags || []).map(t => `<span class="cli-tag">${t}</span>`).join("");
+    const maturityLabel = isDue && maturity !== "new"
+      ? `<span class="cli-status" style="background:rgba(88,166,255,0.1);color:var(--accent)">due</span>`
+      : `<span class="cli-status">${fmtMaturity(maturity)}</span>`;
+    const leechBadge = isLeech ? `<span style="font-size:11px;color:var(--again)">🩸 leech</span>` : "";
+
+    div.innerHTML = `
+      <div class="cli-content">
+        <div class="cli-front">${card.front}</div>
+        <div class="cli-back">${card.back}</div>
+        <div class="cli-meta">${tags} ${maturityLabel} ${leechBadge}</div>
+      </div>
+      <div class="cli-actions">
+        <button class="cli-star ${isStarred ? "on" : ""}" title="Star">${isStarred ? "★" : "☆"}</button>
+        <button class="btn-ghost" style="font-size:12px;padding:4px 10px" data-edit="${card.id}">Edit</button>
+      </div>
+    `;
+
+    div.querySelector(".cli-star").addEventListener("click", () => {
+      Storage.updateCard(card.id, { starred: !isStarred });
+      location.reload();
+    });
+
+    div.querySelector("[data-edit]").addEventListener("click", () => openEdit(card));
+
+    return div;
+  }
+
+  // ── Leeches tab ──
+  (function buildLeeches() {
+    const leeches = Stats.getLeeches(allCards, progress);
+    const list = el("leech-list");
+    if (leeches.length === 0) {
+      el("leech-empty").style.display = "block";
+    } else {
+      leeches.forEach(c => list.appendChild(cardListItem(c)));
+    }
+  })();
+
+  // ── Starred tab ──
+  (function buildStarred() {
+    const starred = Stats.getStarred(allCards, progress);
+    const list = el("starred-list");
+    if (starred.length === 0) {
+      el("starred-empty").style.display = "block";
+    } else {
+      starred.forEach(c => list.appendChild(cardListItem(c)));
+    }
+  })();
+
+  // ── Domain filter options ──
+  const domainFilter = el("filter-domain");
+  DOMAINS.forEach(d => {
+    const opt = document.createElement("option");
+    opt.value = d.id;
+    opt.textContent = `${d.id}. ${d.name}`;
+    domainFilter.appendChild(opt);
+  });
+
+  // ── Card browser ──
+  function buildCardList() {
+    const query = el("search-input").value.toLowerCase();
+    const domainVal = el("filter-domain").value;
+    const statusVal = el("filter-status").value;
+    const list = el("card-list");
+    list.innerHTML = "";
+
+    const filtered = allCards.filter(card => {
+      if (domainVal) {
+        const prefix = domainVal + "-";
+        const prefix2 = domainVal.replace(/^0/, "") + "-";
+        if (!card.id.startsWith(prefix) && !card.id.startsWith(prefix2)) return false;
+      }
+
+      if (statusVal) {
+        const state = progress[card.id] || {};
+        const maturity = Stats.getMaturity(state);
+        const isDue = !state.nextDue || state.nextDue <= now;
+        if (statusVal === "due" && !isDue) return false;
+        if (statusVal !== "due" && maturity !== statusVal) return false;
+      }
+
+      if (query) {
+        const text = (card.front + " " + card.back + " " + card.context + " " + (card.tags || []).join(" ")).toLowerCase();
+        if (!text.includes(query)) return false;
+      }
+
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      list.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><p>No cards match your search.</p></div>';
+      return;
+    }
+
+    filtered.forEach(c => list.appendChild(cardListItem(c)));
+  }
+
+  el("search-input").addEventListener("input", buildCardList);
+  el("filter-domain").addEventListener("change", buildCardList);
+  el("filter-status").addEventListener("change", buildCardList);
+  buildCardList();
+
+  // ── Edit modal ──
+  function openEdit(card) {
+    el("edit-front").value = card.front;
+    el("edit-back").value = card.back;
+    el("edit-context").value = card.context;
+    el("edit-card-id").value = card.id;
+    el("edit-modal").classList.add("visible");
+  }
+
+  el("edit-cancel").addEventListener("click", () => el("edit-modal").classList.remove("visible"));
+
+  el("edit-save").addEventListener("click", () => {
+    const id = el("edit-card-id").value;
+    const updatedCards = allCards.map(c => {
+      if (c.id !== id) return c;
+      return {
+        ...c,
+        front: el("edit-front").value.trim(),
+        back: el("edit-back").value.trim(),
+        context: el("edit-context").value.trim()
+      };
+    });
+    localStorage.setItem("ciip_cards", JSON.stringify(updatedCards));
+    el("edit-modal").classList.remove("visible");
+    allCards = updatedCards;
+    buildCardList();
+  });
+})();
+</script>
+</body>
+</html>

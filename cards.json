@@ -1,0 +1,3631 @@
+[
+  {
+    "id": "01-001",
+    "domain": "A",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is a sole-source justification?"
+    },
+    "back": {
+      "question": "What is a sole-source justification?",
+      "options": {
+        "A": "A request for vendor financing on a capital purchase",
+        "B": "A written rationale for bypassing competitive bidding when only one vendor can fulfill the requirements",
+        "C": "A summary of SLA terms negotiated during contract review",
+        "D": "A document listing all qualified vendors for a given product category"
+      },
+      "answer": "B",
+      "explanation": "A sole-source justification is required by most procurement policies to ensure accountability when competition is waived. It documents why only one vendor is capable — not a financing or SLA document."
+    },
+    "tags": [
+      "procurement",
+      "vendor-selection"
+    ],
+    "source": "lecture: procurement / 4. Vendor Selection Process"
+  },
+  {
+    "id": "01-002",
+    "domain": "A",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the primary purpose of a Request for Proposal (RFP)?"
+    },
+    "back": {
+      "question": "What is the primary purpose of a Request for Proposal (RFP)?",
+      "options": {
+        "A": "To gather preliminary market information before defining requirements",
+        "B": "To solicit bids from vendors by describing requirements, evaluation criteria, and contract terms",
+        "C": "To negotiate final pricing with a pre-selected vendor",
+        "D": "To document internal budget approval for a planned purchase"
+      },
+      "answer": "B",
+      "explanation": "An RFP is a formal solicitation used when vendor approach and qualifications matter, not just price. An RFI (option A) is used earlier for market research — before an RFP is issued."
+    },
+    "tags": [
+      "procurement",
+      "rfp"
+    ],
+    "source": "lecture: procurement / 4. Vendor Selection Process"
+  },
+  {
+    "id": "01-003",
+    "domain": "A",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which best distinguishes a capital expense (CapEx) from an operating expense (OpEx)?"
+    },
+    "back": {
+      "question": "Which best distinguishes a capital expense (CapEx) from an operating expense (OpEx)?",
+      "options": {
+        "A": "CapEx covers software licenses; OpEx covers hardware purchases",
+        "B": "CapEx is approved by IT; OpEx is approved by Finance",
+        "C": "CapEx is a one-time purchase of a long-term asset; OpEx is ongoing spending to run operations",
+        "D": "CapEx applies only to purchases over $1 million; OpEx applies to everything below that threshold"
+      },
+      "answer": "C",
+      "explanation": "PACS hardware is typically CapEx; cloud storage subscriptions are OpEx. Finance treats them differently on the balance sheet — CapEx is depreciated over time, OpEx is expensed immediately."
+    },
+    "tags": [
+      "procurement",
+      "finance"
+    ],
+    "source": "lecture: procurement / 2. Developing a Business Case"
+  },
+  {
+    "id": "01-004",
+    "domain": "A",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which procurement instrument is specifically designed to find a vendor for unique institutional requirements, such as custom IT enhancements?"
+    },
+    "back": {
+      "question": "Which procurement instrument is specifically designed to find a vendor for unique institutional requirements, such as custom IT enhancements?",
+      "options": {
+        "A": "RFI (Request for Information) — used early to gather market intelligence with no commitment",
+        "B": "RFP (Request for Proposal) — used to specify a defined scope of work and solicit competitive pricing",
+        "C": "RFS (Request for Solution) — designed for unique institutional needs requiring custom vendor solutions or IT enhancements",
+        "D": "Sole-source justification — used to bypass competitive bidding when only one vendor qualifies"
+      },
+      "answer": "C",
+      "explanation": "RFS (Request for Solution) targets situations where the institution has requirements that standard competitive bidding cannot address — for example, specialized IT support or custom enhancements. RFI comes earliest (market intelligence, minimal commitment), RFP follows with a defined scope and pricing, and sole-source justification is a separate process that waives competition entirely."
+    },
+    "tags": ["procurement", "rfi", "rfp", "rfs", "vendor-selection"],
+    "source": "lecture: Procurement / 4. Vendor Selection Process"
+  },
+  {
+    "id": "01-005",
+    "domain": "A",
+    "difficulty": "medium",
+    "front": {
+      "question": "During VNA contract negotiations, the procurement team documents what they will do if the current deal falls through entirely. Which negotiation concept does this represent?"
+    },
+    "back": {
+      "question": "During VNA contract negotiations, the procurement team documents what they will do if the current deal falls through entirely. Which negotiation concept does this represent?",
+      "options": {
+        "A": "Limited Authority — feigning restricted decision-making power to extract concessions",
+        "B": "Good Guy/Bad Guy — splitting negotiators into cooperative and confrontational roles",
+        "C": "BATNA (Best Alternative To a Negotiated Agreement) — defining the fallback position that sets the walk-away point",
+        "D": "Fair and Reasonable — fostering mutual trust to reach an acceptable outcome"
+      },
+      "answer": "C",
+      "explanation": "BATNA (Best Alternative To a Negotiated Agreement) is the foundational negotiation concept: knowing what you would do if the deal collapses defines your walk-away point and prevents accepting unfavorable terms. The other options (Limited Authority, Good Guy/Bad Guy, Fair and Reasonable) are in-session tactics listed in the procurement lectures, not the fallback-position concept."
+    },
+    "tags": ["procurement", "contract-negotiation", "batna", "tactics"],
+    "source": "lecture: Procurement / 5. Contract Negotiations"
+  },
+  {
+    "id": "06-001",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "According to OSHA ergonomic guidelines for seated PACS workstation users, where should the eyes be positioned relative to the monitor?"
+    },
+    "back": {
+      "question": "According to OSHA ergonomic guidelines for seated PACS workstation users, where should the eyes be positioned relative to the monitor?",
+      "options": {
+        "A": "Level with the center of the monitor",
+        "B": "About 2 cm below the top of the monitor",
+        "C": "At least 10 cm above the top of the monitor",
+        "D": "Even with the bottom edge of the monitor"
+      },
+      "answer": "B",
+      "explanation": "OSHA recommends eye level approximately 2 cm below the top of the monitor to reduce neck strain. Centering the gaze at mid-screen (option A) is a common misconception — the top-of-monitor reference point is the correct guideline."
+    },
+    "tags": [
+      "ergonomics",
+      "osha",
+      "workstation-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-002",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which seating posture produces less pressure on the vertebral discs for a PACS-reading radiologist?"
+    },
+    "back": {
+      "question": "Which seating posture produces less pressure on the vertebral discs for a PACS-reading radiologist?",
+      "options": {
+        "A": "Sitting fully upright with the spine perpendicular to the floor",
+        "B": "Leaning forward toward the monitors",
+        "C": "A back-relaxed (reclined) posture",
+        "D": "Standing at an adjustable-height desk"
+      },
+      "answer": "C",
+      "explanation": "Biomechanically, a back-relaxed (reclined) posture reduces vertebral disc pressure compared to sitting strictly upright. Sitting up straight is commonly assumed to be ideal but actually increases disc loading."
+    },
+    "tags": [
+      "ergonomics",
+      "posture",
+      "workstation-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-003",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "What light level (in foot-candles) is targeted for LCD-based PACS reading rooms?"
+    },
+    "back": {
+      "question": "What light level (in foot-candles) is targeted for LCD-based PACS reading rooms?",
+      "options": {
+        "A": "5–15 foot-candles",
+        "B": "20–40 foot-candles",
+        "C": "50–70 foot-candles",
+        "D": "100–120 foot-candles"
+      },
+      "answer": "C",
+      "explanation": "LCD monitors target 50–70 foot-candles of ambient light in the reading room. Earlier CRT displays operated at 20–50 foot-candles; the higher LCD target is calibrated to match monitor luminance and minimize eye strain."
+    },
+    "tags": [
+      "lighting",
+      "reading-room",
+      "environmental-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-004",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "A reading room has north-south facing windows causing glare on the PACS monitors. Which blind orientation is recommended?"
+    },
+    "back": {
+      "question": "A reading room has north-south facing windows causing glare on the PACS monitors. Which blind orientation is recommended?",
+      "options": {
+        "A": "Vertical blinds",
+        "B": "Horizontal blinds",
+        "C": "Blackout curtains only — blinds are insufficient",
+        "D": "No blinds; orient monitors away from the windows instead"
+      },
+      "answer": "B",
+      "explanation": "Horizontal blinds are recommended for north-south facing windows; vertical blinds are used for east-west facing windows. The orientation matches the angle of light entry to block it most effectively. Reorienting workstations at right angles to windows is an additional measure, not a replacement."
+    },
+    "tags": [
+      "glare",
+      "lighting",
+      "reading-room",
+      "environmental-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-005",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the '20-20-20 rule' as it applies to PACS reading environments?"
+    },
+    "back": {
+      "question": "What is the '20-20-20 rule' as it applies to PACS reading environments?",
+      "options": {
+        "A": "Keep monitors at least 20 inches apart, 20 inches from the viewer, at a 20-degree angle",
+        "B": "Every 20 minutes, focus on an object 20 feet away for 20 seconds",
+        "C": "Allow 20 foot-candles of ambient light, 20% humidity, and 20-inch monitors",
+        "D": "Limit continuous reading sessions to 20 minutes before a 20-second break every 20 cases"
+      },
+      "answer": "B",
+      "explanation": "The 20-20-20 rule is an eye-strain prevention guideline: every 20 minutes, shift focus to an object about 20 feet away for at least 20 seconds. This allows the ciliary muscles to relax and reduces digital eye strain during long reading sessions."
+    },
+    "tags": [
+      "eye-strain",
+      "ergonomics",
+      "environmental-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-006",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "Why is it recommended to avoid placing PACS workstations directly under HVAC air vents?"
+    },
+    "back": {
+      "question": "Why is it recommended to avoid placing PACS workstations directly under HVAC air vents?",
+      "options": {
+        "A": "High airflow disturbs paper documents placed near the workstation",
+        "B": "Cold air reduces monitor brightness over time",
+        "C": "Direct airflow causes dry eyes for the radiologist",
+        "D": "Air turbulence introduces static discharge that damages displays"
+      },
+      "answer": "C",
+      "explanation": "Fast-moving dry air dumped directly from vents causes dry eyes, a significant source of discomfort during long reading sessions. The recommended solution is to use air diffusers that redirect airflow. Target airflow rate is 3–6 inches per second; humidity should be maintained at 20–50%."
+    },
+    "tags": [
+      "ventilation",
+      "environmental-design",
+      "workstation-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-007",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which room layout consideration is most important when positioning multiple PACS workstations?"
+    },
+    "back": {
+      "question": "Which room layout consideration is most important when positioning multiple PACS workstations?",
+      "options": {
+        "A": "Maximizing the number of workstations that fit in the room",
+        "B": "Avoiding placing PACS workstations directly facing each other to prevent cross-glare",
+        "C": "Placing all workstations along a single wall to simplify cable management",
+        "D": "Positioning workstations to face windows for natural light"
+      },
+      "answer": "B",
+      "explanation": "Stations facing each other create mutual reflections on monitor surfaces, degrading image quality. The primary design goal is to avoid cross-glare, even if it means fitting fewer workstations. Workstations should also be at right angles to windows — not facing them."
+    },
+    "tags": [
+      "room-layout",
+      "glare",
+      "environmental-design"
+    ],
+    "source": "lecture: Image Management / 0. Environmental Design Considerations"
+  },
+  {
+    "id": "06-008",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "Why have zero-footprint (thin) clients become increasingly important for PACS image viewing?"
+    },
+    "back": {
+      "question": "Why have zero-footprint (thin) clients become increasingly important for PACS image viewing?",
+      "options": {
+        "A": "They store images locally, reducing network dependency",
+        "B": "Image data generation is outpacing network speed growth, making server-side processing essential",
+        "C": "They eliminate the need for DICOM-compliant displays",
+        "D": "They replace the RIS in the radiology workflow"
+      },
+      "answer": "B",
+      "explanation": "The volume of imaging data being generated is growing faster than network speeds. Thin/zero-footprint clients address this by pushing all processing to the server — the workstation only renders a redrawn screen, dramatically reducing the data that must traverse the network."
+    },
+    "tags": [
+      "thin-client",
+      "data-overload",
+      "pacs",
+      "network"
+    ],
+    "source": "lecture: Image Management / 1. Human Computer Interface"
+  },
+  {
+    "id": "06-009",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "A modern radiologist reading a typical weekend shift may review approximately how many images per day?"
+    },
+    "back": {
+      "question": "A modern radiologist reading a typical weekend shift may review approximately how many images per day?",
+      "options": {
+        "A": "2,000 images",
+        "B": "10,000–15,000 images",
+        "C": "50,000–150,000 images",
+        "D": "500,000 images"
+      },
+      "answer": "C",
+      "explanation": "The lecture describes a radiologist counting approximately 50,000 images on a busy day; with prefetching at 2:1 or 3:1 ratios, that can reach 100,000–150,000. This is a massive increase from roughly 2,000 images/day a generation ago, driven by multi-slice CT, post-processing, and tomosynthesis."
+    },
+    "tags": [
+      "data-overload",
+      "workflow",
+      "human-computer-interface"
+    ],
+    "source": "lecture: Image Management / 1. Human Computer Interface"
+  },
+  {
+    "id": "06-010",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "In the PACS radiology workflow, which component sits at the center of communication between the EMR, PACS, speech, and billing systems?"
+    },
+    "back": {
+      "question": "In the PACS radiology workflow, which component sits at the center of communication between the EMR, PACS, speech, and billing systems?",
+      "options": {
+        "A": "The Radiology Information System (RIS)",
+        "B": "The PACS archive",
+        "C": "An interface engine (with multiple interfaces)",
+        "D": "The speech recognition server"
+      },
+      "answer": "C",
+      "explanation": "Although the RIS appears to be the hub, it is the interface engine — often managing 10–20+ interfaces — that actually translates and routes data between the disparate systems (HL7, DICOM, ADT, billing). The RIS is one node in that network, not the central translator."
+    },
+    "tags": [
+      "interface-engine",
+      "ris",
+      "pacs",
+      "workflow"
+    ],
+    "source": "lecture: Image Management / 1. Human Computer Interface"
+  },
+  {
+    "id": "06-011",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which issue commonly arises with key image selections and annotations (KOI) during a PACS migration?"
+    },
+    "back": {
+      "question": "Which issue commonly arises with key image selections and annotations (KOI) during a PACS migration?",
+      "options": {
+        "A": "KOI are stored in HL7 messages and are lost when the RIS is upgraded",
+        "B": "Annotations may not migrate cleanly if they are stored in proprietary vendor fields",
+        "C": "DICOM requires all annotations to be deleted before transfer",
+        "D": "Key image selections double in storage size when moved to a new PACS"
+      },
+      "answer": "B",
+      "explanation": "Some PACS vendors store annotations and key-image selections in proprietary metadata fields not visible to or compatible with other systems. During migration, only DICOM-standard data reliably transfers — proprietary fields may be lost or silently dropped."
+    },
+    "tags": [
+      "koi",
+      "annotations",
+      "migration",
+      "pacs"
+    ],
+    "source": "lecture: Image Management / 1. Human Computer Interface"
+  },
+  {
+    "id": "06-012",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "In a distributed PACS architecture, what happens to a radiologist's ability to read studies if the hospital network goes down?"
+    },
+    "back": {
+      "question": "In a distributed PACS architecture, what happens to a radiologist's ability to read studies if the hospital network goes down?",
+      "options": {
+        "A": "All reading stops immediately; the workstation cannot display any images",
+        "B": "The radiologist can still read studies already cached on local workstations",
+        "C": "The system automatically switches to a central backup server",
+        "D": "Only preliminary reports can be generated until connectivity is restored"
+      },
+      "answer": "B",
+      "explanation": "In a distributed architecture, studies are sent to individual PACS workstations (as well as the archive). If the network fails, the locally cached studies remain readable. A central architecture has no such fallback — a severed fiber line can halt all reading."
+    },
+    "tags": [
+      "pacs-architecture",
+      "distributed",
+      "central",
+      "network"
+    ],
+    "source": "lecture: Image Management / 2. Workflow Processes For Data Integrity"
+  },
+  {
+    "id": "06-013",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which of the following is a key advantage of speech recognition over the traditional transcriptionist dictation workflow?"
+    },
+    "back": {
+      "question": "Which of the following is a key advantage of speech recognition over the traditional transcriptionist dictation workflow?",
+      "options": {
+        "A": "Reports are mailed to referring clinicians within 24 hours",
+        "B": "Reports are generated immediately as text, enabling much faster clinician access",
+        "C": "Speech recognition eliminates the need for the radiologist to review draft reports",
+        "D": "The system automatically corrects all medical terminology errors"
+      },
+      "answer": "B",
+      "explanation": "Traditional transcription involved cassette tapes, typed drafts, multi-day review cycles, and physical mailing — resulting in ~2-week turnaround. Speech recognition converts dictation to text immediately, giving clinicians near-real-time access to reports."
+    },
+    "tags": [
+      "speech-recognition",
+      "reporting",
+      "workflow"
+    ],
+    "source": "lecture: Image Management / 2. Workflow Processes For Data Integrity"
+  },
+  {
+    "id": "06-014",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "After implementing PACS and digitizing the radiology workflow, report turnaround time at a large academic center dropped from approximately:"
+    },
+    "back": {
+      "question": "After implementing PACS and digitizing the radiology workflow, report turnaround time at a large academic center dropped from approximately:",
+      "options": {
+        "A": "2 weeks to 3–4 days",
+        "B": "40 hours to under 10 hours",
+        "C": "10 hours to under 1 hour",
+        "D": "24 hours to 6 hours"
+      },
+      "answer": "B",
+      "explanation": "The lecture describes TAT dropping from ~40 hours to under 10 hours within a single year of PACS/speech implementation. Film printing costs also dropped from ~$4 to under $1 per exam, and radiologist productivity rose from ~1,500 to ~2,000 RVUs per year."
+    },
+    "tags": [
+      "digitization",
+      "workflow",
+      "tat",
+      "productivity"
+    ],
+    "source": "lecture: Image Management / 2. Workflow Processes For Data Integrity"
+  },
+  {
+    "id": "06-015",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "A PACS vendor tells you their system uses a 'diagnostically lossless' compression algorithm. What is the primary concern with this for long-term archiving?"
+    },
+    "back": {
+      "question": "A PACS vendor tells you their system uses a 'diagnostically lossless' compression algorithm. What is the primary concern with this for long-term archiving?",
+      "options": {
+        "A": "Lossy compression files cannot be stored on tape archives",
+        "B": "Lossy compression may cause image quality degradation that affects long-term archival fidelity, even if current reads are acceptable",
+        "C": "Diagnostically lossless compression increases storage size by 50% compared to raw DICOM",
+        "D": "The DICOM standard prohibits lossy compression in archival storage"
+      },
+      "answer": "B",
+      "explanation": "'Diagnostically lossless' means the vendor believes interpretation won't change — but it is still lossy compression. For long-term archives, the concern is that what is acceptable today may not meet future standards or legal review, and original data fidelity cannot be restored once lost."
+    },
+    "tags": [
+      "compression",
+      "archive",
+      "data-integrity",
+      "pacs"
+    ],
+    "source": "lecture: Image Management / 2. Workflow Processes For Data Integrity"
+  },
+  {
+    "id": "06-016",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "What does DICOM stand for, and which two organizations created the standard?"
+    },
+    "back": {
+      "question": "What does DICOM stand for, and which two organizations created the standard?",
+      "options": {
+        "A": "Digital Imaging Communication Over Medicine; created by IEEE and NEMA",
+        "B": "Digital Imaging and Communications in Medicine; created by ACR and NEMA",
+        "C": "Diagnostic Imaging Coordination and Management; created by RSNA and HL7",
+        "D": "Digital Integrated Communication for Medical imaging; created by FDA and ACR"
+      },
+      "answer": "B",
+      "explanation": "DICOM — Digital Imaging and Communications in Medicine — was created jointly by the American College of Radiology (ACR) and the National Electrical Manufacturers Association (NEMA). It defines a platform-independent standard that packages a 12-bit grayscale image together with rich metadata."
+    },
+    "tags": [
+      "dicom",
+      "standards",
+      "file-format"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-017",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which of the following is a vector image file format (as opposed to a raster/bitmap format)?"
+    },
+    "back": {
+      "question": "Which of the following is a vector image file format (as opposed to a raster/bitmap format)?",
+      "options": {
+        "A": "DICOM",
+        "B": "JPEG",
+        "C": "SVG (Scalable Vector Graphics)",
+        "D": "TIFF"
+      },
+      "answer": "C",
+      "explanation": "SVG is a vector format — images are defined as mathematical equations (lines, curves, fills) and can be resized without loss of resolution. DICOM, JPEG, and TIFF are all raster/bitmap formats made up of pixel grids. DICOM specifically is the standard bitmap format for medical images."
+    },
+    "tags": [
+      "file-format",
+      "vector",
+      "raster",
+      "dicom"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-018",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "A CT image acquired at 512×512 resolution is displayed full-screen on a monitor with 2500×2000 pixels. What image quality issue results?"
+    },
+    "back": {
+      "question": "A CT image acquired at 512×512 resolution is displayed full-screen on a monitor with 2500×2000 pixels. What image quality issue results?",
+      "options": {
+        "A": "Aliasing artifacts from excessive spatial resolution",
+        "B": "Pixel replication or linear interpolation, meaning the viewer is not seeing true image data",
+        "C": "Contrast resolution is automatically enhanced by the monitor hardware",
+        "D": "The DICOM standard resamples the image losslessly to fill the display"
+      },
+      "answer": "B",
+      "explanation": "When a low-resolution source image (e.g., 512×512 CT) is displayed on a much larger monitor, the system must interpolate or replicate pixels to fill the screen. The radiologist is viewing estimated pixel values, not the original acquired data — a subtle but important quality consideration."
+    },
+    "tags": [
+      "spatial-resolution",
+      "display",
+      "interpolation",
+      "image-quality"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-019",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the purpose of the DICOMweb QIDO-RS service?"
+    },
+    "back": {
+      "question": "What is the purpose of the DICOMweb QIDO-RS service?",
+      "options": {
+        "A": "To store DICOM instances to a remote server",
+        "B": "To retrieve DICOM objects by reference",
+        "C": "To search (query) for studies based on parameters such as patient ID",
+        "D": "To manage procedure step workflow items"
+      },
+      "answer": "C",
+      "explanation": "QIDO-RS (Query based on ID for DICOM Objects by RESTful Services) is the search/query function of DICOMweb. WADO-RS retrieves objects, STOW-RS stores instances, and UPS-RS manages workflow steps."
+    },
+    "tags": [
+      "dicomweb",
+      "qido-rs",
+      "rest",
+      "standards"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-020",
+    "domain": "F",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which DICOMweb RESTful service is used to store imaging instances to a server?"
+    },
+    "back": {
+      "question": "Which DICOMweb RESTful service is used to store imaging instances to a server?",
+      "options": {
+        "A": "QIDO-RS",
+        "B": "WADO-RS",
+        "C": "STOW-RS",
+        "D": "UPS-RS"
+      },
+      "answer": "C",
+      "explanation": "STOW-RS (Store Over the Web by RESTful Services) stores DICOM instances to the server — important for BYOD enterprise imaging capture workflows. QIDO-RS queries, WADO-RS retrieves, and UPS-RS manages procedure step workflow."
+    },
+    "tags": [
+      "dicomweb",
+      "stow-rs",
+      "rest",
+      "enterprise-imaging"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-021",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is HL7, and at which layer of the OSI model does it operate?"
+    },
+    "back": {
+      "question": "What is HL7, and at which layer of the OSI model does it operate?",
+      "options": {
+        "A": "A DICOM extension for lab results; operates at the network layer (Layer 3)",
+        "B": "An international standard for transferring clinical/administrative data between applications; operates at the application layer (Layer 7)",
+        "C": "A firewall protocol for securing PACS traffic; operates at the transport layer (Layer 4)",
+        "D": "A vendor-specific interface standard; operates at the data link layer (Layer 2)"
+      },
+      "answer": "B",
+      "explanation": "HL7 (Health Level Seven) is the international standard for transferring clinical and administrative data between software applications. It operates at OSI Layer 7 — the application layer. It complements DICOM: HL7 moves text/administrative data, DICOM moves images."
+    },
+    "tags": [
+      "hl7",
+      "standards",
+      "osi-model",
+      "interoperability"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-022",
+    "domain": "F",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the IHE TCE profile used for in the context of image export?"
+    },
+    "back": {
+      "question": "What is the IHE TCE profile used for in the context of image export?",
+      "options": {
+        "A": "Encrypting DICOM images for transmission over public internet",
+        "B": "Exporting and anonymizing images from PACS for teaching files and clinical research",
+        "C": "Synchronizing the modality worklist between the RIS and PACS",
+        "D": "Transferring patient records between facilities under HIPAA data-sharing agreements"
+      },
+      "answer": "B",
+      "explanation": "TCE (Teaching File and Clinical Export) is an IHE integration profile that standardizes how images are extracted from PACS, stripped of PHI (anonymized), and organized for digital teaching files or clinical research exports. HIPAA requires de-identification of PHI fields before any such export."
+    },
+    "tags": [
+      "ihe",
+      "tce",
+      "teaching-files",
+      "anonymization",
+      "hipaa"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "06-023",
+    "domain": "F",
+    "difficulty": "hard",
+    "front": {
+      "question": "An institution's dermatology department stores clinical photos on staff iPhones and a GI department archives endoscopy images on a standalone hard drive. From an enterprise imaging perspective, what is the best long-term solution?"
+    },
+    "back": {
+      "question": "An institution's dermatology department stores clinical photos on staff iPhones and a GI department archives endoscopy images on a standalone hard drive. From an enterprise imaging perspective, what is the best long-term solution?",
+      "options": {
+        "A": "Route all images through the EMR, which becomes the single system of record",
+        "B": "Allow each department to maintain its own PACS and archive to preserve specialized workflows",
+        "C": "Implement a Vendor-Neutral Archive (VNA) with an enterprise viewer so all departments share a unified store while retaining specialized viewers",
+        "D": "Standardize on radiology PACS for all departments since radiology generates ~70% of institutional imaging volume"
+      },
+      "answer": "C",
+      "explanation": "A VNA centralizes storage in a vendor-agnostic way, breaking down departmental silos. Each department can keep its specialized viewer while all images are stored, searchable, and comparable in one place. The EMR is a poor primary image store (weak compare/search/security), and forcing all departments onto radiology PACS ignores specialized workflow needs."
+    },
+    "tags": [
+      "enterprise-imaging",
+      "vna",
+      "enterprise-viewer",
+      "workflow"
+    ],
+    "source": "lecture: Image Management / 3. Importing & Exporting Images"
+  },
+  {
+    "id": "07-001",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which network device uses MAC addresses to ensure data packets are delivered only to the intended recipient within a network?"
+    },
+    "back": {
+      "question": "Which network device uses MAC addresses to ensure data packets are delivered only to the intended recipient within a network?",
+      "options": {
+        "A": "Switch",
+        "B": "Hub",
+        "C": "Router",
+        "D": "Gateway"
+      },
+      "answer": "A",
+      "explanation": "A switch knows each connected device's MAC (Media Access Control) address and uses it to limit data delivery only to the intended recipient. A hub, by contrast, shares all incoming data with every connected device on the network — it has no targeting capability. A router forwards packets between different networks using IP addresses; a gateway translates data between different networks."
+    },
+    "tags": [
+      "networking",
+      "switch",
+      "hub",
+      "mac-address"
+    ],
+    "source": "lecture: Information Technology / 0. Workstations, Networks and Servers"
+  },
+  {
+    "id": "07-002",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the primary limitation of Direct Attached Storage (DAS) in a multi-user imaging environment?"
+    },
+    "back": {
+      "question": "What is the primary limitation of Direct Attached Storage (DAS) in a multi-user imaging environment?",
+      "options": {
+        "A": "DAS uses Ethernet, causing latency for large imaging volumes",
+        "B": "DAS is not linked to a network, restricting access by other computers",
+        "C": "DAS provides block-level storage that is incompatible with PACS file formats",
+        "D": "DAS requires advanced administration and is typically only available at enterprise scale"
+      },
+      "answer": "B",
+      "explanation": "DAS (Direct Attached Storage) — such as an internal hard drive, external hard drive, or USB — is directly connected to a single PC or server and is not linked to a network. This means other computers cannot access it efficiently. It is also not scalable and not automatically backed up without additional software. Option A describes a characteristic of NAS; option C and D describe SAN."
+    },
+    "tags": [
+      "storage",
+      "das",
+      "accessibility"
+    ],
+    "source": "lecture: Information Technology / 1. Storage Architecture"
+  },
+  {
+    "id": "07-003",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "A hospital's imaging department uses Network-Attached Storage (NAS) and staff report progressively slower image access as scan volume grows. What is the most likely cause?"
+    },
+    "back": {
+      "question": "A hospital's imaging department uses Network-Attached Storage (NAS) and staff report progressively slower image access as scan volume grows. What is the most likely cause?",
+      "options": {
+        "A": "NAS storage cannot be expanded without shutting down existing servers",
+        "B": "NAS provides block-level storage, which is incompatible with large image files",
+        "C": "NAS uses Ethernet for data transfer, which introduces latency at high data volumes",
+        "D": "NAS is restricted to a single client operating system, causing access bottlenecks"
+      },
+      "answer": "C",
+      "explanation": "NAS uses Ethernet to send and receive data. Ethernet has bandwidth limitations that become a bottleneck when large imaging datasets are accessed by multiple users simultaneously. Option A is incorrect — NAS can have storage added without shutting down other servers. Option B is wrong — NAS provides file-level (not block-level) storage. NAS actually supports multiple client OS types (Windows, Mac, Unix)."
+    },
+    "tags": [
+      "storage",
+      "nas",
+      "ethernet",
+      "latency"
+    ],
+    "source": "lecture: Information Technology / 1. Storage Architecture"
+  },
+  {
+    "id": "07-004",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "How does a Storage Area Network (SAN) differ from Network-Attached Storage (NAS) in how the operating system perceives the storage?"
+    },
+    "back": {
+      "question": "How does a Storage Area Network (SAN) differ from Network-Attached Storage (NAS) in how the operating system perceives the storage?",
+      "options": {
+        "A": "The OS sees SAN as a file server and NAS as a disk",
+        "B": "The OS sees SAN as a disk and NAS as a file server",
+        "C": "Both SAN and NAS appear as disks to the OS",
+        "D": "Both SAN and NAS appear as file servers, but SAN uses faster disk protocols"
+      },
+      "answer": "B",
+      "explanation": "SAN provides block-level storage — the operating system treats it as a raw disk. NAS provides file-level storage — the OS treats it as a file server with a folder hierarchy. SAN typically uses high-speed connections such as fibre channel, iSCSI, or InfiniBand and outperforms NAS for large enterprise workloads. NAS uses Ethernet and is typically better suited for smaller-scale organizations."
+    },
+    "tags": [
+      "storage",
+      "san",
+      "nas",
+      "block-level",
+      "file-level"
+    ],
+    "source": "lecture: Information Technology / 1. Storage Architecture"
+  },
+  {
+    "id": "07-005",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "In a PACS archiving strategy, which storage tier offers the most immediately available data access?"
+    },
+    "back": {
+      "question": "In a PACS archiving strategy, which storage tier offers the most immediately available data access?",
+      "options": {
+        "A": "Offline storage",
+        "B": "Nearline storage",
+        "C": "Online storage",
+        "D": "Cloud storage"
+      },
+      "answer": "C",
+      "explanation": "Online storage is immediately available and most quickly accessible, typically stored on SSD, HDD, or RAID. Nearline storage sits between online and offline — it is outside the primary computer and provides quick access as needed, but is not instantaneous. Offline storage (usually removable media) requires manual intervention to access. Cloud is off-premise online storage that is growing in popularity but may have latency depending on connectivity."
+    },
+    "tags": [
+      "archiving",
+      "online",
+      "nearline",
+      "offline",
+      "storage-tiers"
+    ],
+    "source": "lecture: Information Technology / 2. Archiving"
+  },
+  {
+    "id": "07-006",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which archiving method is specifically described as making an exact copy of data and placing it on a separate device, often used when identical data must exist at multiple sites simultaneously?"
+    },
+    "back": {
+      "question": "Which archiving method is specifically described as making an exact copy of data and placing it on a separate device, often used when identical data must exist at multiple sites simultaneously?",
+      "options": {
+        "A": "Replication",
+        "B": "Virtualization",
+        "C": "Mirroring",
+        "D": "Nearline archiving"
+      },
+      "answer": "C",
+      "explanation": "Mirroring is the process of making an exact copy of data and storing it on a separate device — either on-site or off-site — so both locations hold identical data. Replication also copies data across different locations but is described as creating one or more copies to enable quick recovery from data loss. Virtualization pools physical storage from multiple devices into a central virtual storage device. Nearline is a storage accessibility tier, not a copy method."
+    },
+    "tags": [
+      "archiving",
+      "mirroring",
+      "replication",
+      "data-protection"
+    ],
+    "source": "lecture: Information Technology / 2. Archiving"
+  },
+  {
+    "id": "07-007",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which database structure organizes data in rows and columns with defined relationships between parent and child tables, and is described as the most common type?"
+    },
+    "back": {
+      "question": "Which database structure organizes data in rows and columns with defined relationships between parent and child tables, and is described as the most common type?",
+      "options": {
+        "A": "Hierarchical database",
+        "B": "Relational database",
+        "C": "Object-oriented database",
+        "D": "Graph database"
+      },
+      "answer": "B",
+      "explanation": "A relational database organizes data in rows and columns with relationships between parent and child tables, a defined schema, indexed records, and unique keys for each record. Examples include Oracle, MySQL, Microsoft SQL, and DB2. A hierarchical database uses a tree-like structure. Relational databases are the most common type and the foundation for most healthcare data systems."
+    },
+    "tags": [
+      "database",
+      "relational",
+      "hierarchical",
+      "sql"
+    ],
+    "source": "lecture: Information Technology / 3. Database Basics"
+  },
+  {
+    "id": "07-008",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is Structured Query Language (SQL) primarily used for in a healthcare data environment?"
+    },
+    "back": {
+      "question": "What is Structured Query Language (SQL) primarily used for in a healthcare data environment?",
+      "options": {
+        "A": "Encrypting PHI (Protected Health Information) in transit between systems",
+        "B": "Creating, maintaining, and retrieving information from a relational database",
+        "C": "Configuring network routing tables for HL7 (Health Level Seven) message traffic",
+        "D": "Translating between hierarchical and relational database formats"
+      },
+      "answer": "B",
+      "explanation": "SQL (Structured Query Language) is the standard database programming language used to create, maintain, and retrieve information from relational databases. SQL queries are command statements that can create or modify the database structure, insert or delete rows, update fields, and retrieve datasets. Data analytics in healthcare depends heavily on SQL to mine trends and patterns from large databases."
+    },
+    "tags": [
+      "database",
+      "sql",
+      "data-analytics"
+    ],
+    "source": "lecture: Information Technology / 3. Database Basics"
+  },
+  {
+    "id": "07-009",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "Moore's Law, as revised in 1975 and widely applied since, states that the number of transistors in an integrated circuit doubles approximately every:"
+    },
+    "back": {
+      "question": "Moore's Law, as revised in 1975 and widely applied since, states that the number of transistors in an integrated circuit doubles approximately every:",
+      "options": {
+        "A": "6 months",
+        "B": "1 year",
+        "C": "2 years",
+        "D": "5 years"
+      },
+      "answer": "C",
+      "explanation": "Gordon Moore originally projected in 1965 that transistors would double every year. He revised this in 1975 to every 2 years, which is the version that has held roughly true for decades. Moore's Law underpins obsolescence planning — because technology advances so rapidly, IIPs must plan for hardware and software replacement on a predictable timeline."
+    },
+    "tags": [
+      "moores-law",
+      "system-lifecycle",
+      "technology"
+    ],
+    "source": "lecture: Information Technology / 4. System Lifecycle and Update Plans"
+  },
+  {
+    "id": "07-010",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "A PACS vendor announces it will stop releasing security patches for a product within 18 months. According to the technology lifecycle model, what phase is this product most likely in?"
+    },
+    "back": {
+      "question": "A PACS vendor announces it will stop releasing security patches for a product within 18 months. According to the technology lifecycle model, what phase is this product most likely in?",
+      "options": {
+        "A": "Research and development phase",
+        "B": "Ascent phase",
+        "C": "Maturity phase",
+        "D": "Decline phase"
+      },
+      "answer": "D",
+      "explanation": "The four technology lifecycle phases are: (1) Research and development — bleeding edge innovation; (2) Ascent — leading edge adoption; (3) Maturity — vital life of the technology in active use; (4) Decline — moving toward obsolescence. An announced end-of-support date is a signal the product is in the decline phase. IIPs should begin obsolescence planning before decline, ideally during late maturity."
+    },
+    "tags": [
+      "system-lifecycle",
+      "technology-lifecycle",
+      "obsolescence"
+    ],
+    "source": "lecture: Information Technology / 4. System Lifecycle and Update Plans"
+  },
+  {
+    "id": "07-011",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "When developing an obsolescence plan for imaging IT infrastructure, which items should be addressed first?"
+    },
+    "back": {
+      "question": "When developing an obsolescence plan for imaging IT infrastructure, which items should be addressed first?",
+      "options": {
+        "A": "The most recently purchased items, as they represent the largest capital investment",
+        "B": "Items with the lowest utilization, since they can be decommissioned without disrupting workflows",
+        "C": "The highest-risk items first — those where failure or unavailability would have the greatest operational impact",
+        "D": "The most expensive items to replace, to enable early financial planning"
+      },
+      "answer": "C",
+      "explanation": "Obsolescence planning should start with the highest-risk items — equipment or software where failure could significantly disrupt patient care, where parts are no longer available, or where the technology may become outdated before a planned replacement is in place. The process then involves setting up a technology roadmap, gathering vendor and financial input, and scheduling depreciation and replacement timelines around those high-risk priorities."
+    },
+    "tags": [
+      "obsolescence",
+      "system-lifecycle",
+      "risk-management"
+    ],
+    "source": "lecture: Information Technology / 4. System Lifecycle and Update Plans"
+  },
+  {
+    "id": "07-012",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "A developer building a new imaging informatics API wants a lightweight, human-readable data format that is language-independent and growing in adoption. Which format best fits?"
+    },
+    "back": {
+      "question": "A developer building a new imaging informatics API wants a lightweight, human-readable data format that is language-independent and growing in adoption. Which format best fits?",
+      "options": {
+        "A": "XML (Extensible Markup Language) — the long-established standard with broad legacy support",
+        "B": "JSON (JavaScript Object Notation) — lightweight, human-readable, and language-independent",
+        "C": "CIFS (Common Internet File System) — cross-platform file sharing standard",
+        "D": "SQL (Structured Query Language) — enables direct retrieval from relational databases"
+      },
+      "answer": "B",
+      "explanation": "JSON (JavaScript Object Notation) is a lightweight, text-based, human-readable format for transmitting data objects as attribute-value pairs and arrays. Although derived from JavaScript, it is language-independent and works with most modern programming languages. XML (Extensible Markup Language) uses tags to carry data rather than display it and is less reader-friendly; JSON is increasingly replacing XML due to its simpler syntax and growing ecosystem support."
+    },
+    "tags": [
+      "it-standards",
+      "json",
+      "xml",
+      "data-structures"
+    ],
+    "source": "lecture: Information Technology / 5. IT Standards"
+  },
+  {
+    "id": "07-013",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "A hospital's radiology IT team is configuring file-sharing on servers running Linux. Which file system standard should they use?"
+    },
+    "back": {
+      "question": "A hospital's radiology IT team is configuring file-sharing on servers running Linux. Which file system standard should they use?",
+      "options": {
+        "A": "CIFS (Common Internet File System)",
+        "B": "NFS (Network File System)",
+        "C": "RAID (Redundant Array of Independent Disks)",
+        "D": "DAS (Direct Attached Storage)"
+      },
+      "answer": "B",
+      "explanation": "NFS (Network File System) is the file system standard used by Linux and Unix operating systems, allowing file access from remote computers linked to the network. CIFS (Common Internet File System) is used by Windows OS to provide shared access to files and printers on the same network. RAID and DAS are storage configurations, not file system protocols."
+    },
+    "tags": [
+      "it-standards",
+      "cifs",
+      "nfs",
+      "file-systems",
+      "linux"
+    ],
+    "source": "lecture: Information Technology / 5. IT Standards"
+  },
+  {
+    "id": "07-014",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which authentication protocol issues cryptographic tickets to verify user identity for each service request over an untrusted network?"
+    },
+    "back": {
+      "question": "Which authentication protocol issues cryptographic tickets to verify user identity for each service request over an untrusted network?",
+      "options": {
+        "A": "LDAP (Lightweight Directory Access Protocol)",
+        "B": "Active Directory",
+        "C": "Kerberos",
+        "D": "Two-factor authentication (2FA)"
+      },
+      "answer": "C",
+      "explanation": "Kerberos is a computer network authentication protocol designed for service requests over untrusted networks. It uses cryptography to issue a unique ticket (key) for each user who logs in, verifying their identity without transmitting passwords. LDAP is a vendor-neutral protocol used to query user data such as usernames and emails. Active Directory is a Microsoft directory service for managing permissions and access to network resources. Two-factor authentication adds a second verification method on top of a password."
+    },
+    "tags": [
+      "authentication",
+      "kerberos",
+      "ldap",
+      "active-directory",
+      "security"
+    ],
+    "source": "lecture: Information Technology / 0. Workstations, Networks and Servers"
+  },
+  {
+    "id": "07-015",
+    "domain": "G",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which Ethernet cable category is the newest and fastest, supports up to 10 Gbps at 600 MHz, and has individual shielding on each wire pair?"
+    },
+    "back": {
+      "question": "Which Ethernet cable category is the newest and fastest, supports up to 10 Gbps at 600 MHz, and has individual shielding on each wire pair?",
+      "options": {
+        "A": "Cat5",
+        "B": "Cat6",
+        "C": "Cat7",
+        "D": "Cat8"
+      },
+      "answer": "C",
+      "explanation": "Cat7 is the newest and fastest of the three types covered — it supports up to 10 Gbps at 600 MHz and features individual shielding for each wire pair. Cat5 is the oldest and slowest, supporting up to 100 Mbps at 100 MHz. Cat6 supports up to 10 Gbps at 250 MHz but has overall shielding (or none) rather than per-pair shielding. The individual pair shielding in Cat7 provides better EMI (electromagnetic interference) rejection."
+    },
+    "tags": [
+      "networking",
+      "ethernet-cables",
+      "cat5",
+      "cat6",
+      "cat7"
+    ],
+    "source": "lecture: Information Technology / 0. Workstations, Networks and Servers"
+  },
+  {
+    "id": "07-016",
+    "domain": "G",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which network term describes the capacity of a network to continue functioning when some of its components have failed?"
+    },
+    "back": {
+      "question": "Which network term describes the capacity of a network to continue functioning when some of its components have failed?",
+      "options": {
+        "A": "Load balancing",
+        "B": "Bandwidth",
+        "C": "Fault tolerance",
+        "D": "Redundancy"
+      },
+      "answer": "C",
+      "explanation": "Fault tolerance is the capacity of a network to continue operating even when some components fail — ideally with no single point of failure. Load balancing distributes incoming network traffic across multiple servers. Redundancy provides additional or alternate network equipment as protection against partial or full system failure. Bandwidth is the maximum rate at which data can transfer within a network. Fault tolerance and redundancy work together: redundancy is the mechanism that enables fault tolerance."
+    },
+    "tags": [
+      "networking",
+      "fault-tolerance",
+      "redundancy",
+      "load-balancing"
+    ],
+    "source": "lecture: Information Technology / 0. Workstations, Networks and Servers"
+  },
+  {
+    "id": "08-001",
+    "domain": "H",
+    "difficulty": "easy",
+    "front": {
+      "question": "Using the DICOM header, how do you calculate the uncompressed size of a single image?"
+    },
+    "back": {
+      "question": "Using the DICOM header, how do you calculate the uncompressed size of a single image?",
+      "options": {
+        "A": "Rows × Columns × Bits Allocated = Bytes per image",
+        "B": "Rows + Columns × Bit Depth = kilobytes per image",
+        "C": "Frame count × Pixel Spacing × Compression Ratio = MB per study",
+        "D": "Study UID × Matrix Size × Bit Depth = uncompressed size"
+      },
+      "answer": "A",
+      "explanation": "The DICOM header contains the rows, columns, and bits allocated for each pixel. Multiplying these three values gives the uncompressed byte size of a single image. Example: 960 × 1240 × 16 = ~19 MB per image. This formula is the starting point for any storage capacity planning exercise."
+    },
+    "tags": [
+      "storage-planning",
+      "dicom-header",
+      "capacity"
+    ],
+    "source": "lecture: System Management / 1. Considerations"
+  },
+  {
+    "id": "08-002",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "After deploying new DR modalities, why should an imaging informaticist compare prospective storage estimates to retrospective storage reports?"
+    },
+    "back": {
+      "question": "After deploying new DR modalities, why should an imaging informaticist compare prospective storage estimates to retrospective storage reports?",
+      "options": {
+        "A": "To determine whether lossless compression should be enabled on the new modalities",
+        "B": "To verify actual usage against projections and adjust future purchasing to avoid running out of space or over-buying",
+        "C": "To generate a vendor invoice based on actual data volumes transferred",
+        "D": "To confirm that DICOM header metadata is correctly populated by the new modalities"
+      },
+      "answer": "B",
+      "explanation": "Prospective reports estimate future storage needs; retrospective reports reflect what was actually used after go-live. Comparing them shows whether your estimates were too high or too low, allowing you to correct future orders before you either run out of space or waste budget on unused capacity."
+    },
+    "tags": [
+      "storage-planning",
+      "capacity",
+      "prospective-retrospective"
+    ],
+    "source": "lecture: System Management / 1. Considerations"
+  },
+  {
+    "id": "08-003",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "When enabling debug logging to investigate a PACS performance problem, what is the most critical precaution?"
+    },
+    "back": {
+      "question": "When enabling debug logging to investigate a PACS performance problem, what is the most critical precaution?",
+      "options": {
+        "A": "Enable debug logging only on the RIS to avoid interfering with DICOM traffic",
+        "B": "Leave debug logging on permanently so logs are always available for future incidents",
+        "C": "Turn on debug logging, reproduce the issue, then turn it off immediately — leaving it on causes additional performance degradation",
+        "D": "Debug logging requires vendor written approval before it can be enabled on production systems"
+      },
+      "answer": "C",
+      "explanation": "Debug logging is intentionally verbose and has a measurable performance impact. The correct approach is to enable it, reproduce the problem to capture the relevant logs, then disable it right away. Leaving it on will compound the very slowness you are trying to diagnose."
+    },
+    "tags": [
+      "troubleshooting",
+      "debug-logging",
+      "performance"
+    ],
+    "source": "lecture: System Management / 1. Considerations"
+  },
+  {
+    "id": "08-004",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "A radiologist reports that prior studies are slow to load. Which is the most appropriate first investigative step?"
+    },
+    "back": {
+      "question": "A radiologist reports that prior studies are slow to load. Which is the most appropriate first investigative step?",
+      "options": {
+        "A": "Increase the number of simultaneous DICOM associations allowed by the PACS server",
+        "B": "Review prefetch logic to confirm that relevant priors are being retrieved overnight based on body part and scheduled exams",
+        "C": "Upgrade reading workstation RAM to cache larger studies locally",
+        "D": "Switch from lossless to lossy compression to reduce the size of prefetched studies"
+      },
+      "answer": "B",
+      "explanation": "If prior retrieval is slow, the prefetch process may not be working correctly — not retrieving by body part, not fetching enough studies, or firing at the wrong time. Fixing prefetch logic so priors arrive overnight before the radiologist reads them is an easy win that avoids ad-hoc retrieval traffic during the reading session."
+    },
+    "tags": [
+      "prefetch",
+      "performance",
+      "troubleshooting",
+      "pacs"
+    ],
+    "source": "lecture: System Management / 2. Troubleshooting Performance Issues"
+  },
+  {
+    "id": "08-005",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "A modality sends compressed images to PACS, which decompresses them and then recompresses them before storing. What is the primary concern?"
+    },
+    "back": {
+      "question": "A modality sends compressed images to PACS, which decompresses them and then recompresses them before storing. What is the primary concern?",
+      "options": {
+        "A": "The double-compression creates a DICOM conformance violation that must be reported to NEMA",
+        "B": "Each compression cycle permanently increases the file size on disk",
+        "C": "Decompressing and recompressing adds unnecessary processing overhead that slows image ingestion",
+        "D": "PACS cannot store any study that was originally compressed by the modality"
+      },
+      "answer": "C",
+      "explanation": "When the PACS receives a compressed image and must decompress it just to recompress it in a different format, that extra processing is a time sink that slows ingestion. The solution is to ensure the modality compresses using the algorithm the PACS natively supports so the image can be stored without an extra decompression step."
+    },
+    "tags": [
+      "compression",
+      "performance",
+      "dicom",
+      "ingestion"
+    ],
+    "source": "lecture: System Management / 2. Troubleshooting Performance Issues"
+  },
+  {
+    "id": "08-006",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "An HL7 interface goes live and message queues immediately start backing up. What is the first thing to investigate?"
+    },
+    "back": {
+      "question": "An HL7 interface goes live and message queues immediately start backing up. What is the first thing to investigate?",
+      "options": {
+        "A": "Whether PACS database indexing is causing write delays on the receiving side",
+        "B": "Whether the interface is receiving all upstream messages — including ADT messages it has no use for",
+        "C": "Whether the HL7 version on the sending RIS is incompatible with the PACS receiver",
+        "D": "Whether message encoding is UTF-8 or ASCII"
+      },
+      "answer": "B",
+      "explanation": "A common mistake at interface go-live is turning on the full upstream feed and receiving every message type, including ADT messages the PACS never needs. Filtering to only the required message types reduces queue volume significantly. Always ask: are you getting only the messages you actually require?"
+    },
+    "tags": [
+      "hl7",
+      "interface",
+      "performance",
+      "troubleshooting"
+    ],
+    "source": "lecture: System Management / 2. Troubleshooting Performance Issues"
+  },
+  {
+    "id": "08-007",
+    "domain": "H",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the purpose of establishing a standardized change window for PACS and imaging systems?"
+    },
+    "back": {
+      "question": "What is the purpose of establishing a standardized change window for PACS and imaging systems?",
+      "options": {
+        "A": "To force all vendors to apply patches simultaneously across the enterprise",
+        "B": "To schedule changes, reboots, and planned outages at a predictable time when users are aware and validation resources are on hand",
+        "C": "To meet HIPAA requirements for documented change management",
+        "D": "To synchronize software update cycles across all vendor systems"
+      },
+      "answer": "B",
+      "explanation": "A change window — for example, Wednesday nights at 2 AM — is a user-accepted time slot for system changes. Users know to expect potential downtime during that window, and the team has standardized validation scripts ready so everything is confirmed working after the change before the business day begins."
+    },
+    "tags": [
+      "change-control",
+      "change-window",
+      "operations"
+    ],
+    "source": "lecture: System Management / 2. Troubleshooting Performance Issues"
+  },
+  {
+    "id": "08-008",
+    "domain": "H",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which best describes the key distinction between a Business Continuity Solution (BCS) and Disaster Recovery (DR)?"
+    },
+    "back": {
+      "question": "Which best describes the key distinction between a Business Continuity Solution (BCS) and Disaster Recovery (DR)?",
+      "options": {
+        "A": "BCS is for hardware failures; DR is for software or ransomware failures",
+        "B": "BCS maintains operations in a degraded state when the primary system is still partially functional; DR is used when systems are completely lost and unrecoverable",
+        "C": "BCS requires geographic separation from production; DR operates within the same data center",
+        "D": "BCS protects only the PACS; DR protects all hospital systems including the EMR"
+      },
+      "answer": "B",
+      "explanation": "BCS is the 'spare tire' — it keeps care going in a reduced capacity while the primary system is still partially up but degraded. DR is for catastrophic, unrecoverable situations (natural disasters, ransomware wiping the entire dataset) where the primary system is completely gone and geographic isolation is key."
+    },
+    "tags": [
+      "bcs",
+      "dr",
+      "disaster-recovery",
+      "business-continuity"
+    ],
+    "source": "lecture: System Management / 3. Business Continuity Solution & Disaster Recovery"
+  },
+  {
+    "id": "08-009",
+    "domain": "H",
+    "difficulty": "easy",
+    "front": {
+      "question": "In the lecture, what everyday analogy is used to describe a Business Continuity Solution (BCS)?"
+    },
+    "back": {
+      "question": "In the lecture, what everyday analogy is used to describe a Business Continuity Solution (BCS)?",
+      "options": {
+        "A": "A fire extinguisher — a one-time emergency tool that is discarded after use",
+        "B": "A generator — provides full, uninterrupted power indefinitely during an outage",
+        "C": "A spare tire — allows you to continue driving in a limited, degraded state",
+        "D": "A first-aid kit — used for minor repairs before a professional takes over"
+      },
+      "answer": "C",
+      "explanation": "The lecture describes BCS as a 'spare tire': it gets you from point A to point B safely, but with limits — maybe only 50 mph. Operations can continue in a reduced state until the primary system is restored. A second car (full redundant system) would be ideal but is much more expensive."
+    },
+    "tags": [
+      "bcs",
+      "business-continuity",
+      "analogy"
+    ],
+    "source": "lecture: System Management / 3. Business Continuity Solution & Disaster Recovery"
+  },
+  {
+    "id": "08-010",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "Why are Disaster Recovery (DR) systems typically geographically isolated from the primary data center?"
+    },
+    "back": {
+      "question": "Why are Disaster Recovery (DR) systems typically geographically isolated from the primary data center?",
+      "options": {
+        "A": "HIPAA requires PHI to be stored in at least two separate geographic regions",
+        "B": "Geographic proximity reduces latency for DR replication traffic",
+        "C": "To protect against regional events — natural disasters, power grid failures, or fiber cuts — that could simultaneously take down both sites",
+        "D": "Geographic isolation reduces hardware licensing costs for DR-tier equipment"
+      },
+      "answer": "C",
+      "explanation": "If the primary data center and the DR site are in the same building or area, a single event (tornado, hurricane, widespread power failure, a garbage truck cutting a fiber cable) can knock out both. Geographic separation ensures that a disaster affecting the primary site leaves the DR site intact and accessible."
+    },
+    "tags": [
+      "dr",
+      "disaster-recovery",
+      "geographic-isolation"
+    ],
+    "source": "lecture: System Management / 3. Business Continuity Solution & Disaster Recovery"
+  },
+  {
+    "id": "08-011",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which characteristics make a downtime runbook most effective during an unplanned outage?"
+    },
+    "back": {
+      "question": "Which characteristics make a downtime runbook most effective during an unplanned outage?",
+      "options": {
+        "A": "High-level summaries so administrators can exercise judgment under pressure",
+        "B": "Prescriptive, sequential steps with separate sections for failover, failback, and reconciliation — leaving nothing to interpretation",
+        "C": "A single document covering all vendor systems to minimize how many books staff must locate",
+        "D": "Quarterly updates by the HIPAA compliance officer with CIO sign-off"
+      },
+      "answer": "B",
+      "explanation": "An unplanned outage is stressful and chaotic. The runbook must be prescriptive so nothing is missed, sequential so steps are done in the right order, and split into separate failover and failback/reconciliation sections. The lecture stresses that this document should be reviewed and tested regularly — especially after system changes — so it works when you actually need it."
+    },
+    "tags": [
+      "runbook",
+      "bcs",
+      "dr",
+      "downtime"
+    ],
+    "source": "lecture: System Management / 3. Business Continuity Solution & Disaster Recovery"
+  },
+  {
+    "id": "08-012",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "How can DNS redirection simplify the failover process when switching to a Business Continuity Solution (BCS)?"
+    },
+    "back": {
+      "question": "How can DNS redirection simplify the failover process when switching to a Business Continuity Solution (BCS)?",
+      "options": {
+        "A": "DNS redirection encrypts traffic between the PACS client and the BCS server during failover",
+        "B": "It lets the BCS receive a real-time copy of all DICOM traffic without impacting production throughput",
+        "C": "By redirecting the existing PACS hostname to the BCS IP address, users log back in transparently without any client reconfiguration",
+        "D": "DNS redirection automatically reconciles data between BCS and production once systems are restored"
+      },
+      "answer": "C",
+      "explanation": "Instead of maintaining separate icons for production and BCS systems, network teams can redirect the hostname (e.g., pacs.health.org) from the production IP to the BCS IP. Users get a downtime notification, log out, and when they log back in they hit the BCS transparently — no reconfiguration, no confusion about which system to open."
+    },
+    "tags": [
+      "dns-redirection",
+      "bcs",
+      "failover",
+      "downtime"
+    ],
+    "source": "lecture: System Management / 3. Business Continuity Solution & Disaster Recovery"
+  },
+  {
+    "id": "08-013",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which migration method uses DICOM C-MOVE or C-STORE commands to transfer studies directly from source to destination?"
+    },
+    "back": {
+      "question": "Which migration method uses DICOM C-MOVE or C-STORE commands to transfer studies directly from source to destination?",
+      "options": {
+        "A": "Rapid migration",
+        "B": "Third-party migration",
+        "C": "Pointer migration",
+        "D": "Conventional migration"
+      },
+      "answer": "D",
+      "explanation": "Conventional migration issues standard DICOM commands (C-MOVE or C-STORE) to send studies from the legacy source to the new destination. It is the most reliable method but also the slowest — especially when the legacy archive is on older infrastructure with limited parallel processing capability."
+    },
+    "tags": [
+      "migration",
+      "conventional-migration",
+      "dicom",
+      "c-move"
+    ],
+    "source": "lecture: System Management / 4. Migration"
+  },
+  {
+    "id": "08-014",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the primary trade-off of a rapid migration (direct PACS database extract)?"
+    },
+    "back": {
+      "question": "What is the primary trade-off of a rapid migration (direct PACS database extract)?",
+      "options": {
+        "A": "It requires DICOM conformance re-certification on the destination PACS before use",
+        "B": "It is significantly faster than conventional migration but is more expensive and more complex to set up",
+        "C": "It relies on third-party harmonization tools that frequently introduce data collisions",
+        "D": "It can only be performed between systems from the same vendor"
+      },
+      "answer": "B",
+      "explanation": "Rapid migration bypasses DICOM associations entirely by reading the physical image files and database directly — eliminating the overhead of chatty DICOM association setup. The result is much higher speed, but the setup complexity and cost are also much higher. It scales with the size of the migration."
+    },
+    "tags": [
+      "migration",
+      "rapid-migration",
+      "pacs",
+      "trade-offs"
+    ],
+    "source": "lecture: System Management / 4. Migration"
+  },
+  {
+    "id": "08-015",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the main benefit of using a third-party migration specialist when a legacy PACS has 20–30 years of data from multiple system generations?"
+    },
+    "back": {
+      "question": "What is the main benefit of using a third-party migration specialist when a legacy PACS has 20–30 years of data from multiple system generations?",
+      "options": {
+        "A": "They provide cheaper storage media for the migrated dataset",
+        "B": "They harmonize inconsistent legacy data so it ingests cleanly into the new PACS",
+        "C": "They automatically convert proprietary DICOM tags into HL7 messages",
+        "D": "HIPAA requires a neutral third party whenever PHI crosses vendor systems"
+      },
+      "answer": "B",
+      "explanation": "A PACS that has accumulated data across decades, multiple acquisitions, and many database versions can be highly inconsistent. A third-party migration specialist sits in the middle as a broker, harmonizing the data — normalizing private tags, resolving inconsistencies — before it lands in the new system, minimizing collision risk."
+    },
+    "tags": [
+      "migration",
+      "third-party-migration",
+      "harmonization",
+      "legacy-data"
+    ],
+    "source": "lecture: System Management / 4. Migration"
+  },
+  {
+    "id": "08-016",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "When prioritizing which legacy studies to migrate first, which strategy does the lecture recommend?"
+    },
+    "back": {
+      "question": "When prioritizing which legacy studies to migrate first, which strategy does the lecture recommend?",
+      "options": {
+        "A": "First-in, first-out — migrate the oldest studies chronologically",
+        "B": "Migrate the highest-volume modality types first regardless of patient status",
+        "C": "Prioritize patients most likely to return for imaging — active patients with scheduled exams or recent studies",
+        "D": "Start with deceased patients to reduce the active dataset before go-live"
+      },
+      "answer": "C",
+      "explanation": "The lecture is direct: dead patients are unlikely to come back for a scheduled exam, so they are not the highest priority. Studies that are most likely to be accessed as priors — active patients, those with upcoming appointments, or recent screenings — should migrate first so clinicians have the context they need when those patients arrive."
+    },
+    "tags": [
+      "migration",
+      "priority",
+      "priors",
+      "workflow"
+    ],
+    "source": "lecture: System Management / 4. Migration"
+  },
+  {
+    "id": "08-017",
+    "domain": "H",
+    "difficulty": "medium",
+    "front": {
+      "question": "In a pointer migration, what is actually transferred into the new PACS?"
+    },
+    "back": {
+      "question": "In a pointer migration, what is actually transferred into the new PACS?",
+      "options": {
+        "A": "All DICOM image files are physically moved from the legacy archive to new storage",
+        "B": "Database pointers that tell the new PACS where studies live in the archive — the files remain in place and are retrieved on demand",
+        "C": "Compressed thumbnails of each study are cached in the new PACS for quick display",
+        "D": "Only studies from the past 12 months are physically migrated; older studies are purged"
+      },
+      "answer": "B",
+      "explanation": "A pointer migration extracts and reconciles database records from the VNA/archive, legacy PACS, and RIS, then normalizes those pointers into the new PACS. The actual image files stay in the existing archive. When a study is needed, the new PACS uses the pointer to retrieve it from the archive — much faster than a full data migration at cutover."
+    },
+    "tags": [
+      "migration",
+      "pointer-migration",
+      "vna",
+      "archive"
+    ],
+    "source": "lecture: System Management / 4. Migration"
+  },
+  {
+    "id": "08-018",
+    "domain": "H",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which of the following is NOT one of the five HIPAA (Health Insurance Portability and Accountability Act) rules addressing administrative simplification?"
+    },
+    "back": {
+      "question": "Which of the following is NOT one of the five HIPAA (Health Insurance Portability and Accountability Act) rules addressing administrative simplification?",
+      "options": {
+        "A": "The Privacy Rule",
+        "B": "The Transactions and Code Sets Rule",
+        "C": "The Minimum Necessary Disclosure Rule",
+        "D": "The Enforcement Rule"
+      },
+      "answer": "C",
+      "explanation": "The five HIPAA rules for administrative simplification are: (1) Privacy Rule, (2) Transactions and Code Sets Rule, (3) Security Rule, (4) Unique Identifiers Rule, and (5) Enforcement Rule. 'Minimum Necessary Disclosure' is a principle within the Privacy Rule, not one of the five named rules."
+    },
+    "tags": [
+      "hipaa",
+      "security",
+      "compliance",
+      "five-rules"
+    ],
+    "source": "lecture: System Management / 5. Security"
+  },
+  {
+    "id": "08-019",
+    "domain": "H",
+    "difficulty": "easy",
+    "front": {
+      "question": "Under HIPAA's Security Rule, which three safeguard categories must be addressed?"
+    },
+    "back": {
+      "question": "Under HIPAA's Security Rule, which three safeguard categories must be addressed?",
+      "options": {
+        "A": "Regulatory, operational, and technical safeguards",
+        "B": "Administrative, physical, and technical safeguards",
+        "C": "Contractual, procedural, and environmental safeguards",
+        "D": "Human, system, and network safeguards"
+      },
+      "answer": "B",
+      "explanation": "The HIPAA Security Rule organizes protections into three categories: Administrative safeguards (policies and procedures for managing PHI, security awareness, incident response), Physical safeguards (facility access controls, workstation security, media destruction), and Technical safeguards (unique user logins, auto-locking workstations). All three must be addressed."
+    },
+    "tags": [
+      "hipaa",
+      "security-rule",
+      "safeguards",
+      "phi"
+    ],
+    "source": "lecture: System Management / 5. Security"
+  },
+  {
+    "id": "08-020",
+    "domain": "H",
+    "difficulty": "hard",
+    "front": {
+      "question": "Hospital IT applies a blanket 15-minute inactivity timeout to all PACS workstations. A surgeon complains their OR workstation logs them out mid-procedure during a 12-hour surgery. What is the best resolution?"
+    },
+    "back": {
+      "question": "Hospital IT applies a blanket 15-minute inactivity timeout to all PACS workstations. A surgeon complains their OR workstation logs them out mid-procedure during a 12-hour surgery. What is the best resolution?",
+      "options": {
+        "A": "Disable inactivity timeouts on all PACS workstations to eliminate the workflow disruption",
+        "B": "Replace OR PACS workstations with a paper-based fallback during long procedures",
+        "C": "Assess the physical safeguards already protecting the OR (restricted entry, gowning requirements) and apply a context-appropriate, longer timeout for that environment",
+        "D": "Require surgeons to re-authenticate using a one-time passcode from the anesthesiologist"
+      },
+      "answer": "C",
+      "explanation": "Blanket locking policies don't account for the physical safeguards already in place in specific environments. An OR has controlled access — staff must gown and scrub to enter — which provides physical protection that compensates for a longer inactivity timeout. The correct approach is to assess each environment's physical controls and set the timeout accordingly, rather than applying one policy everywhere."
+    },
+    "tags": [
+      "hipaa",
+      "technical-safeguards",
+      "workstation-security",
+      "or-workflow"
+    ],
+    "source": "lecture: System Management / 5. Security"
+  },
+  {
+    "id": "02-001",
+    "domain": "B",
+    "difficulty": "easy",
+    "front": {
+      "question": "According to PMI, what is the definition of a project?"
+    },
+    "back": {
+      "question": "According to PMI, what is the definition of a project?",
+      "options": {
+        "A": "An ongoing organizational function aimed at maintaining existing systems",
+        "B": "A temporary task aimed at producing a unique outcome",
+        "C": "A long-term strategic initiative with no defined end date",
+        "D": "A series of repeatable operational processes managed by a team"
+      },
+      "answer": "B",
+      "explanation": "PMI defines a project as a temporary task aimed at producing a distinctive (unique) outcome. This distinguishes it from ongoing operations, which are repetitive and have no defined end."
+    },
+    "tags": ["project-management", "pmi", "definition"],
+    "source": "lecture: Project Management / 1. Identifying Project Fundamentals"
+  },
+  {
+    "id": "02-002",
+    "domain": "B",
+    "difficulty": "easy",
+    "front": {
+      "question": "How many project management processes does PMI group into its five process groups?"
+    },
+    "back": {
+      "question": "How many project management processes does PMI group into its five process groups?",
+      "options": {
+        "A": "22",
+        "B": "35",
+        "C": "42",
+        "D": "50"
+      },
+      "answer": "C",
+      "explanation": "According to the PMBOK (4th ed.), PMI defines 42 project management processes grouped into 5 process groups: Initiating, Planning, Executing, Monitoring & Controlling, and Closing."
+    },
+    "tags": ["project-management", "pmi", "process-groups"],
+    "source": "slides: Project Management / Page 6"
+  },
+  {
+    "id": "02-003",
+    "domain": "B",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which project management process group is responsible for tracking, reviewing, and regulating the project's progress and initiating changes to the plan?"
+    },
+    "back": {
+      "question": "Which project management process group is responsible for tracking, reviewing, and regulating the project's progress and initiating changes to the plan?",
+      "options": {
+        "A": "Executing",
+        "B": "Planning",
+        "C": "Monitoring and Controlling",
+        "D": "Closing"
+      },
+      "answer": "C",
+      "explanation": "Monitoring and Controlling involves tracking, reviewing, and regulating performance; identifying areas where plan changes are needed; and initiating those changes. Executing performs the work, while Closing finalizes all activities."
+    },
+    "tags": ["project-management", "process-groups", "monitoring"],
+    "source": "lecture: Project Management / 1. Identifying Project Fundamentals"
+  },
+  {
+    "id": "02-004",
+    "domain": "B",
+    "difficulty": "medium",
+    "front": {
+      "question": "A project manager is starting a new VNA implementation. The first step is to evaluate whether the project is viable. What are the three main assessments used to evaluate project feasibility?"
+    },
+    "back": {
+      "question": "A project manager is starting a new VNA implementation. The first step is to evaluate whether the project is viable. What are the three main assessments used to evaluate project feasibility?",
+      "options": {
+        "A": "Scope, budget, and timeline assessments",
+        "B": "Needs, financial, and risk assessments",
+        "C": "Stakeholder, technical, and regulatory assessments",
+        "D": "Gap, vendor, and resource assessments"
+      },
+      "answer": "B",
+      "explanation": "Evaluating project feasibility involves three main assessments: needs assessment (understanding the problem and requirements), financial assessment (ROI, cost-benefit analysis), and risk assessment (identifying potential obstacles and mitigation strategies)."
+    },
+    "tags": ["project-management", "feasibility", "needs-assessment"],
+    "source": "lecture: Project Management / 2. Evaluating Project Feasibility"
+  },
+  {
+    "id": "02-005",
+    "domain": "B",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which of the following is NOT listed as a typical component of a financial assessment for a new system implementation?"
+    },
+    "back": {
+      "question": "Which of the following is NOT listed as a typical component of a financial assessment for a new system implementation?",
+      "options": {
+        "A": "Return on investment (ROI)",
+        "B": "Personnel time savings",
+        "C": "Vendor certification costs",
+        "D": "Elimination of redundant image copies"
+      },
+      "answer": "C",
+      "explanation": "Financial assessment components include ROI, personnel time savings, repeat rate reduction, and elimination of copies. Vendor certification costs are not listed as a financial assessment component — that concept belongs to procurement and compliance, not project financial feasibility."
+    },
+    "tags": ["project-management", "financial-assessment", "roi"],
+    "source": "lecture: Project Management / 2. Evaluating Project Feasibility"
+  },
+  {
+    "id": "02-006",
+    "domain": "B",
+    "difficulty": "easy",
+    "front": {
+      "question": "The triple constraint in project management consists of three interdependent elements. Which three are they?"
+    },
+    "back": {
+      "question": "The triple constraint in project management consists of three interdependent elements. Which three are they?",
+      "options": {
+        "A": "Scope, quality, and risk",
+        "B": "Budget, resources, and timeline",
+        "C": "Scope, time, and cost",
+        "D": "Planning, execution, and closure"
+      },
+      "answer": "C",
+      "explanation": "The triple constraint consists of scope, time, and cost — with quality at the center. A change in any one of these elements will impact the others. This model helps project managers balance competing demands."
+    },
+    "tags": ["project-management", "triple-constraint"],
+    "source": "lecture: Project Management / 2. Evaluating Project Feasibility"
+  },
+  {
+    "id": "02-007",
+    "domain": "B",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is a project charter?"
+    },
+    "back": {
+      "question": "What is a project charter?",
+      "options": {
+        "A": "A detailed schedule showing task start and end dates",
+        "B": "A document issued by the project initiator or sponsor that formally authorizes the project and grants the project manager authority to apply resources",
+        "C": "A register of all identified project risks and mitigation strategies",
+        "D": "A breakdown of project deliverables into smaller, manageable components"
+      },
+      "answer": "B",
+      "explanation": "The project charter formally authorizes the existence of a project and provides the project manager with the authority to apply organizational resources. It is distinct from the WBS (deliverable breakdown), risk register (risk tracking), and Gantt chart (schedule)."
+    },
+    "tags": ["project-management", "project-charter"],
+    "source": "lecture: Project Management / 3. Utilizing Project Management Tools"
+  },
+  {
+    "id": "02-008",
+    "domain": "B",
+    "difficulty": "medium",
+    "front": {
+      "question": "Using PERT, a task has a pessimistic estimate of 12 days, a most likely estimate of 8 days, and an optimistic estimate of 6 days. What is the PERT estimate?"
+    },
+    "back": {
+      "question": "Using PERT, a task has a pessimistic estimate of 12 days, a most likely estimate of 8 days, and an optimistic estimate of 6 days. What is the PERT estimate?",
+      "options": {
+        "A": "8.0 days",
+        "B": "8.3 days",
+        "C": "8.67 days",
+        "D": "9.0 days"
+      },
+      "answer": "C",
+      "explanation": "PERT formula: (P + 4M + O) / 6 = (12 + 4×8 + 6) / 6 = (12 + 32 + 6) / 6 = 50 / 6 = 8.33... ≈ 8.67 days (the slides show 8.3 but the lecture more precisely gives 8.67; 8.67 is the more accurate result)."
+    },
+    "tags": ["project-management", "pert", "formula"],
+    "source": "slides: Project Management / Page 25-26"
+  },
+  {
+    "id": "02-009",
+    "domain": "B",
+    "difficulty": "easy",
+    "front": {
+      "question": "In a RACI diagram, what does the 'A' stand for, and what is that person's role?"
+    },
+    "back": {
+      "question": "In a RACI diagram, what does the 'A' stand for, and what is that person's role?",
+      "options": {
+        "A": "Assigned — the person who is formally assigned to the project",
+        "B": "Accountable — the person ultimately responsible for the task's completion and delegating work",
+        "C": "Aware — those who need to be kept informed of task progress",
+        "D": "Approver — the person who signs off on all project deliverables"
+      },
+      "answer": "B",
+      "explanation": "RACI: Responsible (performs the task), Accountable (ultimately accountable for completion, delegates work), Consulted (provides input before work is done), Informed (notified after decisions/actions). The 'A' is Accountable, not just assigned."
+    },
+    "tags": ["project-management", "raci"],
+    "source": "lecture: Project Management / 3. Utilizing Project Management Tools"
+  },
+  {
+    "id": "02-010",
+    "domain": "B",
+    "difficulty": "medium",
+    "front": {
+      "question": "A project team is using a run chart to track process performance. What does the median baseline on a run chart represent?"
+    },
+    "back": {
+      "question": "A project team is using a run chart to track process performance. What does the median baseline on a run chart represent?",
+      "options": {
+        "A": "The target performance level set by leadership",
+        "B": "The upper control limit for acceptable variation",
+        "C": "The median value of the data before any interventions",
+        "D": "The average of the most recent 10 data points"
+      },
+      "answer": "C",
+      "explanation": "On a run chart, the median baseline represents the median value of data before any interventions are applied. The goal line represents the desired performance level. This distinguishes run charts from control charts, which use a mean center line with UCL/LCL."
+    },
+    "tags": ["project-management", "run-chart"],
+    "source": "lecture: Project Management / 3. Utilizing Project Management Tools"
+  },
+  {
+    "id": "02-011",
+    "domain": "B",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which implementation form lists all project stakeholders with their roles, interests, and impact on the project?"
+    },
+    "back": {
+      "question": "Which implementation form lists all project stakeholders with their roles, interests, and impact on the project?",
+      "options": {
+        "A": "Statement of Work",
+        "B": "Risk Register",
+        "C": "Stakeholder Register",
+        "D": "Work Breakdown Structure"
+      },
+      "answer": "C",
+      "explanation": "The Stakeholder Register documents all stakeholders, their roles, interests, and project impact. The Statement of Work outlines scope and deliverables; the Risk Register tracks risks; the WBS breaks the project into components."
+    },
+    "tags": ["project-management", "stakeholder-register", "implementation-forms"],
+    "source": "lecture: Project Management / 3. Utilizing Project Management Tools"
+  },
+  {
+    "id": "02-012",
+    "domain": "B",
+    "difficulty": "hard",
+    "front": {
+      "question": "A project consistently runs over budget, misses milestones, and has team members unaware of each other's progress. Which two project management failures best explain this situation?"
+    },
+    "back": {
+      "question": "A project consistently runs over budget, misses milestones, and has team members unaware of each other's progress. Which two project management failures best explain this situation?",
+      "options": {
+        "A": "Absence of a Gantt chart and missing project charter",
+        "B": "Inadequate communication among stakeholders and absence of a contingency plan",
+        "C": "Lack of PERT estimates and missing RACI diagram",
+        "D": "Insufficient vendor training and poor scope definition"
+      },
+      "answer": "B",
+      "explanation": "Budget overruns and missed timelines often stem from inadequate communication among project stakeholders (team members not coordinating) and absence of a contingency plan (no way to respond to unexpected issues). These are two of the six common project risks explicitly listed in the source material."
+    },
+    "tags": ["project-management", "project-risks", "communication"],
+    "source": "lecture: Project Management / 2. Evaluating Project Feasibility"
+  },
+  {
+    "id": "03-001",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the key distinction between Quality Control (QC) and Quality Assurance (QA) in imaging informatics?"
+    },
+    "back": {
+      "question": "What is the key distinction between Quality Control (QC) and Quality Assurance (QA) in imaging informatics?",
+      "options": {
+        "A": "QC is performed by leadership; QA is performed by frontline staff",
+        "B": "QC is narrowly focused on ensuring results match what was planned; QA encompasses the entire transition cycle from order to results and focuses on outcomes",
+        "C": "QC involves data analysis tools; QA involves compliance with regulations",
+        "D": "QC is ongoing and organizational; QA is a one-time check at the end of the process"
+      },
+      "answer": "B",
+      "explanation": "QC verifies that outputs match predetermined specifications (narrow scope). QA encompasses the entire transition cycle — from order placement to results distribution — and maximizes efficiency of the imaging process. QC checks the end result; QA monitors the whole process."
+    },
+    "tags": ["operations", "quality-control", "quality-assurance"],
+    "source": "lecture: Operations / 1. Quality Improvement"
+  },
+  {
+    "id": "03-002",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "Quality improvement is best defined as which of the following?"
+    },
+    "back": {
+      "question": "Quality improvement is best defined as which of the following?",
+      "options": {
+        "A": "Checking outputs at the end of a process to catch defects before release",
+        "B": "Purposefully changing the structure or process for improving outcomes, with ongoing organizational-level commitment and efforts from all staff",
+        "C": "Assigning a compliance officer to monitor regulatory adherence annually",
+        "D": "Reducing costs by eliminating non-essential staff and workflow steps"
+      },
+      "answer": "B",
+      "explanation": "Quality Improvement is defined as purposefully changing structure or process to improve outcomes, requiring ongoing organizational commitment from all staff. It is not a one-time check (QC) or a compliance function — it demands continuous effort from every level of the organization."
+    },
+    "tags": ["operations", "quality-improvement", "definition"],
+    "source": "slides: Operations / Page 8"
+  },
+  {
+    "id": "03-003",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which of the following best describes a shift from traditional quality to contemporary quality improvement?"
+    },
+    "back": {
+      "question": "Which of the following best describes a shift from traditional quality to contemporary quality improvement?",
+      "options": {
+        "A": "From zero defects to acceptable defects; from teamwork to hierarchy",
+        "B": "From acceptable defects and siloed operations to zero defects, shared responsibility, and root cause analysis",
+        "C": "From customer focus to volume-based cost reduction",
+        "D": "From individual ownership of outcomes to manager-controlled quality"
+      },
+      "answer": "B",
+      "explanation": "Contemporary QI moved from the traditional model (acceptable defects, blame culture, siloed operations, guarding information, volume-lowers-cost) to zero defects, shared responsibility, root cause analysis, information sharing, patient focus, and process-driven improvement."
+    },
+    "tags": ["operations", "quality-improvement", "contemporary-qi"],
+    "source": "lecture: Operations / 1. Quality Improvement"
+  },
+  {
+    "id": "03-004",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which QI model focuses specifically on eliminating waste to reduce costs?"
+    },
+    "back": {
+      "question": "Which QI model focuses specifically on eliminating waste to reduce costs?",
+      "options": {
+        "A": "Six Sigma",
+        "B": "FMEA (Failure Modes and Effects Analysis)",
+        "C": "Lean Manufacturing",
+        "D": "Benchmarking"
+      },
+      "answer": "C",
+      "explanation": "Lean Manufacturing focuses on eliminating waste as the primary method to lower costs. Six Sigma focuses on reducing process variation; FMEA proactively identifies failure modes; Benchmarking models best practices from other organizations."
+    },
+    "tags": ["operations", "lean", "qi-models"],
+    "source": "slides: Operations / Page 10"
+  },
+  {
+    "id": "03-005",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "What are the three common themes shared by all quality improvement models?"
+    },
+    "back": {
+      "question": "What are the three common themes shared by all quality improvement models?",
+      "options": {
+        "A": "Compliance, documentation, and reporting",
+        "B": "Goal setting, design & analysis, and implementation & maintenance",
+        "C": "Vendor selection, staff training, and process mapping",
+        "D": "Root cause identification, blame assignment, and corrective action"
+      },
+      "answer": "B",
+      "explanation": "All QI models share three common themes: Goal Setting (what to improve), Design & Analysis (assess, design, collect, and analyze data), and Implementation & Maintenance (act, train, prevent recurrence, assess continuously with a value-based foundation)."
+    },
+    "tags": ["operations", "qi-models", "common-themes"],
+    "source": "slides: Operations / Page 11"
+  },
+  {
+    "id": "03-006",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "In quality improvement, a fishbone diagram is also known by which two other names?"
+    },
+    "back": {
+      "question": "In quality improvement, a fishbone diagram is also known by which two other names?",
+      "options": {
+        "A": "Control chart and Pareto diagram",
+        "B": "Ishikawa diagram and Cause-and-Effect diagram",
+        "C": "Run chart and scatter plot",
+        "D": "FOCUS chart and process map"
+      },
+      "answer": "B",
+      "explanation": "The fishbone diagram is also called the Ishikawa diagram (after its creator) and the Cause-and-Effect diagram. It maps potential causes of a problem into categories such as equipment, process, people, materials, environment, and management."
+    },
+    "tags": ["operations", "fishbone", "qi-tools"],
+    "source": "lecture: Operations / 1. Quality Improvement"
+  },
+  {
+    "id": "03-007",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "The Pareto chart is based on the 80/20 rule. What does this mean in a quality improvement context?"
+    },
+    "back": {
+      "question": "The Pareto chart is based on the 80/20 rule. What does this mean in a quality improvement context?",
+      "options": {
+        "A": "80% of staff cause 20% of errors; focus on retraining the majority",
+        "B": "A small number of causes (the vital few) account for the majority of the effects or problems",
+        "C": "80% of problems are solved in 20% of the time if leadership is involved",
+        "D": "20% of QI projects achieve 80% of quality targets within the first year"
+      },
+      "answer": "B",
+      "explanation": "The Pareto principle (80/20 rule) states that a small number of causes (the vital few) produce the majority of effects. In imaging QI, this means focusing resources on the few causes that drive most errors or inefficiencies, rather than spreading effort equally across all causes."
+    },
+    "tags": ["operations", "pareto", "80-20-rule"],
+    "source": "lecture: Operations / 1. Quality Improvement"
+  },
+  {
+    "id": "03-008",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "On a control chart, what does a data point falling outside the upper or lower control limits indicate?"
+    },
+    "back": {
+      "question": "On a control chart, what does a data point falling outside the upper or lower control limits indicate?",
+      "options": {
+        "A": "Common cause variation — expected random fluctuation",
+        "B": "Special cause variation — an external factor is influencing the process",
+        "C": "The process is performing optimally with no intervention needed",
+        "D": "The control limits are set too narrowly and need adjustment"
+      },
+      "answer": "B",
+      "explanation": "Data points outside the control limits (UCL or LCL) signal special cause variation — something external is affecting the process. Data points within the limits showing no non-random patterns indicate only common cause (inherent) variation, meaning the process is stable."
+    },
+    "tags": ["operations", "control-chart", "special-cause-variation"],
+    "source": "lecture: Operations / 1. Quality Improvement"
+  },
+  {
+    "id": "03-009",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the difference between a policy and a procedure?"
+    },
+    "back": {
+      "question": "What is the difference between a policy and a procedure?",
+      "options": {
+        "A": "A policy is written by IT; a procedure is written by clinical staff",
+        "B": "A policy is a guiding principle used to set direction; a procedure is a series of steps to follow as a consistent, repeatable approach to accomplish an end result",
+        "C": "A policy is short-term and department-specific; a procedure is a long-term organizational directive",
+        "D": "A policy documents what went wrong; a procedure documents how to fix it"
+      },
+      "answer": "B",
+      "explanation": "A policy sets the 'what and why' — a guiding principle for direction. A procedure defines the 'how' — step-by-step instructions for consistent execution. Both are driven by business strategy, regulatory compliance, and available resources."
+    },
+    "tags": ["operations", "policies", "procedures"],
+    "source": "lecture: Operations / 2. Policies and Procedures"
+  },
+  {
+    "id": "03-010",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "When writing a procedure, what does the 'exception test' require a developer to consider?"
+    },
+    "back": {
+      "question": "When writing a procedure, what does the 'exception test' require a developer to consider?",
+      "options": {
+        "A": "Whether the procedure includes an exception for executive staff who are exempt",
+        "B": "Whether the procedure is supported or constrained by other procedures, QC programs, or policies, and whether it applies universally or only to specific systems",
+        "C": "Whether an exception to the regulatory requirement exists in the relevant federal statute",
+        "D": "Whether users can opt out of following the procedure in emergency situations"
+      },
+      "answer": "B",
+      "explanation": "The exception test requires the procedure developer to ask whether the procedure is supported or contradicted by other existing procedures, QC programs, or policies, and whether it applies universally across the organization or only to a specific system or process."
+    },
+    "tags": ["operations", "procedures", "exception-test"],
+    "source": "lecture: Operations / 2. Policies and Procedures"
+  },
+  {
+    "id": "03-011",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the distinction between business continuity and disaster recovery?"
+    },
+    "back": {
+      "question": "What is the distinction between business continuity and disaster recovery?",
+      "options": {
+        "A": "Business continuity is for planned downtimes; disaster recovery is for unplanned outages",
+        "B": "Business continuity focuses on keeping operations running during an interruption; disaster recovery focuses on restoring data and services after an interruption",
+        "C": "Business continuity is managed by IT; disaster recovery is managed by clinical leadership",
+        "D": "Business continuity involves replacing hardware; disaster recovery involves retraining staff"
+      },
+      "answer": "B",
+      "explanation": "Business continuity = keeping operations running despite an interruption (personnel, environment, clinical services, communication priorities). Disaster recovery = restoring data and services (backup, recovery, restoration). DR is the technological component of BC planning."
+    },
+    "tags": ["operations", "business-continuity", "disaster-recovery"],
+    "source": "lecture: Operations / 2. Policies and Procedures"
+  },
+  {
+    "id": "03-012",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "How many HIPAA identifiers are considered personally identifiable information (PII)?"
+    },
+    "back": {
+      "question": "How many HIPAA identifiers are considered personally identifiable information (PII)?",
+      "options": {
+        "A": "10",
+        "B": "14",
+        "C": "18",
+        "D": "22"
+      },
+      "answer": "C",
+      "explanation": "HIPAA defines 18 identifiers that are considered personally identifiable, including name, address, all date elements (except year), telephone, fax, IP address, email, Social Security number, medical record number, health plan number, account number, finger/voice print, and others."
+    },
+    "tags": ["operations", "hipaa", "phi"],
+    "source": "slides: Operations / Page 36"
+  },
+  {
+    "id": "03-013",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "Under the HIPAA Security Rule, which type of specification must be implemented by all covered entities without exception?"
+    },
+    "back": {
+      "question": "Under the HIPAA Security Rule, which type of specification must be implemented by all covered entities without exception?",
+      "options": {
+        "A": "Addressable specifications",
+        "B": "Optional specifications",
+        "C": "Required specifications",
+        "D": "Conditional specifications"
+      },
+      "answer": "C",
+      "explanation": "Required specifications must be implemented by all covered entities — they are non-negotiable. Addressable specifications require a risk assessment to determine if they are reasonable and appropriate; if not implemented, the organization must document why and describe alternative measures."
+    },
+    "tags": ["operations", "hipaa", "security-rule"],
+    "source": "lecture: Operations / 3. Compliance with Regulatory Bodies"
+  },
+  {
+    "id": "03-014",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "What changes did the HITECH Act (part of ARRA 2009) introduce to HIPAA?"
+    },
+    "back": {
+      "question": "What changes did the HITECH Act (part of ARRA 2009) introduce to HIPAA?",
+      "options": {
+        "A": "It created the 18 PHI identifiers and required covered entities to encrypt all data",
+        "B": "It extended HIPAA Security Rule compliance to business associates, added breach notification requirements, and gave patients the right to electronic access of their records",
+        "C": "It replaced the original HIPAA privacy rule with new federal standards for telemedicine",
+        "D": "It limited HIPAA applicability to hospitals with more than 100 beds"
+      },
+      "answer": "B",
+      "explanation": "The HITECH Act (via ARRA 2009) made business associates (vendors, contractors) directly subject to HIPAA Security Rule; required notification when unsecured PHI is breached; and gave patients the right to electronic access of their records (patient portals, electronic copies on CD). It also introduced criminal penalties and increased monetary fines."
+    },
+    "tags": ["operations", "hipaa", "hitech", "arra"],
+    "source": "lecture: Operations / 3. Compliance with Regulatory Bodies"
+  },
+  {
+    "id": "03-015",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "MIPPA primarily impacts physician practices by requiring accreditation on which imaging equipment to receive CMS reimbursement?"
+    },
+    "back": {
+      "question": "MIPPA primarily impacts physician practices by requiring accreditation on which imaging equipment to receive CMS reimbursement?",
+      "options": {
+        "A": "X-ray and fluoroscopy equipment",
+        "B": "Ultrasound and mammography equipment",
+        "C": "MRI, CT, PET, and nuclear medicine equipment",
+        "D": "All imaging equipment including plain radiography"
+      },
+      "answer": "C",
+      "explanation": "MIPPA (Medicare Improvements for Patients and Providers Act) requires accreditation on MRI, CT, PET, and nuclear medicine (NM) equipment in physician practices to receive CMS reimbursement. It also added quality reporting initiatives, personnel qualification requirements, and random on-site visits."
+    },
+    "tags": ["operations", "mippa", "accreditation"],
+    "source": "slides: Operations / Page 43"
+  },
+  {
+    "id": "03-016",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "Under MQSA, how often must mammography equipment be surveyed by a qualified physicist?"
+    },
+    "back": {
+      "question": "Under MQSA, how often must mammography equipment be surveyed by a qualified physicist?",
+      "options": {
+        "A": "Every two years and after any software upgrade",
+        "B": "Upon installation, annually, and whenever major parts are replaced",
+        "C": "Monthly for the first year, then annually thereafter",
+        "D": "Only upon initial installation and after reported equipment failures"
+      },
+      "answer": "B",
+      "explanation": "MQSA requires mammography equipment to be individually surveyed by qualified physicists upon installation, annually, and whenever major parts are replaced. Facilities must also store weekly phantom images and monitor QA minimum specifications."
+    },
+    "tags": ["operations", "mqsa", "mammography"],
+    "source": "lecture: Operations / 3. Compliance with Regulatory Bodies"
+  },
+  {
+    "id": "03-017",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "Under MQSA, what format must mammography images be stored in?"
+    },
+    "back": {
+      "question": "Under MQSA, what format must mammography images be stored in?",
+      "options": {
+        "A": "Lossy compressed format to reduce storage costs",
+        "B": "Any DICOM-compliant format at the facility's discretion",
+        "C": "Uncompressed or lossless compressed format",
+        "D": "JPEG format with a minimum quality factor of 85"
+      },
+      "answer": "C",
+      "explanation": "MQSA requires mammography images to be stored in uncompressed or lossless compressed format to preserve image quality for accurate diagnosis and comparison over time. Lossy compression is explicitly prohibited for mammography."
+    },
+    "tags": ["operations", "mqsa", "image-storage", "lossless"],
+    "source": "slides: Operations / Page 48"
+  },
+  {
+    "id": "03-018",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "A BI-RADS category 4 mammography finding means what?"
+    },
+    "back": {
+      "question": "A BI-RADS category 4 mammography finding means what?",
+      "options": {
+        "A": "Negative — no abnormality found",
+        "B": "Probably benign — short-term follow-up recommended",
+        "C": "Suspicious abnormality",
+        "D": "Known biopsy-proven malignancy"
+      },
+      "answer": "C",
+      "explanation": "BI-RADS scale: 0=incomplete, 1=negative, 2=benign, 3=probably benign, 4=suspicious abnormality, 5=highly suggestive of malignancy, 6=known biopsy-proven malignancy. Category 4 warrants biopsy consideration but is not definitive for malignancy."
+    },
+    "tags": ["operations", "birads", "mammography"],
+    "source": "slides: Operations / Page 47"
+  },
+  {
+    "id": "03-019",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which of the following is a responsibility of the American College of Radiology (ACR)?"
+    },
+    "back": {
+      "question": "Which of the following is a responsibility of the American College of Radiology (ACR)?",
+      "options": {
+        "A": "Setting Medicare reimbursement rates for radiology procedures",
+        "B": "Serving as the MQSA accrediting agency and the CMS accrediting agency for MRI, CT, NM, and PET",
+        "C": "Mandating annual physics surveys for all radiology equipment in physician offices",
+        "D": "Establishing criminal penalties for HIPAA violations by covered entities"
+      },
+      "answer": "B",
+      "explanation": "The ACR serves as the MQSA accrediting agency (for mammography) and as the CMS accrediting agency for MRI, CT, NM, and PET. It also develops practice guidelines for appropriate imaging, sets standards for display devices, provides teleradiology guidelines, and accredits Breast Centers of Excellence."
+    },
+    "tags": ["operations", "acr", "accreditation"],
+    "source": "slides: Operations / Page 49"
+  },
+  {
+    "id": "03-020",
+    "domain": "C",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which accrediting body, other than the ACR, is widely recognized across all healthcare organizations (not just imaging) for accreditation and certification?"
+    },
+    "back": {
+      "question": "Which accrediting body, other than the ACR, is widely recognized across all healthcare organizations (not just imaging) for accreditation and certification?",
+      "options": {
+        "A": "IAC (Intersocietal Accreditation Commission)",
+        "B": "HIMSS",
+        "C": "Joint Commission (JC)",
+        "D": "RSNA"
+      },
+      "answer": "C",
+      "explanation": "The Joint Commission is a widely recognized accrediting body for hospitals and healthcare organizations broadly. The IAC accredits imaging facilities specifically. HIMSS and RSNA are professional societies, not accrediting bodies."
+    },
+    "tags": ["operations", "joint-commission", "accreditation"],
+    "source": "lecture: Operations / 3. Compliance with Regulatory Bodies"
+  },
+  {
+    "id": "03-021",
+    "domain": "C",
+    "difficulty": "hard",
+    "front": {
+      "question": "A state's privacy law requires patient data to be retained for 12 years, while the federal HIPAA standard requires only 6 years. Which applies?"
+    },
+    "back": {
+      "question": "A state's privacy law requires patient data to be retained for 12 years, while the federal HIPAA standard requires only 6 years. Which applies?",
+      "options": {
+        "A": "The federal HIPAA standard always supersedes state law",
+        "B": "The organization can choose whichever standard is more convenient",
+        "C": "The stricter state law applies, because state laws may be stricter than federal law",
+        "D": "Neither applies until CMS issues a ruling specific to that state"
+      },
+      "answer": "C",
+      "explanation": "Compliance levels range from federal to state to regional/local to organizational. A critical rule is that state laws may be stricter than federal regulations, and when they are, the stricter law applies. The organization must comply with the 12-year state requirement."
+    },
+    "tags": ["operations", "compliance", "state-vs-federal"],
+    "source": "slides: Operations / Page 34"
+  },
+  {
+    "id": "03-022",
+    "domain": "C",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which of the following is an IIP's responsibility when working with the HIPAA compliance officer?"
+    },
+    "back": {
+      "question": "Which of the following is an IIP's responsibility when working with the HIPAA compliance officer?",
+      "options": {
+        "A": "Writing the organization's privacy policy and filing it with the Department of Health and Human Services",
+        "B": "Setting auto-logoff on RIS and PACS systems, performing random audits of information access, and reviewing orphaned user logins",
+        "C": "Issuing criminal penalties to employees who access records without authorization",
+        "D": "Performing annual financial audits of the organization's HIPAA compliance program"
+      },
+      "answer": "B",
+      "explanation": "IIPs work with the HIPAA compliance officer by: issuing logins per compliance officer policies, performing random audits, terminating logins upon user termination/leave, setting auto-logoff on RIS and PACS, and reviewing orphaned user accounts. Criminal enforcement is a government function."
+    },
+    "tags": ["operations", "hipaa", "iip-role"],
+    "source": "slides: Operations / Page 40"
+  },
+  {
+    "id": "04-001",
+    "domain": "D",
+    "difficulty": "easy",
+    "front": {
+      "question": "Which type of hospital partners with medical and nursing schools and offers education and research programs?"
+    },
+    "back": {
+      "question": "Which type of hospital partners with medical and nursing schools and offers education and research programs?",
+      "options": {
+        "A": "General hospital",
+        "B": "Specialty hospital",
+        "C": "Teaching hospital",
+        "D": "Research hospital"
+      },
+      "answer": "C",
+      "explanation": "Teaching hospitals partner with medical/nursing schools and offer education and research programs. Research hospitals provide care for complex conditions and move research results into practice. Specialty hospitals focus on particular organ systems or specific diseases."
+    },
+    "tags": ["communications", "hospital-types"],
+    "source": "lecture: Communications / 1. Roles and Relationships in the Healthcare Setting"
+  },
+  {
+    "id": "04-002",
+    "domain": "D",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is the primary purpose of medical terminology in healthcare?"
+    },
+    "back": {
+      "question": "What is the primary purpose of medical terminology in healthcare?",
+      "options": {
+        "A": "To restrict access to clinical information to credentialed professionals only",
+        "B": "To create a standard common language for healthcare professionals to communicate effectively and efficiently",
+        "C": "To satisfy billing requirements for CPT and ICD coding",
+        "D": "To ensure regulatory compliance with HIPAA identifiers"
+      },
+      "answer": "B",
+      "explanation": "Medical terminology creates a standard way for healthcare professionals to communicate effectively and efficiently using a common language. This is critical for patient-centric care as digital imaging expands across specialties beyond radiology and cardiology."
+    },
+    "tags": ["communications", "medical-terminology"],
+    "source": "lecture: Communications / 2. Medical Terminology"
+  },
+  {
+    "id": "04-003",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "An axial (transverse) image plane divides the body in which way?"
+    },
+    "back": {
+      "question": "An axial (transverse) image plane divides the body in which way?",
+      "options": {
+        "A": "Vertically into anterior and posterior parts",
+        "B": "Vertically into right and left parts",
+        "C": "Horizontally into upper and lower parts",
+        "D": "Diagonally through the midline from head to foot"
+      },
+      "answer": "C",
+      "explanation": "The axial (transverse) plane is horizontal, dividing the body into upper and lower parts. The coronal (frontal) plane is vertical, dividing into anterior and posterior. The sagittal plane is vertical, dividing into right and left."
+    },
+    "tags": ["communications", "imaging-planes", "anatomy"],
+    "source": "lecture: Communications / 2. Medical Terminology"
+  },
+  {
+    "id": "04-004",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which imaging modality uses non-ionizing radiation in the form of a magnetic field and radiofrequency pulses?"
+    },
+    "back": {
+      "question": "Which imaging modality uses non-ionizing radiation in the form of a magnetic field and radiofrequency pulses?",
+      "options": {
+        "A": "CT (Computed Tomography)",
+        "B": "Nuclear Medicine (NM/PET)",
+        "C": "MRI (Magnetic Resonance Imaging)",
+        "D": "Fluoroscopy (RF)"
+      },
+      "answer": "C",
+      "explanation": "MRI uses non-ionizing radiation — specifically a magnetic field and radiofrequency (RF) pulses to acquire images using protons in water and fat. CT, fluoroscopy, mammography, and nuclear medicine all use ionizing radiation (X-ray or radionuclides). Ultrasound uses high-frequency sound waves."
+    },
+    "tags": ["communications", "modalities", "ionizing-vs-non-ionizing"],
+    "source": "slides: Communications / Page 21"
+  },
+  {
+    "id": "04-005",
+    "domain": "D",
+    "difficulty": "easy",
+    "front": {
+      "question": "ICD codes are maintained by which organization and what is their primary purpose?"
+    },
+    "back": {
+      "question": "ICD codes are maintained by which organization and what is their primary purpose?",
+      "options": {
+        "A": "AMA — to describe treatment services rendered by a hospital",
+        "B": "RSNA — to standardize radiology reporting terminology",
+        "C": "CDC's National Center for Health Statistics under WHO authorization — to classify diseases and describe why a patient is seeking care",
+        "D": "Regenstreif Institute — to identify measurements and observations"
+      },
+      "answer": "C",
+      "explanation": "ICD (International Classification of Diseases) is maintained by CDC's NCHS under WHO authorization. It classifies diseases and describes why a patient is seeking care (diagnosis), is used for billing and statistics, and encodes cause of death. ICD-11 took effect January 2022."
+    },
+    "tags": ["communications", "icd", "coding-systems"],
+    "source": "lecture: Communications / 3. Common Coding Systems"
+  },
+  {
+    "id": "04-006",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the key functional difference between CPT codes and ICD codes?"
+    },
+    "back": {
+      "question": "What is the key functional difference between CPT codes and ICD codes?",
+      "options": {
+        "A": "CPT codes are used internationally; ICD codes are used only in the US",
+        "B": "CPT codes describe the treatment services provided; ICD codes describe why the patient needed those services (diagnosis)",
+        "C": "CPT codes are maintained by RSNA; ICD codes are maintained by the AMA",
+        "D": "CPT codes are for inpatient billing; ICD codes are for outpatient billing"
+      },
+      "answer": "B",
+      "explanation": "CPT (Current Procedural Terminology) codes describe what services were rendered (maintained by AMA's CPT Editorial Panel). ICD codes describe the reason the patient sought care — the diagnosis or disease classification. The two are tied together: CPT for service, ICD for diagnosis."
+    },
+    "tags": ["communications", "cpt", "icd", "coding-systems"],
+    "source": "lecture: Communications / 3. Common Coding Systems"
+  },
+  {
+    "id": "04-007",
+    "domain": "D",
+    "difficulty": "easy",
+    "front": {
+      "question": "RADLEX is maintained by which organization and what is its primary purpose?"
+    },
+    "back": {
+      "question": "RADLEX is maintained by which organization and what is its primary purpose?",
+      "options": {
+        "A": "AMA — to set reimbursement rates for radiology procedures",
+        "B": "RSNA — controlled radiology terminology to improve report clarity, standardize key elements, improve speech recognition, and reduce radiologist variation",
+        "C": "Regenstreif Institute — universal codes for lab measurements and observations",
+        "D": "SNOMED International — comprehensive multilingual clinical terminology"
+      },
+      "answer": "B",
+      "explanation": "RADLEX (Radiology Lexicon) is maintained by RSNA. It provides controlled terminology for radiology designed to improve clarity of radiology reports, standardize key elements for improved speech recognition and PACS display layouts, and reduce radiologist variation."
+    },
+    "tags": ["communications", "radlex", "coding-systems"],
+    "source": "lecture: Communications / 3. Common Coding Systems"
+  },
+  {
+    "id": "04-008",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which type of change management request does NOT require Change Advisory Board (CAB) approval?"
+    },
+    "back": {
+      "question": "Which type of change management request does NOT require Change Advisory Board (CAB) approval?",
+      "options": {
+        "A": "Normal change",
+        "B": "Emergency change",
+        "C": "Standard change",
+        "D": "Major change"
+      },
+      "answer": "C",
+      "explanation": "Standard changes are low-risk, periodical changes that do not require CAB approval. Normal changes (major or minor) require CAB approval. Emergency changes require immediate approval but through a different process given urgency. There is no official 'major change' category."
+    },
+    "tags": ["communications", "change-management", "cab"],
+    "source": "slides: Communications / Page 30"
+  },
+  {
+    "id": "04-009",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the correct sequence of steps in the change management process?"
+    },
+    "back": {
+      "question": "What is the correct sequence of steps in the change management process?",
+      "options": {
+        "A": "Approval → Request → Planning → Implementation → Review",
+        "B": "Request → Evaluation & Planning → Approval → Implementation → Review & Closure",
+        "C": "Planning → Testing → Implementation → Approval → Closure",
+        "D": "Request → CAB Review → Testing → Implementation → Approval"
+      },
+      "answer": "B",
+      "explanation": "The five-step change management process is: Request (document the change) → Evaluation & Planning (scope the work) → Approval (leadership and CAB) → Implementation (carry out with stakeholder updates) → Review & Closure (validate, document, formally close)."
+    },
+    "tags": ["communications", "change-management", "process"],
+    "source": "lecture: Communications / 4. Change Management and System Availability"
+  },
+  {
+    "id": "04-010",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "During an unscheduled PACS downtime, what is the IIP's first recommended action?"
+    },
+    "back": {
+      "question": "During an unscheduled PACS downtime, what is the IIP's first recommended action?",
+      "options": {
+        "A": "Immediately escalate to the vendor without any investigation",
+        "B": "Assess whether the downtime is isolated to one area or system-wide, then perform troubleshooting steps before escalating",
+        "C": "Notify all referring physicians by phone before attempting any technical resolution",
+        "D": "Shut down all connected modalities to prevent data corruption"
+      },
+      "answer": "B",
+      "explanation": "During unscheduled downtime, the IIP should first assess whether it is local or system-wide, then perform troubleshooting steps before escalating. After that: escalate appropriately, communicate end-user impact to internal teams, and correct broken studies once the system is back online."
+    },
+    "tags": ["communications", "downtime", "troubleshooting"],
+    "source": "slides: Communications / Page 35"
+  },
+  {
+    "id": "04-011",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "LOINC codes are maintained by which organization and are primarily used to encode what types of data?"
+    },
+    "back": {
+      "question": "LOINC codes are maintained by which organization and are primarily used to encode what types of data?",
+      "options": {
+        "A": "RSNA — imaging procedures and body part descriptions",
+        "B": "AMA — treatment services rendered in outpatient settings",
+        "C": "Regenstreif Institute — measurements, observations, and documents",
+        "D": "SNOMED International — anatomical structures and clinical findings"
+      },
+      "answer": "C",
+      "explanation": "LOINC (Logical Observation Identifiers Names and Codes) is maintained by the Regenstreif Institute and endorsed by ACLA and CAP. It provides universal codes and structured names to identify things you can measure or observe, and is used to encode measurements, observations, and documents."
+    },
+    "tags": ["communications", "loinc", "coding-systems"],
+    "source": "lecture: Communications / 3. Common Coding Systems"
+  },
+  {
+    "id": "04-012",
+    "domain": "D",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which survey type yields the highest response rate and most accurate data but requires trained interviewers?"
+    },
+    "back": {
+      "question": "Which survey type yields the highest response rate and most accurate data but requires trained interviewers?",
+      "options": {
+        "A": "Email survey",
+        "B": "Paper-based survey",
+        "C": "Phone survey",
+        "D": "In-person survey"
+      },
+      "answer": "D",
+      "explanation": "In-person surveys have the highest response rate, yield the most accurate data and greatest data volume (sometimes extra information), but require trained interviewers. Email surveys have generally high return rates but no interviewer. Phone surveys are fast and inexpensive but must be short."
+    },
+    "tags": ["communications", "surveys", "strategic-planning"],
+    "source": "slides: Communications / Page 41"
+  },
+  {
+    "id": "05-001",
+    "domain": "E",
+    "difficulty": "easy",
+    "front": {
+      "question": "What is set induction in the context of adult education?"
+    },
+    "back": {
+      "question": "What is set induction in the context of adult education?",
+      "options": {
+        "A": "A testing method used at the end of training to measure retention",
+        "B": "The initial act by the instructor to establish a frame of reference between the learner's experience and the objectives of the learning experience",
+        "C": "A training style where a super-user trains their peers",
+        "D": "A technique for organizing training materials into hierarchical outlines"
+      },
+      "answer": "B",
+      "explanation": "Set induction bridges the gap between what learners already know and what they are about to learn. It focuses pupil attention on a familiar experience, creates a communicative link between experience and learning goals, and has been shown to promote gains in teaching effectiveness."
+    },
+    "tags": ["training", "adult-education", "set-induction"],
+    "source": "lecture: Education and Training / 0. Adult Education Theory"
+  },
+  {
+    "id": "05-002",
+    "domain": "E",
+    "difficulty": "easy",
+    "front": {
+      "question": "According to Knowles (1970), which of the following is a characteristic of adult learners?"
+    },
+    "back": {
+      "question": "According to Knowles (1970), which of the following is a characteristic of adult learners?",
+      "options": {
+        "A": "They rely primarily on the instructor to determine what they need to know",
+        "B": "They prefer passive lecture-based instruction over hands-on activities",
+        "C": "They are goal oriented, relevancy oriented, practical, and come with an accumulated foundation of experience",
+        "D": "They are primarily motivated by grades and external rewards from supervisors"
+      },
+      "answer": "C",
+      "explanation": "Knowles (1970) identified adult learner characteristics: accumulated foundation of experience and knowledge, need for respect, goal oriented, relevancy oriented, and practical. Adult learners want to know 'what's in it for me' — they need to see how the training applies to their day-to-day work."
+    },
+    "tags": ["training", "adult-education", "adult-learners"],
+    "source": "slides: Training and Education / Page 12"
+  },
+  {
+    "id": "05-003",
+    "domain": "E",
+    "difficulty": "medium",
+    "front": {
+      "question": "A radiologist being trained on new PACS software immediately grabs the mouse and starts clicking around before the instructor has finished explaining. What type of learner is this?"
+    },
+    "back": {
+      "question": "A radiologist being trained on new PACS software immediately grabs the mouse and starts clicking around before the instructor has finished explaining. What type of learner is this?",
+      "options": {
+        "A": "Auditory learner",
+        "B": "Visual learner",
+        "C": "Kinesthetic learner",
+        "D": "Problem-based learner"
+      },
+      "answer": "C",
+      "explanation": "A kinesthetic learner learns best by getting physically involved — they like hands-on interaction and have trouble staying still for long periods. The appropriate strategies include tactile activities, multimedia, frequent breaks, and letting them interact with the application directly."
+    },
+    "tags": ["training", "learning-styles", "kinesthetic"],
+    "source": "lecture: Education and Training / 0. Adult Education Theory"
+  },
+  {
+    "id": "05-004",
+    "domain": "E",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which level of Bloom's taxonomy is being targeted when a learning objective states: 'At the end of training, the technologist should be able to operate the new RIS to process a patient order'?"
+    },
+    "back": {
+      "question": "Which level of Bloom's taxonomy is being targeted when a learning objective states: 'At the end of training, the technologist should be able to operate the new RIS to process a patient order'?",
+      "options": {
+        "A": "Remembering",
+        "B": "Understanding",
+        "C": "Application",
+        "D": "Creation"
+      },
+      "answer": "C",
+      "explanation": "Application (also called Apply) is when the learner can use information in their workspace — keywords include execute, implement, operate, solve, use, demonstrate. Remembering is just rote recall; Understanding is describing or classifying; Creation is producing new original work."
+    },
+    "tags": ["training", "blooms-taxonomy", "learning-objectives"],
+    "source": "lecture: Education and Training / 0. Adult Education Theory"
+  },
+  {
+    "id": "05-005",
+    "domain": "E",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the primary risk of training end users too far in advance of a system go-live?"
+    },
+    "back": {
+      "question": "What is the primary risk of training end users too far in advance of a system go-live?",
+      "options": {
+        "A": "The vendor contract may expire before the training is complete",
+        "B": "Regulatory bodies may require re-certification if the training was not recent",
+        "C": "Learners will forget the material before they have the opportunity to apply it",
+        "D": "The system may be reconfigured after training, making all training invalid"
+      },
+      "answer": "C",
+      "explanation": "Training too early results in little retention by the time the system goes live. Training too late (after go-live) also causes problems. The principle is to train close enough to go-live that knowledge is retained, but not after users have already started using the system without guidance."
+    },
+    "tags": ["training", "training-timing", "training-mistakes"],
+    "source": "slides: Training and Education / Page 5"
+  },
+  {
+    "id": "05-006",
+    "domain": "E",
+    "difficulty": "easy",
+    "front": {
+      "question": "In the Kirkpatrick model of training assessment, what does Level 4 (Results) measure?"
+    },
+    "back": {
+      "question": "In the Kirkpatrick model of training assessment, what does Level 4 (Results) measure?",
+      "options": {
+        "A": "How learners reacted to the training experience",
+        "B": "Whether learners retained the content of the training",
+        "C": "Whether learners are applying what they learned on the job",
+        "D": "Whether the training had a positive impact on the organization"
+      },
+      "answer": "D",
+      "explanation": "Kirkpatrick Level 4 (Results) asks: did the training produce a positive organizational impact? (e.g., fewer errors, improved efficiency). Level 1=Reaction (learner satisfaction), Level 2=Learning (did they learn?), Level 3=Behaviour (are they using it?), Level 4=Results (organizational impact)."
+    },
+    "tags": ["training", "kirkpatrick", "training-assessment"],
+    "source": "lecture: Education and Training / 2. Training Assessment"
+  },
+  {
+    "id": "05-007",
+    "domain": "E",
+    "difficulty": "medium",
+    "front": {
+      "question": "A training coordinator is setting up training for a PACS upgrade. They place staff from different roles (radiologists, technologists, registration) in the same session. Which training mistake does this represent?"
+    },
+    "back": {
+      "question": "A training coordinator is setting up training for a PACS upgrade. They place staff from different roles (radiologists, technologists, registration) in the same session. Which training mistake does this represent?",
+      "options": {
+        "A": "Training too far in advance of go-live",
+        "B": "Trainees of differing roles in the same training session (environment mistake)",
+        "C": "No cheat sheets or change documents provided",
+        "D": "Training conducted in the live production system"
+      },
+      "answer": "B",
+      "explanation": "Having trainees of differing roles in the same training session is categorized as an environment training mistake. Each role has different workflow needs, so mixed-role sessions lack relevance for any particular group, leading to poor retention."
+    },
+    "tags": ["training", "training-mistakes", "environment"],
+    "source": "slides: Training and Education / Page 3"
+  },
+  {
+    "id": "05-008",
+    "domain": "E",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which training style involves selecting key users and teaching them deeply so they can support and train their peers?"
+    },
+    "back": {
+      "question": "Which training style involves selecting key users and teaching them deeply so they can support and train their peers?",
+      "options": {
+        "A": "Role-based training",
+        "B": "Online training",
+        "C": "Super-user training",
+        "D": "Vendor training"
+      },
+      "answer": "C",
+      "explanation": "Super-user training involves identifying a key person in a leadership role within a section, training them beyond standard user level, and having them serve as the expert who supports and trains others in their group. Train-the-trainer is similar but typically more formal."
+    },
+    "tags": ["training", "training-styles", "super-user"],
+    "source": "lecture: Education and Training / 1. Training Programs"
+  },
+  {
+    "id": "05-009",
+    "domain": "E",
+    "difficulty": "hard",
+    "front": {
+      "question": "During a PACS training session, the instructor covers every menu option systematically without explaining how it relates to the technologist's daily workflow. Learners are disengaged. Which principle of effective adult training is being violated?"
+    },
+    "back": {
+      "question": "During a PACS training session, the instructor covers every menu option systematically without explaining how it relates to the technologist's daily workflow. Learners are disengaged. Which principle of effective adult training is being violated?",
+      "options": {
+        "A": "Kirkpatrick Level 3 — the instructor is not measuring behavior change",
+        "B": "Set induction — the instructor failed to establish relevancy and bridge the learner's experience to the learning objectives",
+        "C": "Bloom's taxonomy — the instructor targeted the wrong cognitive level",
+        "D": "RACI diagram principles — accountability is not clearly assigned in the training"
+      },
+      "answer": "B",
+      "explanation": "Set induction requires the instructor to establish a frame of reference connecting learner experience to learning goals. Adult learners are relevancy oriented — they must understand why the training matters to their work. Skipping this step leads to disengagement. The source explicitly lists 'no sense of relevancy to users' day-to-day essential workflow needs' as a trainer mistake."
+    },
+    "tags": ["training", "set-induction", "adult-learners", "relevancy"],
+    "source": "slides: Training and Education / Page 4"
+  },
+  {
+    "id": "09-001",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "In the standard radiology imaging workflow, what role does HL7 data play after an order is placed in the EMR?"
+    },
+    "back": {
+      "question": "In the standard radiology imaging workflow, what role does HL7 data play after an order is placed in the EMR?",
+      "options": {
+        "A": "HL7 data directly stores images in PACS after they are acquired",
+        "B": "HL7 data flows from the RIS to the PACS, enabling the modality to query for DICOM Modality Worklist",
+        "C": "HL7 data is only used after the radiologist signs the report",
+        "D": "HL7 data is used to compress images before sending them to the modality"
+      },
+      "answer": "B",
+      "explanation": "The order flows from EMR to RIS, and HL7 data then flows to PACS, allowing the modality to query for DICOM Modality Worklist (MWL). The technologist pulls up patient information from MWL to acquire images correctly. Image acquisition and storage are DICOM; order and report workflows are HL7."
+    },
+    "tags": ["clinical-engineering", "radiology-workflow", "hl7", "mwl"],
+    "source": "lecture: Clinical Engineering / 0. Support for Imaging Modalities and Techniques"
+  },
+  {
+    "id": "09-002",
+    "domain": "I",
+    "difficulty": "easy",
+    "front": {
+      "question": "An AE title of 'MMC207US04' follows a standard naming convention. What does each component represent?"
+    },
+    "back": {
+      "question": "An AE title of 'MMC207US04' follows a standard naming convention. What does each component represent?",
+      "options": {
+        "A": "Manufacturer code, model number, modality type, and firmware version",
+        "B": "Location (MMC), room number (207), modality type (US=ultrasound), and sequential device number (04)",
+        "C": "Hospital ID, DICOM port, scan type, and study count",
+        "D": "Network IP segment, subnet, protocol, and device ID"
+      },
+      "answer": "B",
+      "explanation": "The recommended AE title naming convention is: Location | Room# | Modality type | Sequence number. MMC207US04 = location MMC, room 207, ultrasound (US), 4th device. This standardization supports troubleshooting, data mining, and communication with biomedical/clinical engineering."
+    },
+    "tags": ["clinical-engineering", "ae-title", "dicom", "standards"],
+    "source": "lecture: Clinical Engineering / 0. Support for Imaging Modalities and Techniques"
+  },
+  {
+    "id": "09-003",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "Mammography tomosynthesis images are significantly larger than standard 2D mammography images. What is the approximate size range for a tomosynthesis exam?"
+    },
+    "back": {
+      "question": "Mammography tomosynthesis images are significantly larger than standard 2D mammography images. What is the approximate size range for a tomosynthesis exam?",
+      "options": {
+        "A": "17–27 MB",
+        "B": "100–200 MB",
+        "C": "Average ~450 MB, up to 3 GB",
+        "D": "Approximately 30 MB per study"
+      },
+      "answer": "C",
+      "explanation": "Tomosynthesis exams consist of 40–100 stacked images, averaging ~450 MB but potentially up to 3 GB. By contrast, standard 2D mammography images are 17–27 MB each (typically 4 images). CT studies are ~30 MB. This size difference is critical for storage planning."
+    },
+    "tags": ["clinical-engineering", "tomosynthesis", "file-size"],
+    "source": "slides: Clinical Engineering / Page 11"
+  },
+  {
+    "id": "09-004",
+    "domain": "I",
+    "difficulty": "easy",
+    "front": {
+      "question": "CT images are measured in which unit, and what is the primary benefit of this measurement?"
+    },
+    "back": {
+      "question": "CT images are measured in which unit, and what is the primary benefit of this measurement?",
+      "options": {
+        "A": "Lux — allows calibration of monitor brightness for reading rooms",
+        "B": "Hounsfield Units (HU) — allows window leveling of images to highlight lung, bone, or soft tissue",
+        "C": "Decibels — measures the intensity of ionizing radiation delivered to the patient",
+        "D": "Gray — measures absorbed radiation dose for dose reporting"
+      },
+      "answer": "B",
+      "explanation": "CT images are measured in Hounsfield Units (HU), which allow window leveling — adjusting brightness/contrast to highlight specific tissues such as lung, bone, or soft tissue windows. This makes radiologists more efficient and is critical for display protocol configuration in PACS."
+    },
+    "tags": ["clinical-engineering", "ct", "hounsfield-units"],
+    "source": "lecture: Clinical Engineering / 0. Support for Imaging Modalities and Techniques"
+  },
+  {
+    "id": "09-005",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "An older ultrasound machine has patient PHI burned directly onto the image pixels. Why is this a particular challenge for IIPs?"
+    },
+    "back": {
+      "question": "An older ultrasound machine has patient PHI burned directly onto the image pixels. Why is this a particular challenge for IIPs?",
+      "options": {
+        "A": "The PHI cannot be transmitted over DICOM because burned-in data exceeds the file size limit",
+        "B": "Unlike other modalities where correcting patient data updates the DICOM header, burned-in PHI cannot be corrected by standard patient merge workflows and requires pixel-level editing",
+        "C": "Burned-in PHI violates MQSA requirements for mammography image storage",
+        "D": "The DICOM standard does not allow images with pixel-level PHI to be archived in PACS"
+      },
+      "answer": "B",
+      "explanation": "For most modalities, patient correction workflows update the DICOM header. With older ultrasound machines that burn PHI into the image itself, the header fix alone is insufficient — the incorrect information remains visibly on the image pixels. PACS tools can block out and replace the burned text, but vendors are now enabling this feature to be toggled off."
+    },
+    "tags": ["clinical-engineering", "ultrasound", "phi", "dicom"],
+    "source": "lecture: Clinical Engineering / 0. Support for Imaging Modalities and Techniques"
+  },
+  {
+    "id": "09-006",
+    "domain": "I",
+    "difficulty": "easy",
+    "front": {
+      "question": "In nuclear medicine, how does the patient receive the radiopharmaceutical?"
+    },
+    "back": {
+      "question": "In nuclear medicine, how does the patient receive the radiopharmaceutical?",
+      "options": {
+        "A": "Via external radiation beam directed at the patient",
+        "B": "Via orally, inhalation, or injection — the patient emits the radiation rather than the modality applying it",
+        "C": "Via magnetic field resonance that activates tracer molecules already in the bloodstream",
+        "D": "Via topical application to the skin surface for localized imaging"
+      },
+      "answer": "B",
+      "explanation": "Nuclear medicine is unique because the patient receives a radiopharmaceutical (orally, inhalation, or injection) and emits the radiation — gamma rays or positrons from the radionuclide are detected by the camera. This is the opposite of X-ray/CT where the modality emits radiation through the patient."
+    },
+    "tags": ["clinical-engineering", "nuclear-medicine", "pet"],
+    "source": "lecture: Clinical Engineering / 0. Support for Imaging Modalities and Techniques"
+  },
+  {
+    "id": "09-007",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "Digital pathology images are extremely large. What is the approximate compressed file size for a digital pathology image?"
+    },
+    "back": {
+      "question": "Digital pathology images are extremely large. What is the approximate compressed file size for a digital pathology image?",
+      "options": {
+        "A": "17–27 MB",
+        "B": "100–600 KB",
+        "C": "2–3 GB (100,000 × 100,000 pixels compressed)",
+        "D": "~450 MB to 1 GB"
+      },
+      "answer": "C",
+      "explanation": "Digital pathology images are approximately 2–3 GB at 100,000 × 100,000 pixels (compressed). This dwarfs even tomosynthesis (~450 MB–3 GB uncompressed). Organizations must plan storage accordingly before adopting digital pathology in the enterprise imaging suite."
+    },
+    "tags": ["clinical-engineering", "digital-pathology", "file-size"],
+    "source": "slides: Clinical Engineering / Page 20"
+  },
+  {
+    "id": "09-008",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "Point-of-care (POC) ultrasound imaging in the ED or OR creates what specific data quality risk for the PACS environment?"
+    },
+    "back": {
+      "question": "Point-of-care (POC) ultrasound imaging in the ED or OR creates what specific data quality risk for the PACS environment?",
+      "options": {
+        "A": "POC ultrasound files are too large to archive in standard PACS storage",
+        "B": "Because POC exams often lack a formal order and accession number, manually entered patient demographics create dirty data in PACS",
+        "C": "POC ultrasound uses a different DICOM transfer syntax that is incompatible with most PACS",
+        "D": "POC exams require radiologist interpretation, creating worklist overload"
+      },
+      "answer": "B",
+      "explanation": "POC imaging is typically performed without a formal EMR order and accession number. If technologists hand-type patient demographics into the modality, the resulting data becomes 'dirty' — incorrectly or incompletely identified in PACS. IIPs should encourage placing orders for every exam, even retrospectively, to maintain data integrity."
+    },
+    "tags": ["clinical-engineering", "poc-ultrasound", "dirty-data"],
+    "source": "lecture: Clinical Engineering / 1. Support for Ancillary Services"
+  },
+  {
+    "id": "09-009",
+    "domain": "I",
+    "difficulty": "easy",
+    "front": {
+      "question": "In DICOM, what is the role of the Service Class Provider (SCP)?"
+    },
+    "back": {
+      "question": "In DICOM, what is the role of the Service Class Provider (SCP)?",
+      "options": {
+        "A": "The SCP initiates DICOM service requests and sends image data to PACS",
+        "B": "The SCP receives and processes DICOM service requests, performs necessary operations, and sends responses back to the SCU",
+        "C": "The SCP compresses images before transmission to reduce bandwidth",
+        "D": "The SCP maintains the DICOM conformance statement on the public internet"
+      },
+      "answer": "B",
+      "explanation": "The SCP (Service Class Provider) receives and processes DICOM requests, performs operations, and returns responses to the SCU (Service Class User). The SCU initiates requests and sends data. Example: a modality is the SCU when it sends images; PACS is the SCP when it receives and stores them."
+    },
+    "tags": ["clinical-engineering", "dicom", "scu", "scp"],
+    "source": "lecture: Clinical Engineering / 2. Modality Integration"
+  },
+  {
+    "id": "09-010",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "What DICOM service verifies that images have been successfully stored on a remote server?"
+    },
+    "back": {
+      "question": "What DICOM service verifies that images have been successfully stored on a remote server?",
+      "options": {
+        "A": "C-FIND",
+        "B": "C-MOVE",
+        "C": "Storage Commitment (C-STORE)",
+        "D": "Modality Worklist (C-FIND)"
+      },
+      "answer": "C",
+      "explanation": "Storage Commitment (performed via C-STORE) verifies successful storage of DICOM images on a remote server. C-FIND is used for queries (including modality worklist). C-MOVE is used for image retrieval. This is distinct from basic C-STORE which transfers images — commitment adds the verification step."
+    },
+    "tags": ["clinical-engineering", "dicom", "storage-commitment"],
+    "source": "lecture: Clinical Engineering / 2. Modality Integration"
+  },
+  {
+    "id": "09-011",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "Why is lossy compression not recommended for medical imaging?"
+    },
+    "back": {
+      "question": "Why is lossy compression not recommended for medical imaging?",
+      "options": {
+        "A": "Lossy compression creates files too large for PACS storage",
+        "B": "Lossy compression discards image data during compression, and the original data cannot be perfectly reconstructed — potentially compromising diagnostic quality",
+        "C": "Lossy compression is prohibited under DICOM Part 10 standards",
+        "D": "Lossy compression requires a DICOM conformance statement update from the vendor"
+      },
+      "answer": "B",
+      "explanation": "Lossy compression sacrifices image quality by discarding data during compression. Unlike lossless compression (JPEG, JPEG 2000, RLE), lossy data cannot be perfectly reconstructed. This is why lossless compression is the standard for diagnostic medical images, and why MQSA explicitly requires mammography images to be uncompressed or losslessly compressed."
+    },
+    "tags": ["clinical-engineering", "compression", "lossless", "lossy"],
+    "source": "lecture: Clinical Engineering / 2. Modality Integration"
+  },
+  {
+    "id": "09-012",
+    "domain": "I",
+    "difficulty": "easy",
+    "front": {
+      "question": "What does GSDF stand for and what is it used for?"
+    },
+    "back": {
+      "question": "What does GSDF stand for and what is it used for?",
+      "options": {
+        "A": "General System Diagnostic Function — used for PACS server performance monitoring",
+        "B": "Grayscale Standard Display Function — the ACR-AAPM standard for matching image intensity levels to monitor brightness so the eye can distinguish contrast",
+        "C": "Graded Scan Display Format — used to encode pixel spacing in DICOM headers",
+        "D": "Global Signal Detection Framework — used to detect motion artifacts in dynamic imaging"
+      },
+      "answer": "B",
+      "explanation": "GSDF (Grayscale Standard Display Function) is an ACR-AAPM technical standard for electronic practice of medical imaging. Its concept is to match image intensity levels to the monitor's brightness output so the human eye can distinguish contrast differences — critical for accurate diagnosis from diagnostic monitors."
+    },
+    "tags": ["clinical-engineering", "gsdf", "display-qc"],
+    "source": "lecture: Clinical Engineering / Image Display Quality Control"
+  },
+  {
+    "id": "09-013",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "For diagnostic monitor display quality control, what is the maximum allowable error tolerance at any luminance level according to the DICOM GSDF standard?"
+    },
+    "back": {
+      "question": "For diagnostic monitor display quality control, what is the maximum allowable error tolerance at any luminance level according to the DICOM GSDF standard?",
+      "options": {
+        "A": "5%",
+        "B": "10%",
+        "C": "15%",
+        "D": "20%"
+      },
+      "answer": "B",
+      "explanation": "The DICOM GSDF display QC standard specifies an error tolerance of 10% at any luminance level. Additional thresholds: maximum brightness >350 cd/m² (>420 cd/m² for mammography), minimum brightness <1 cd/m², and uniformity <15%. Measurements should be taken with a dosimeter under low ambient light."
+    },
+    "tags": ["clinical-engineering", "display-qc", "gsdf", "error-tolerance"],
+    "source": "slides: Clinical Engineering / Page 32"
+  },
+  {
+    "id": "09-014",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "Why is the MRI magnet considered always on, even when no patient is being scanned?"
+    },
+    "back": {
+      "question": "Why is the MRI magnet considered always on, even when no patient is being scanned?",
+      "options": {
+        "A": "Hospital policy requires the magnet to remain energized to prevent quenching costs",
+        "B": "The superconducting magnet maintains a constant strong magnetic field and cannot be quickly switched off — ferromagnetic objects are always at risk of being pulled in",
+        "C": "The MRI magnet is only on during scans but IIPs are trained to treat it as always on for safety",
+        "D": "Federal regulations require the magnet to remain powered for radiation monitoring purposes"
+      },
+      "answer": "B",
+      "explanation": "MRI uses a superconducting magnet that maintains a constant, strong magnetic field — it cannot be quickly switched off like a light. This means ferromagnetic objects (metal tools, devices, laptops) are always at risk of projectile hazards. Clinical staff and IIPs must be aware of MRI safety zones and screened before entering."
+    },
+    "tags": ["clinical-engineering", "mri-safety", "clinical-awareness"],
+    "source": "lecture: Clinical Engineering / Clinical Awareness"
+  },
+  {
+    "id": "09-015",
+    "domain": "I",
+    "difficulty": "hard",
+    "front": {
+      "question": "A third-party AI application needs to receive the Modality Worklist from PACS so study instance UIDs (SUIDss) match with the original study. What happens if this is not configured?"
+    },
+    "back": {
+      "question": "A third-party AI application needs to receive the Modality Worklist from PACS so study instance UIDs (SUIDss) match with the original study. What happens if this is not configured?",
+      "options": {
+        "A": "The AI application will refuse to process images until SUID synchronization is completed",
+        "B": "The AI application will generate results that cannot be linked to the correct study in PACS, because DICOM will detect it as a different patient or study",
+        "C": "PACS will automatically assign a new SUID to incoming AI results to prevent conflicts",
+        "D": "The AI results will be stored as a separate patient record with no impact on the original study"
+      },
+      "answer": "B",
+      "explanation": "If a third-party application (AI, document scanner, OB measurement tool) does not receive the Modality Worklist, its Study Instance UID will not match the original study's SUID. PACS will treat the incoming results as belonging to a different patient or study, preventing correct association. Configuring MWL for all third-party apps is essential for data integrity."
+    },
+    "tags": ["clinical-engineering", "modality-worklist", "suid", "third-party"],
+    "source": "lecture: Clinical Engineering / 2. Modality Integration"
+  },
+  {
+    "id": "09-016",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "Radiation therapy integration with the enterprise imaging suite typically requires what?"
+    },
+    "back": {
+      "question": "Radiation therapy integration with the enterprise imaging suite typically requires what?",
+      "options": {
+        "A": "A dedicated nuclear medicine camera installed within the radiation therapy suite",
+        "B": "Integration of third-party treatment planning applications with the VNA via query/retrieve and store functions",
+        "C": "An additional HIPAA compliance officer specifically for radiation oncology records",
+        "D": "MQSA accreditation for all radiation therapy equipment used in treatment planning"
+      },
+      "answer": "B",
+      "explanation": "Radiation therapy (external beam, brachytherapy, systemic radioisotope) uses third-party treatment planning applications that must integrate with the VNA. These applications need to perform query/retrieve and potentially send results back to PACS/VNA (C-STORE). Tumor tracking applications also integrate with PACS."
+    },
+    "tags": ["clinical-engineering", "radiation-therapy", "vna-integration"],
+    "source": "lecture: Clinical Engineering / 1. Support for Ancillary Services"
+  },
+  {
+    "id": "09-017",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "A DICOM conformance statement must be made publicly available on the internet. What is the primary purpose of this document?"
+    },
+    "back": {
+      "question": "A DICOM conformance statement must be publicly available on the internet. What is the primary purpose of this document?",
+      "options": {
+        "A": "To certify that the vendor has passed all HIPAA Security Rule requirements",
+        "B": "To describe the system's supported DICOM service classes, transfer syntaxes, information objects, network configuration, limitations, and certifications — enabling integrators to determine how two systems can interoperate",
+        "C": "To document the IIP's qualifications for managing the system",
+        "D": "To provide pricing and licensing information to prospective buyers"
+      },
+      "answer": "B",
+      "explanation": "A DICOM conformance statement is required to be publicly available and describes everything needed for integration: supported DICOM service classes, transfer syntaxes, information objects, network configuration, limitations, and certifications. IIPs use it to determine whether two systems (e.g., a printer and PACS) can interoperate."
+    },
+    "tags": ["clinical-engineering", "dicom-conformance", "integration"],
+    "source": "slides: Clinical Engineering / Page 26"
+  },
+  {
+    "id": "09-018",
+    "domain": "I",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is an encapsulated DICOM file type, and what is its primary use case?"
+    },
+    "back": {
+      "question": "What is an encapsulated DICOM file type, and what is its primary use case?",
+      "options": {
+        "A": "A DICOM file with all patient identifiers removed for research use",
+        "B": "A non-DICOM image format (JPEG, PNG, TIFF) wrapped within a DICOM container, typically used for integrating non-radiology ologies into PACS",
+        "C": "A compressed DICOM file stored using lossy JPEG 2000 encoding",
+        "D": "A DICOM file that contains multiple studies combined into a single archive"
+      },
+      "answer": "B",
+      "explanation": "An encapsulated DICOM file takes a non-DICOM image format (JPEG, PNG, TIFF) and wraps it in a DICOM container using typically lossless compression. This is used for visible light images (endoscopy, dermatology, ophthalmology) and other non-traditional modalities that need to be stored in PACS."
+    },
+    "tags": ["clinical-engineering", "encapsulated-dicom", "visible-light"],
+    "source": "lecture: Clinical Engineering / 2. Modality Integration"
+  },
+  {
+    "id": "10-001",
+    "domain": "J",
+    "difficulty": "easy",
+    "front": {
+      "question": "In the radiology imaging workflow, which portion is governed by DICOM versus HL7?"
+    },
+    "back": {
+      "question": "In the radiology imaging workflow, which portion is governed by DICOM versus HL7?",
+      "options": {
+        "A": "DICOM governs all parts of the workflow; HL7 is only used for billing",
+        "B": "HL7 governs image storage and transfer; DICOM governs order placement and reporting",
+        "C": "DICOM governs image acquisition and reading (scanning and radiologist review); HL7 governs order placement, report distribution, and clinical data exchange",
+        "D": "HL7 and DICOM are interchangeable; either can be used for any part of the workflow"
+      },
+      "answer": "C",
+      "explanation": "In the radiology workflow, DICOM handles the middle part — scanning the patient (image acquisition) and the radiologist reviewing images. HL7 handles everything else: orders from the ED doctor, report distribution back to the ED and PCP, and all clinical data exchange between EMR, RIS, and other clinical systems."
+    },
+    "tags": ["imaging-informatics", "dicom", "hl7", "workflow"],
+    "source": "lecture: Imaging Informatics / Medical Imaging Workflows"
+  },
+  {
+    "id": "10-002",
+    "domain": "J",
+    "difficulty": "easy",
+    "front": {
+      "question": "The DICOM standard is both a format and a protocol. What does this mean?"
+    },
+    "back": {
+      "question": "The DICOM standard is both a format and a protocol. What does this mean?",
+      "options": {
+        "A": "DICOM defines how images look on screen (format) and how they should be printed (protocol)",
+        "B": "DICOM dictates how data can be stored on disk (.dcm files) AND how DICOM data can be exchanged between systems",
+        "C": "DICOM defines image resolution (format) and network bandwidth requirements (protocol)",
+        "D": "DICOM is a file format created by RSNA and a transmission protocol managed by HL7"
+      },
+      "answer": "B",
+      "explanation": "DICOM is both a format — defining how files are stored on disk (.dcm files, described in Part 10 of the standard) — and a protocol — defining how DICOM data can be exchanged between systems. DICOM has been on version 3 since the 1990s and is made up of 22 parts."
+    },
+    "tags": ["imaging-informatics", "dicom", "standards"],
+    "source": "lecture: Imaging Informatics / Standards & Nomenclature(1)"
+  },
+  {
+    "id": "10-003",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the correct DICOM data hierarchy from broadest to most specific?"
+    },
+    "back": {
+      "question": "What is the correct DICOM data hierarchy from broadest to most specific?",
+      "options": {
+        "A": "Study → Patient → Series → Instance → Frame",
+        "B": "Patient → Study → Series → Instance → Frame",
+        "C": "Series → Study → Patient → Frame → Instance",
+        "D": "Patient → Instance → Series → Study → Frame"
+      },
+      "answer": "B",
+      "explanation": "DICOM hierarchy: Patient (pseudo-level containing identifiers) → Study (the imaging exam) → Series (individual view or sequence within the exam) → Instance (individual image object) → Frame (individual image within a multi-frame instance). A chest X-ray study with AP and lateral views = 1 study, 2 series."
+    },
+    "tags": ["imaging-informatics", "dicom", "hierarchy"],
+    "source": "slides: Medical Imaging Informatics / Page 11"
+  },
+  {
+    "id": "10-004",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is DIMSE and how does it differ from DICOMweb?"
+    },
+    "back": {
+      "question": "What is DIMSE and how does it differ from DICOMweb?",
+      "options": {
+        "A": "DIMSE is a web-based RESTful service; DICOMweb is a TCP/IP connection-based protocol",
+        "B": "DIMSE is TCP/IP based with connection-oriented negotiation (chatty); DICOMweb is HTTP-based and RESTful — simpler and stateless",
+        "C": "DIMSE handles report generation; DICOMweb handles image acquisition",
+        "D": "DIMSE is used only for modality worklist; DICOMweb is used only for image storage"
+      },
+      "answer": "B",
+      "explanation": "DIMSE (DICOM Message Service Element) is TCP/IP based, requiring connection negotiation between SCU and SCP — it is 'chatty' (requires AE recognition, syntax negotiation, then data transfer). DICOMweb is HTTP-based and RESTful — simpler, stateless web calls. Both support query (C-FIND/QIDO-RS), retrieve (C-MOVE/WADO-RS), and store (C-STORE/STOW-RS)."
+    },
+    "tags": ["imaging-informatics", "dicom", "dimse", "dicomweb"],
+    "source": "slides: Medical Imaging Informatics / Page 14-16"
+  },
+  {
+    "id": "10-005",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "In DICOMweb, which service is the equivalent of DICOM's traditional C-STORE for image storage?"
+    },
+    "back": {
+      "question": "In DICOMweb, which service is the equivalent of DICOM's traditional C-STORE for image storage?",
+      "options": {
+        "A": "QIDO-RS",
+        "B": "WADO-RS",
+        "C": "STOW-RS",
+        "D": "FHIR ImagingStudy"
+      },
+      "answer": "C",
+      "explanation": "DICOMweb operation mapping: C-FIND → QIDO-RS (query), C-MOVE/C-GET → WADO-RS (retrieve), C-STORE → STOW-RS (store). STOW-RS is the RESTful web service equivalent of C-STORE for storing DICOM objects via HTTP."
+    },
+    "tags": ["imaging-informatics", "dicomweb", "stow-rs", "c-store"],
+    "source": "slides: Medical Imaging Informatics / Page 15"
+  },
+  {
+    "id": "10-006",
+    "domain": "J",
+    "difficulty": "easy",
+    "front": {
+      "question": "HL7 v2 is still the most commonly used HL7 standard. What text-based format does it use?"
+    },
+    "back": {
+      "question": "HL7 v2 is still the most commonly used HL7 standard. What text-based format does it use?",
+      "options": {
+        "A": "XML/SOAP",
+        "B": "JSON via HTTP REST",
+        "C": "Hats and Pipes (pipe-delimited segments)",
+        "D": "Fixed-width ASCII columns"
+      },
+      "answer": "C",
+      "explanation": "HL7 v2 uses a 'hats and pipes' format — pipe-delimited segments that are human-readable but structured. It travels over MLLP (Minimal Lower Layer Protocol). HL7 v3/CDA uses XML/SOAP. HL7 FHIR uses XML, JSON, and others over HTTP REST."
+    },
+    "tags": ["imaging-informatics", "hl7-v2", "format"],
+    "source": "slides: Medical Imaging Informatics / Page 18"
+  },
+  {
+    "id": "10-007",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which HL7 v2 event type is used for order placement?"
+    },
+    "back": {
+      "question": "Which HL7 v2 event type is used for order placement?",
+      "options": {
+        "A": "ADT (Admit, Discharge, Transfer)",
+        "B": "SIU (Appointment Scheduling)",
+        "C": "ORM (Order placement)",
+        "D": "ORU (Order result updates)"
+      },
+      "answer": "C",
+      "explanation": "HL7 v2 event types: ADT = Admit/Discharge/Transfer (patient movement), SIU = Scheduling information unsolicited (appointment scheduling), ORM = Order messages (order placement), ORU = Observation result unsolicited (order result/report updates). Knowing these event types is essential for troubleshooting HL7 integrations."
+    },
+    "tags": ["imaging-informatics", "hl7-v2", "events"],
+    "source": "slides: Medical Imaging Informatics / Page 19"
+  },
+  {
+    "id": "10-008",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "HL7 FHIR was released in 2014. Which version do US production EMRs currently speak?"
+    },
+    "back": {
+      "question": "HL7 FHIR was released in 2014. Which version do US production EMRs currently speak?",
+      "options": {
+        "A": "Release 2 (R2)",
+        "B": "Release 3 (R3)",
+        "C": "Release 4 (R4)",
+        "D": "Release 5 (R5)"
+      },
+      "answer": "C",
+      "explanation": "While the latest FHIR version is Release 5 (R5), US EMRs in production currently speak FHIR Release 4 (R4). When building integrations with live production EMRs in the US, R4 is the target. R5 may be used for new development work that doesn't require immediate production EMR compatibility."
+    },
+    "tags": ["imaging-informatics", "fhir", "hl7"],
+    "source": "lecture: Imaging Informatics / Integrations of Systems"
+  },
+  {
+    "id": "10-009",
+    "domain": "J",
+    "difficulty": "easy",
+    "front": {
+      "question": "What does IHE stand for and who sponsors it?"
+    },
+    "back": {
+      "question": "What does IHE stand for and who sponsors it?",
+      "options": {
+        "A": "International Health Exchange, sponsored by WHO and HL7",
+        "B": "Integrating the Healthcare Enterprise, sponsored by HIMSS and RSNA",
+        "C": "Imaging Healthcare Engineering, sponsored by ACR and SIIM",
+        "D": "Interoperability in Health Environments, sponsored by the Joint Commission"
+      },
+      "answer": "B",
+      "explanation": "IHE stands for Integrating the Healthcare Enterprise. It is a nonprofit body sponsored by HIMSS (Healthcare Information and Management Systems Society) and RSNA (Radiological Society of North America). IHE creates integration 'profiles' built on top of standards like DICOM, HL7, and FHIR."
+    },
+    "tags": ["imaging-informatics", "ihe", "standards"],
+    "source": "slides: Medical Imaging Informatics / Page 25"
+  },
+  {
+    "id": "10-010",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "The Scheduled Workflow (SWF) is often called the 'mother of all profiles.' What does it define?"
+    },
+    "back": {
+      "question": "The Scheduled Workflow (SWF) is often called the 'mother of all profiles.' What does it define?",
+      "options": {
+        "A": "How audit logs are generated and stored for HIPAA compliance",
+        "B": "How images are consistently rendered across different display workstations",
+        "C": "How the radiology workflow works — defining all the systems involved and how they use DICOM and HL7 to exchange information through the entire imaging process",
+        "D": "How patient information is reconciled when moving between institutions"
+      },
+      "answer": "C",
+      "explanation": "SWF (Scheduled Workflow) is the foundational IHE Radiology profile that defines the entire radiology workflow — from order to image acquisition to report. It specifies the actors (EMR, RIS, modality, PACS, etc.) and the transactions between them using DICOM and HL7. ATNA covers audit trails; CPI covers image rendering; PIR covers patient reconciliation."
+    },
+    "tags": ["imaging-informatics", "ihe", "swf", "scheduled-workflow"],
+    "source": "lecture: Imaging Informatics / IHE Integration Profiles"
+  },
+  {
+    "id": "10-011",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "The IHE IOCM profile addresses a common enterprise imaging challenge. What problem does it solve?"
+    },
+    "back": {
+      "question": "The IHE IOCM profile addresses a common enterprise imaging challenge. What problem does it solve?",
+      "options": {
+        "A": "It enables AI applications to prioritize the radiologist reading worklist",
+        "B": "It defines how DICOM studies that have flowed to multiple systems (e.g., PACS and VNA) can be synchronized after a change such as a patient demographics update",
+        "C": "It governs how mammography images must be printed to comply with MQSA",
+        "D": "It enables radiologists to embed hyperlinks to specific images directly within their reports"
+      },
+      "answer": "B",
+      "explanation": "IOCM (Imaging Object Change Management) defines how DICOM studies distributed across multiple systems (e.g., PACS and VNA) can be synchronized after changes such as patient demographics corrections. Without IOCM, a study corrected in PACS may remain incorrect in VNA or vice versa."
+    },
+    "tags": ["imaging-informatics", "ihe", "iocm"],
+    "source": "lecture: Imaging Informatics / IHE Integration Profiles"
+  },
+  {
+    "id": "10-012",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which new IHE profile enables interactive radiology reports with embedded hyperlinks that jump directly to specific images?"
+    },
+    "back": {
+      "question": "Which new IHE profile enables interactive radiology reports with embedded hyperlinks that jump directly to specific images?",
+      "options": {
+        "A": "AIW (AI Workflow)",
+        "B": "POWR (Prioritization of Worklists for Reporting)",
+        "C": "IMR (Interactive Multimedia Reporting)",
+        "D": "IRA (Integrated Real-time Applications)"
+      },
+      "answer": "C",
+      "explanation": "IMR (Interactive Multimedia Reporting) allows reports to become interactive by embedding hyperlinks — e.g., a link to a specific image slice (such as 'nodule on slice 159'). Referring physicians can click the link and jump directly to that image. IRA handles real-time data exchange; POWR handles worklist prioritization; AIW handles AI workflow."
+    },
+    "tags": ["imaging-informatics", "ihe", "imr"],
+    "source": "lecture: Imaging Informatics / IHE Integration Profiles"
+  },
+  {
+    "id": "10-013",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "Dermatology imaging differs from radiology in a way that creates a unique integration challenge for enterprise imaging. What is it?"
+    },
+    "back": {
+      "question": "Dermatology imaging differs from radiology in a way that creates a unique integration challenge for enterprise imaging. What is it?",
+      "options": {
+        "A": "Dermatology images are too large for standard PACS storage",
+        "B": "Dermatology images use a proprietary format incompatible with DICOM",
+        "C": "Dermatology imaging is encounter-based — photos are taken without formal orders — which means standard order-driven PACS workflows do not apply",
+        "D": "Dermatology requires a separate HIPAA compliance officer for each imaging session"
+      },
+      "answer": "C",
+      "explanation": "Dermatology imaging is encounter-based — images are captured without formal orders created in the EMR. This breaks the standard DICOM Modality Worklist-driven workflow (no order = no accession number = no MWL entry). Enterprise imaging architectures must accommodate order-less acquisition workflows for specialties like dermatology."
+    },
+    "tags": ["imaging-informatics", "enterprise-imaging", "dermatology"],
+    "source": "lecture: Imaging Informatics / System Architecture"
+  },
+  {
+    "id": "10-014",
+    "domain": "J",
+    "difficulty": "easy",
+    "front": {
+      "question": "What are the typical systems involved in a medical imaging architecture?"
+    },
+    "back": {
+      "question": "What are the typical systems involved in a medical imaging architecture?",
+      "options": {
+        "A": "Only PACS and modalities",
+        "B": "EMR (with RIS module), interface engine & routers, image manager (PACS/VNA), PACS clients/enterprise viewers, and modalities & other capture devices",
+        "C": "DICOM router, VNA, HL7 broker, and radiology reporting system",
+        "D": "EMR, LOINC server, SNOMED database, and PACS printer"
+      },
+      "answer": "B",
+      "explanation": "The typical systems in a medical imaging architecture are: EMR (with RIS module), interface engine & routers, image manager (PACS and/or VNA), PACS clients/enterprise viewers (including zero-footprint viewers), and modalities and other capture devices (including non-traditional devices for enterprise imaging)."
+    },
+    "tags": ["imaging-informatics", "system-architecture"],
+    "source": "slides: Medical Imaging Informatics / Page 32"
+  },
+  {
+    "id": "10-015",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "FHIR (Fast Healthcare Interoperability Resources) introduced which key architectural change compared to HL7 v2?"
+    },
+    "back": {
+      "question": "FHIR (Fast Healthcare Interoperability Resources) introduced which key architectural change compared to HL7 v2?",
+      "options": {
+        "A": "FHIR uses MLLP transport instead of HTTP for improved security",
+        "B": "FHIR is resource-based and uses a pull-and-push model over HTTP REST, whereas HL7 v2 uses pipe-delimited messages over MLLP",
+        "C": "FHIR eliminated the need for conformance statements because all resources are pre-validated",
+        "D": "FHIR requires a dedicated server running on port 2575, while HL7 v2 uses port 443"
+      },
+      "answer": "B",
+      "explanation": "HL7 FHIR (released 2014) is resource-based (Patient, Encounter, ImagingStudy, DiagnosticReport, etc.), uses HTTP REST, supports XML/JSON and more (syntax agnostic), and supports pull and push models. HL7 v2 uses pipe-delimited 'hats and pipes' format over MLLP — a fundamentally different architecture."
+    },
+    "tags": ["imaging-informatics", "fhir", "hl7-v2", "comparison"],
+    "source": "slides: Medical Imaging Informatics / Page 18-20"
+  },
+  {
+    "id": "10-016",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "An IIP needs to confirm whether two DICOM systems can interoperate before starting an integration project. What is the first document they should obtain from each vendor?"
+    },
+    "back": {
+      "question": "An IIP needs to confirm whether two DICOM systems can interoperate before starting an integration project. What is the first document they should obtain from each vendor?",
+      "options": {
+        "A": "The vendor's HIPAA Business Associate Agreement (BAA)",
+        "B": "The DICOM Conformance Statement — publicly available from each vendor, describing supported service classes, transfer syntaxes, and information objects",
+        "C": "The vendor's IHE Connectathon test results from the most recent event",
+        "D": "The system's HL7 v2 integration manual, which covers both DICOM and HL7 services"
+      },
+      "answer": "B",
+      "explanation": "Before integrating two DICOM systems, obtain the DICOM Conformance Statement from each vendor. These publicly available documents describe each system's supported DICOM service classes, transfer syntaxes, and information objects. Comparing the two statements reveals whether they share compatible capabilities."
+    },
+    "tags": ["imaging-informatics", "dicom-conformance", "integration"],
+    "source": "lecture: Imaging Informatics / Integrations of Systems"
+  },
+  {
+    "id": "10-017",
+    "domain": "J",
+    "difficulty": "hard",
+    "front": {
+      "question": "A radiology system needs to allow DICOM queries for specific studies AND allow clients to retrieve the located images. Which pair of traditional DICOM operations handles these two tasks?"
+    },
+    "back": {
+      "question": "A radiology system needs to allow DICOM queries for specific studies AND allow clients to retrieve the located images. Which pair of traditional DICOM operations handles these two tasks?",
+      "options": {
+        "A": "C-STORE for query; C-FIND for retrieval",
+        "B": "C-FIND for query; C-MOVE or C-GET for retrieval",
+        "C": "QIDO-RS for query; STOW-RS for retrieval",
+        "D": "C-MOVE for query; C-STORE for retrieval"
+      },
+      "answer": "B",
+      "explanation": "In traditional DICOM (DIMSE): C-FIND is used for query (find studies matching criteria). C-MOVE allows the server to push images to a specified destination; C-GET allows the client to pull images directly. In DICOMweb, the equivalents are QIDO-RS (query) and WADO-RS (retrieve). C-STORE is for storage/sending, not retrieval."
+    },
+    "tags": ["imaging-informatics", "dicom", "c-find", "c-move"],
+    "source": "slides: Medical Imaging Informatics / Page 15"
+  },
+  {
+    "id": "10-018",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "The IHE REM profile is used for what purpose in imaging informatics?"
+    },
+    "back": {
+      "question": "The IHE REM profile is used for what purpose in imaging informatics?",
+      "options": {
+        "A": "Reconciling patient information when studies are transferred between institutions",
+        "B": "Reporting and recording ionizing radiation exposure received by patients during imaging exams",
+        "C": "Managing access controls for reading workstation remote connections",
+        "D": "Providing portable imaging data on CDs and USB drives"
+      },
+      "answer": "B",
+      "explanation": "REM (Radiation Exposure Monitoring) is the IHE profile for reporting and recording ionizing radiation that a patient received during an imaging exam. This supports dose tracking and patient safety monitoring. PDI (Portable Data for Imaging) handles CDs/USBs; PIR handles patient reconciliation."
+    },
+    "tags": ["imaging-informatics", "ihe", "rem", "radiation-dose"],
+    "source": "lecture: Imaging Informatics / IHE Integration Profiles"
+  },
+  {
+    "id": "10-019",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "Which FHIR-related extension allows clinical decision support (CDS) services to run as hooks within an EHR workflow?"
+    },
+    "back": {
+      "question": "Which FHIR-related extension allows clinical decision support (CDS) services to run as hooks within an EHR workflow?",
+      "options": {
+        "A": "FHIRcast",
+        "B": "CDS Hooks",
+        "C": "SMART on FHIR",
+        "D": "QIDO-RS"
+      },
+      "answer": "B",
+      "explanation": "CDS Hooks is a FHIR-related framework that allows external clinical decision support services to integrate into EHR workflows as 'hooks' — triggering at specific workflow events. FHIRcast enables real-time context synchronization between applications. SMART on FHIR enables secure app authorization against FHIR APIs."
+    },
+    "tags": ["imaging-informatics", "fhir", "cds-hooks"],
+    "source": "slides: Medical Imaging Informatics / Page 22"
+  },
+  {
+    "id": "10-020",
+    "domain": "J",
+    "difficulty": "hard",
+    "front": {
+      "question": "A pathology department wants to join the enterprise imaging system. Their digital slides average 500 MB each. The surgery department also wants to store operative recordings averaging 4 GB each. What critical infrastructure consideration does this raise?"
+    },
+    "back": {
+      "question": "A pathology department wants to join the enterprise imaging system. Their digital slides average 500 MB each. The surgery department also wants to store operative recordings averaging 4 GB each. What critical infrastructure consideration does this raise?",
+      "options": {
+        "A": "These file types require a dedicated HIPAA compliance officer for each specialty",
+        "B": "These specialties require significantly larger storage capacity than traditional radiology; the VNA or PACS storage architecture must be re-evaluated and scaled to accommodate the volume and growth",
+        "C": "Pathology and surgery images must be stored in a separate PACS because DICOM does not support non-radiology specialties",
+        "D": "These departments need separate HL7 v2 interfaces because they use different message types than radiology"
+      },
+      "answer": "B",
+      "explanation": "Enterprise imaging expansion brings dramatically larger file sizes: digital pathology ~2–3 GB, surgical videos ~4 GB, compared to CT exams at ~30 MB. This dwarfs traditional radiology volumes and requires IIPs to re-evaluate and scale storage architecture (VNA capacity, I/O throughput, tiered storage) before onboarding these specialties."
+    },
+    "tags": ["imaging-informatics", "enterprise-imaging", "storage", "pathology"],
+    "source": "lecture: Imaging Informatics / System Architecture"
+  },
+  {
+    "id": "10-021",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "DICOM Part 10 describes what specific aspect of the DICOM standard?"
+    },
+    "back": {
+      "question": "DICOM Part 10 describes what specific aspect of the DICOM standard?",
+      "options": {
+        "A": "The RESTful DICOMweb services (QIDO-RS, WADO-RS, STOW-RS)",
+        "B": "How DICOM files are persisted on disk as .dcm files",
+        "C": "The radiology workflow integration profile for scheduled imaging",
+        "D": "The DICOM security and authentication services"
+      },
+      "answer": "B",
+      "explanation": "DICOM Part 10 describes how DICOM files can be persisted onto disk using the .dcm file format. DICOMweb services are described in Part 18. The 22-part DICOM standard covers different aspects of format, protocol, services, and security across its parts."
+    },
+    "tags": ["imaging-informatics", "dicom", "part-10"],
+    "source": "lecture: Imaging Informatics / Integrations of Systems"
+  },
+  {
+    "id": "10-022",
+    "domain": "J",
+    "difficulty": "medium",
+    "front": {
+      "question": "What is the primary purpose of IHE Connectathons?"
+    },
+    "back": {
+      "question": "What is the primary purpose of IHE Connectathons?",
+      "options": {
+        "A": "Annual conferences where IHE releases new integration profile specifications",
+        "B": "Week-long events where vendors claiming to support IHE profiles test their integrations against other vendors' systems in a live test environment",
+        "C": "Certification exams for IIPs to demonstrate knowledge of IHE profiles",
+        "D": "Government-mandated audits to verify healthcare organizations comply with IHE standards"
+      },
+      "answer": "B",
+      "explanation": "IHE Connectathons are week-long events where vendors who claim to support IHE integration profiles get together to test their integrations nonstop — verifying that their implementations truly interoperate as the profiles specify. This real-world testing is a core mechanism for validating profile implementations."
+    },
+    "tags": ["imaging-informatics", "ihe", "connectathon"],
+    "source": "lecture: Imaging Informatics / IHE Integration Profiles"
+  }
+]
