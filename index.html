@@ -38,6 +38,7 @@
       </button>
       <a href="stats.html"><button class="icon-btn" title="Stats">📊</button></a>
       <button class="icon-btn" id="settings-btn" title="Settings">⚙️</button>
+      <button class="icon-btn" id="account-btn" title="Account" style="font-size:12px;font-weight:700;letter-spacing:0.02em">—</button>
     </div>
   </div>
 </header>
@@ -82,7 +83,12 @@
 <script src="app.js"></script>
 <script>
 (async () => {
-  await Auth.requireAuth();
+  const session = await Auth.requireAuth();
+  if (session) {
+    const initial = session.user.email[0].toUpperCase();
+    el("account-btn").textContent = initial;
+    el("account-btn").title = session.user.email;
+  }
   await Storage.initCards();
   const allCards = Storage.getCards();
   const progress = Storage.getProgress();
@@ -291,6 +297,8 @@
     el("settings-modal").classList.remove("visible");
     location.reload();
   });
+
+  el("account-btn").addEventListener("click", () => Auth.signOut());
 
   if (!settings.examDate) {
     el("settings-modal").classList.add("visible");
