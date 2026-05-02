@@ -6,55 +6,51 @@
   <title>CIIP Flashcards</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dashboard-page">
 
-<header class="app-header">
-  <div class="container">
-    <h1>CIIP Flashcards</h1>
+<header class="app-header-full">
+  <div class="app-header-inner">
+    <h1>CIIP</h1>
+    <div class="header-center" id="header-center">
+      <div class="banner-stat">
+        <span class="icon">🔥</span>
+        <strong id="streak-count">0</strong>
+        <span>day streak</span>
+      </div>
+      <div class="banner-stat">
+        <span class="icon">📅</span>
+        <strong id="countdown-val">—</strong>
+        <span id="countdown-label">days to exam</span>
+      </div>
+      <div class="daily-goal-bar">
+        <div class="label">
+          <span>Today</span>
+          <span id="goal-text">0 / 20</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="goal-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
     <div class="header-actions">
+      <button class="btn-primary" id="study-all-btn" style="font-size:13px;padding:7px 16px">
+        Study All Due&nbsp;<span id="total-due-badge" style="opacity:0.7">0</span>
+      </button>
       <a href="stats.html"><button class="icon-btn" title="Stats">📊</button></a>
       <button class="icon-btn" id="settings-btn" title="Settings">⚙️</button>
     </div>
   </div>
 </header>
 
-<div class="banner">
-  <div class="container">
-    <div class="banner-stat">
-      <span class="icon">🔥</span>
-      <strong id="streak-count">0</strong>
-      <span>day streak</span>
-    </div>
-    <div class="banner-stat">
-      <span class="icon">📅</span>
-      <strong id="countdown-val">—</strong>
-      <span id="countdown-label">days to exam</span>
-    </div>
-    <div class="daily-goal-bar">
-      <div class="label">
-        <span>Today</span>
-        <span id="goal-text">0 / 20</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="goal-fill" style="width:0%"></div>
-      </div>
-    </div>
+<div class="dashboard">
+  <aside class="domain-sidebar">
+    <div id="domain-list"></div>
+  </aside>
+
+  <div class="domain-detail-panel" id="detail-panel">
+    <div class="detail-empty">Select a domain</div>
   </div>
 </div>
-
-<main>
-  <div class="container">
-
-    <div class="study-all-bar">
-      <button class="btn-primary" id="study-all-btn">Study All Due (<span id="total-due">0</span>)</button>
-      <a href="stats.html"><button class="btn-secondary">View Stats</button></a>
-    </div>
-
-    <p class="section-title">Domains</p>
-    <div class="domain-grid" id="domain-grid"></div>
-
-  </div>
-</main>
 
 <!-- Settings Modal -->
 <div class="modal-overlay" id="settings-modal">
@@ -84,15 +80,13 @@
   const progress = Storage.getProgress();
   const settings = Storage.getSettings();
 
-  // ── Banner ──
+  // ── Header stats ──
   el("streak-count").textContent = Stats.getStreak(progress);
 
   const countdown = Stats.getCountdown(settings);
   if (countdown !== null) {
     el("countdown-val").textContent = countdown > 0 ? countdown : "Today!";
-    el("countdown-label").textContent = countdown > 1 ? "days to exam" : countdown === 1 ? "day to exam" : "Exam day!";
-  } else {
-    el("countdown-val").textContent = "—";
+    el("countdown-label").textContent = countdown > 1 ? "days to exam" : countdown === 1 ? "day to exam" : "";
   }
 
   const todayCount = Stats.getTodayCount(progress);
@@ -100,66 +94,152 @@
   el("goal-text").textContent = `${todayCount} / ${dailyGoal}`;
   el("goal-fill").style.width = Math.min(100, (todayCount / dailyGoal) * 100) + "%";
 
-  // ── Domain grid ──
+  // ── Build domain data ──
   const now = Date.now();
   let totalDue = 0;
-
-  const grid = el("domain-grid");
-  DOMAINS.forEach(domain => {
+  const domainData = DOMAINS.map(domain => {
     const stats = Stats.getDomainStats(domain.id, allCards, progress);
     totalDue += stats.dueCount;
-
-    const { new: nw, learning: lrn, review: rev, mastered: mst } = stats.counts;
-    const total = stats.total || 1;
-
-    const retHtml = stats.total === 0
-      ? '<span class="ret-none">No cards yet</span>'
-      : fmtRetention(stats.retention);
-
-    const isWeak = stats.retention !== null && stats.retention < 70;
-
-    const tile = document.createElement("div");
-    tile.className = "domain-tile" + (isWeak ? " weak" : "");
-    tile.innerHTML = `
-      <div class="domain-num">Domain ${domain.id}</div>
-      <div class="domain-name">${domain.name}</div>
-      <div class="domain-meta">
-        <div class="domain-due ${stats.dueCount === 0 ? 'zero' : ''}">
-          ${stats.dueCount > 0 ? `${stats.dueCount} due` : stats.total === 0 ? "No cards" : "All caught up"}
-        </div>
-        <div class="domain-retention">
-          Retention: ${retHtml}
-        </div>
-        <div class="domain-retention" style="font-size:11px; color:var(--muted)">
-          ${nw}N &nbsp;${lrn}L &nbsp;${rev}R &nbsp;${mst}M
-        </div>
-      </div>
-      <div class="maturity-bar">
-        <div class="mat-new" style="flex:${nw}"></div>
-        <div class="mat-learning" style="flex:${lrn}"></div>
-        <div class="mat-review" style="flex:${rev}"></div>
-        <div class="mat-mastered" style="flex:${mst}"></div>
-        ${total === 0 ? '<div style="flex:1;background:var(--border)"></div>' : ''}
-      </div>
-    `;
-
-    tile.addEventListener("click", () => {
-      if (stats.total === 0) return;
-      const queue = buildQueue(allCards.filter(c => {
-        const prefix = domain.id.replace(/^0/, "") + "-";
-        const prefix2 = domain.id + "-";
-        return c.id.startsWith(prefix) || c.id.startsWith(prefix2);
-      }), progress);
-      sessionStorage.setItem("ciip_queue", JSON.stringify(queue.map(c => c.id)));
-      sessionStorage.setItem("ciip_study_label", `Domain ${domain.id}: ${domain.name}`);
-      window.location.href = "study.html";
-    });
-
-    grid.appendChild(tile);
+    return { domain, stats };
   });
 
-  el("total-due").textContent = totalDue;
+  el("total-due-badge").textContent = totalDue;
 
+  // ── Sidebar ──
+  const list = el("domain-list");
+  domainData.forEach(({ domain, stats }) => {
+    const isWeak = stats.retention !== null && stats.retention < 70;
+    const row = document.createElement("div");
+    row.className = "domain-row";
+    row.dataset.id = domain.id;
+
+    const dueLabel = stats.dueCount > 0
+      ? stats.dueCount + " due"
+      : stats.total === 0 ? "No cards" : "Caught up";
+    const dueClass = stats.dueCount === 0 ? "zero" : "";
+
+    row.innerHTML = `
+      <span class="domain-row-letter">${domain.id}</span>
+      <div class="domain-row-info">
+        <div class="domain-row-name">${domain.name}</div>
+        <div class="domain-row-due ${dueClass}">${dueLabel}</div>
+      </div>
+      ${isWeak ? '<span class="domain-row-weak">⚠</span>' : ''}
+    `;
+
+    row.addEventListener("click", () => selectDomain(domain.id));
+    list.appendChild(row);
+  });
+
+  // ── Detail panel ──
+  function renderDetail(domainId) {
+    const entry = domainData.find(d => d.domain.id === domainId);
+    if (!entry) return;
+    const { domain, stats } = entry;
+    const { new: nw, learning: lrn, review: rev, mastered: mst } = stats.counts;
+    const total = stats.total || 1;
+    const isWeak = stats.retention !== null && stats.retention < 70;
+
+    const retStr = stats.total === 0 ? "—"
+      : stats.retention === null ? "—"
+      : stats.retention.toFixed(0) + "%";
+
+    const efStr = stats.total > 0 ? stats.avgEF : "—";
+
+    const matRows = [
+      { label: "New",      count: nw,  pct: (nw  / total) * 100, cls: "mat-bar-new"      },
+      { label: "Learning", count: lrn, pct: (lrn / total) * 100, cls: "mat-bar-learning" },
+      { label: "Review",   count: rev, pct: (rev / total) * 100, cls: "mat-bar-review"   },
+      { label: "Mastered", count: mst, pct: (mst / total) * 100, cls: "mat-bar-mastered" },
+    ];
+
+    const matHtml = matRows.map(r => `
+      <div class="detail-maturity-row">
+        <span class="detail-mat-label">${r.label}</span>
+        <div class="detail-mat-bar-wrap">
+          <div class="detail-mat-bar ${r.cls}" style="width:${r.count > 0 ? Math.max(2, r.pct) : 0}%"></div>
+        </div>
+        <span class="detail-mat-count">${r.count}</span>
+      </div>
+    `).join("");
+
+    const actionHtml = stats.total === 0
+      ? `<p class="detail-caught-up">No cards in this domain yet.</p>`
+      : stats.dueCount > 0
+        ? `<button class="btn-primary" id="study-domain-btn">Study ${stats.dueCount} Due</button>
+           <button class="btn-ghost" id="study-all-domain-btn">Study All ${stats.total}</button>`
+        : `<p class="detail-caught-up">All caught up — nothing due right now.</p>
+           <button class="btn-ghost" id="study-all-domain-btn">Review All ${stats.total}</button>`;
+
+    const panel = el("detail-panel");
+    panel.innerHTML = `
+      <div class="detail-domain-label">Domain ${domain.id}</div>
+      <div class="detail-domain-name">${domain.name}${isWeak ? ' <span style="font-size:14px;color:var(--critical)" title="Low retention">⚠</span>' : ''}</div>
+
+      <div class="detail-stats-row">
+        <div class="detail-stat">
+          <span class="detail-stat-val highlight">${stats.dueCount}</span>
+          <span class="detail-stat-lbl">Due</span>
+        </div>
+        <div class="detail-stat">
+          <span class="detail-stat-val">${stats.total}</span>
+          <span class="detail-stat-lbl">Total</span>
+        </div>
+        <div class="detail-stat">
+          <span class="detail-stat-val">${retStr}</span>
+          <span class="detail-stat-lbl">Retention</span>
+        </div>
+        <div class="detail-stat">
+          <span class="detail-stat-val">${efStr}</span>
+          <span class="detail-stat-lbl">Avg EF</span>
+        </div>
+      </div>
+
+      <div class="detail-maturity">${matHtml}</div>
+
+      <div class="detail-action">${actionHtml}</div>
+    `;
+
+    const studyDueBtn = panel.querySelector("#study-domain-btn");
+    if (studyDueBtn) {
+      studyDueBtn.addEventListener("click", () => launchDomain(domain, true));
+    }
+    const studyAllBtn = panel.querySelector("#study-all-domain-btn");
+    if (studyAllBtn) {
+      studyAllBtn.addEventListener("click", () => launchDomain(domain, false));
+    }
+  }
+
+  function launchDomain(domain, dueOnly) {
+    const domainCards = allCards.filter(c => {
+      const p = domain.id.replace(/^0/, "") + "-";
+      const p2 = domain.id + "-";
+      return c.id.startsWith(p) || c.id.startsWith(p2);
+    });
+    const cards = dueOnly ? buildQueue(domainCards, progress) : domainCards;
+    sessionStorage.setItem("ciip_queue", JSON.stringify(cards.map(c => c.id)));
+    sessionStorage.setItem("ciip_study_label", `Domain ${domain.id}: ${domain.name}`);
+    window.location.href = "study.html";
+  }
+
+  let activeId = null;
+  function selectDomain(id) {
+    activeId = id;
+    document.querySelectorAll(".domain-row").forEach(r => {
+      r.classList.toggle("active", r.dataset.id === id);
+    });
+    renderDetail(id);
+  }
+
+  // Auto-select domain with most due cards, else first domain
+  const mostDue = domainData.reduce((best, cur) =>
+    cur.stats.dueCount > (best ? best.stats.dueCount : -1) ? cur : best, null);
+  const autoSelect = mostDue && mostDue.stats.dueCount > 0
+    ? mostDue.domain.id
+    : domainData[0]?.domain.id;
+  if (autoSelect) selectDomain(autoSelect);
+
+  // ── Study All Due ──
   el("study-all-btn").addEventListener("click", () => {
     if (totalDue === 0) return;
     const queue = buildQueue(allCards, progress);
@@ -187,7 +267,6 @@
     location.reload();
   });
 
-  // Open settings on first visit if no exam date set
   if (!settings.examDate) {
     el("settings-modal").classList.add("visible");
   }
