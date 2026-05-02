@@ -60,6 +60,10 @@
     <div class="form-group">
       <label class="form-label" for="exam-date-input">Exam Date</label>
       <input class="form-input" type="date" id="exam-date-input">
+      <div class="exam-preview" id="exam-countdown-preview" style="display:none">
+        <span class="exam-preview-num" id="exam-preview-num">—</span>
+        <span class="exam-preview-lbl" id="exam-preview-lbl">days from today</span>
+      </div>
     </div>
     <div class="form-group">
       <label class="form-label" for="daily-goal-input">Daily Card Goal</label>
@@ -249,11 +253,28 @@
   });
 
   // ── Settings modal ──
+  function updateCountdownPreview() {
+    const val = el("exam-date-input").value;
+    const preview = el("exam-countdown-preview");
+    if (!val) { preview.style.display = "none"; return; }
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const exam = new Date(val + "T00:00:00");
+    const days = Math.round((exam - today) / 86400000);
+    preview.style.display = "flex";
+    const numEl = el("exam-preview-num");
+    const lblEl = el("exam-preview-lbl");
+    if (days < 0) { numEl.textContent = Math.abs(days); lblEl.textContent = "days past"; }
+    else if (days === 0) { numEl.textContent = "Today"; lblEl.textContent = "is exam day"; }
+    else { numEl.textContent = days; lblEl.textContent = days === 1 ? "day from today" : "days from today"; }
+  }
+  el("exam-date-input").addEventListener("input", updateCountdownPreview);
+
   el("settings-btn").addEventListener("click", () => {
     const s = Storage.getSettings();
     if (s.examDate) el("exam-date-input").value = s.examDate;
     el("daily-goal-input").value = s.dailyGoal || 20;
     el("settings-modal").classList.add("visible");
+    updateCountdownPreview();
   });
   el("settings-cancel").addEventListener("click", () => {
     el("settings-modal").classList.remove("visible");
