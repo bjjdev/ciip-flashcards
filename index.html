@@ -298,7 +298,9 @@
     location.reload();
   });
 
-  el("account-btn").addEventListener("click", () => Auth.signOut());
+  el("account-btn").addEventListener("click", () => {
+    if (confirm("Sign out of " + session.user.email + "?")) Auth.signOut();
+  });
 
   if (!settings.examDate) {
     el("settings-modal").classList.add("visible");
