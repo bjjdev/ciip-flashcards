@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .auth-box {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 100%;
+      max-width: 380px;
+    }
+    .auth-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .auth-sub {
+      font-size: 13px;
+      color: var(--static);
+      margin-bottom: 28px;
+    }
+    .auth-error {
+      font-size: 13px;
+      color: var(--critical);
+      margin-bottom: 14px;
+      display: none;
+    }
+    .auth-success {
+      font-size: 13px;
+      color: var(--nominal);
+      margin-bottom: 14px;
+      display: none;
+    }
+    .auth-toggle {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--static);
+    }
+    .auth-toggle button {
+      background: none;
+      border: none;
+      color: var(--platinum);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .auth-divider {
+      border: none;
+      border-top: 1px solid var(--trace);
+      margin: 20px 0;
+    }
+    .forgot-link {
+      font-size: 12px;
+      color: var(--static);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: right;
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+    }
+    .forgot-link:hover { color: var(--signal); }
+    .btn-primary { width: 100%; justify-content: center; }
+  </style>
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-box">
+    <div class="auth-title" id="auth-title">Sign in</div>
+    <div class="auth-sub" id="auth-sub">CIIP Flashcards — your account</div>
+
+    <div class="auth-error" id="auth-error"></div>
+    <div class="auth-success" id="auth-success"></div>
+
+    <div class="form-group">
+      <label class="form-label" for="email-input">Email</label>
+      <input class="form-input" type="email" id="email-input" placeholder="you@email.com" autocomplete="email">
+    </div>
+    <div class="form-group" id="password-group">
+      <label class="form-label" for="password-input">Password</label>
+      <input class="form-input" type="password" id="password-input" placeholder="••••••••" autocomplete="current-password">
+      <button class="forgot-link" id="forgot-btn">Forgot password?</button>
+    </div>
+
+    <button class="btn-primary" id="submit-btn" style="margin-top:8px">Sign in</button>
+
+    <div class="auth-toggle">
+      <span id="toggle-text">No account?</span>
+      <button id="toggle-btn">Sign up</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="auth.js"></script>
+<script>
+(async () => {
+  const session = await Auth.getSession();
+  if (session) window.location.href = "index.html";
+
+  let mode = "signin"; // "signin" | "signup" | "reset"
+
+  function setError(msg) {
+    const el = document.getElementById("auth-error");
+    el.textContent = msg;
+    el.style.display = msg ? "block" : "none";
+    document.getElementById("auth-success").style.display = "none";
+  }
+
+  function setSuccess(msg) {
+    const el = document.getElementById("auth-success");
+    el.textContent = msg;
+    el.style.display = msg ? "block" : "none";
+    document.getElementById("auth-error").style.display = "none";
+  }
+
+  function setMode(m) {
+    mode = m;
+    setError("");
+    setSuccess("");
+    const title = document.getElementById("auth-title");
+    const sub = document.getElementById("auth-sub");
+    const submitBtn = document.getElementById("submit-btn");
+    const toggleText = document.getElementById("toggle-text");
+    const toggleBtn = document.getElementById("toggle-btn");
+    const passwordGroup = document.getElementById("password-group");
+
+    if (m === "signin") {
+      title.textContent = "Sign in";
+      sub.textContent = "CIIP Flashcards — your account";
+      submitBtn.textContent = "Sign in";
+      toggleText.textContent = "No account?";
+      toggleBtn.textContent = "Sign up";
+      passwordGroup.style.display = "block";
+    } else if (m === "signup") {
+      title.textContent = "Create account";
+      sub.textContent = "Start your CIIP exam prep";
+      submitBtn.textContent = "Create account";
+      toggleText.textContent = "Already have an account?";
+      toggleBtn.textContent = "Sign in";
+      passwordGroup.style.display = "block";
+    } else if (m === "reset") {
+      title.textContent = "Reset password";
+      sub.textContent = "We'll email you a reset link";
+      submitBtn.textContent = "Send reset link";
+      passwordGroup.style.display = "none";
+    }
+  }
+
+  document.getElementById("toggle-btn").addEventListener("click", () => {
+    setMode(mode === "signin" ? "signup" : "signin");
+  });
+
+  document.getElementById("forgot-btn").addEventListener("click", () => setMode("reset"));
+
+  document.getElementById("submit-btn").addEventListener("click", async () => {
+    const email = document.getElementById("email-input").value.trim();
+    const password = document.getElementById("password-input").value;
+    const btn = document.getElementById("submit-btn");
+
+    if (!email) { setError("Enter your email."); return; }
+
+    btn.disabled = true;
+    btn.textContent = "…";
+
+    if (mode === "reset") {
+      const { error } = await Auth.resetPassword(email);
+      btn.disabled = false;
+      btn.textContent = "Send reset link";
+      if (error) setError(error.message);
+      else { setSuccess("Check your email for a reset link."); setMode("signin"); }
+      return;
+    }
+
+    if (!password) { btn.disabled = false; btn.textContent = mode === "signin" ? "Sign in" : "Create account"; setError("Enter your password."); return; }
+
+    if (mode === "signup") {
+      const { error } = await Auth.signUp(email, password);
+      btn.disabled = false;
+      btn.textContent = "Create account";
+      if (error) setError(error.message);
+      else setSuccess("Account created — check your email to confirm, then sign in.");
+    } else {
+      const { error } = await Auth.signIn(email, password);
+      btn.disabled = false;
+      btn.textContent = "Sign in";
+      if (error) setError(error.message);
+      else window.location.href = "index.html";
+    }
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Enter") document.getElementById("submit-btn").click();
+  });
+})();
+</script>
+</body>
+</html>
