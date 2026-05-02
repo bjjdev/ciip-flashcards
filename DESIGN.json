@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-01T00:00:00Z",
+  "title": "Design System: CIIP Flashcard Study App",
+  "extensions": {
+    "colorMeta": {
+      "void":     { "role": "neutral",   "displayName": "Void",     "canonical": "oklch(8% 0.009 255)",  "tonalRamp": ["#06060a","#0a0b0e","#0e0f14","#131519","#181c24","#1e2230","#252a38","#2d3244"] },
+      "console":  { "role": "neutral",   "displayName": "Console",  "canonical": "oklch(12% 0.010 255)", "tonalRamp": ["#080911","#0e1018","#12141b","#171a23","#1c202b","#222636","#292f40","#31384b"] },
+      "panel":    { "role": "neutral",   "displayName": "Panel",    "canonical": "oklch(15% 0.010 255)", "tonalRamp": ["#0c0d14","#10111a","#141720","#181c24","#1d212c","#232835","#2a303e","#333847"] },
+      "trace":    { "role": "neutral",   "displayName": "Trace",    "canonical": "oklch(22% 0.009 255)", "tonalRamp": ["#121420","#171a27","#1d202f","#23262f","#292d38","#313541","#3a3e4c","#434856"] },
+      "signal":   { "role": "neutral",   "displayName": "Signal",   "canonical": "oklch(91% 0.006 260)", "tonalRamp": ["#a8aac0","#b4b7cc","#c2c5d8","#d0d3e4","#dcdff0","#e4e6f0","#eceff8","#f4f5fc"] },
+      "static":   { "role": "neutral",   "displayName": "Static",   "canonical": "oklch(51% 0.010 260)", "tonalRamp": ["#3a3d55","#474a63","#535870","#60657e","#6e7286","#7c8094","#8b90a3","#9ba0b2"] },
+      "platinum": { "role": "primary",   "displayName": "Platinum", "canonical": "oklch(94% 0.005 260)", "tonalRamp": ["#b0b3c8","#bdbfc8","#cacde0","#d6d9ec","#e2e4f4","#eceef8","#f2f4fc","#f8f9ff"] },
+      "critical": { "role": "semantic",  "displayName": "Critical", "canonical": "oklch(58% 0.20 22)",   "tonalRamp": ["#7a1a17","#a02820","#c03830","#d04f46","#dc6c63","#e88880","#f0a09a","#f8bab5"] },
+      "caution":  { "role": "semantic",  "displayName": "Caution",  "canonical": "oklch(67% 0.15 68)",   "tonalRamp": ["#6e4a10","#926218","#b07c24","#c69138","#d4a850","#e0bc68","#ecce84","#f6e2a4"] },
+      "nominal":  { "role": "semantic",  "displayName": "Nominal",  "canonical": "oklch(63% 0.16 145)",  "tonalRamp": ["#144a24","#1e6632","#2c8844","#3ea658","#54bc6c","#70cc84","#8edaa0","#b0e8bc"] },
+      "deep":     { "role": "semantic",  "displayName": "Deep",     "canonical": "oklch(59% 0.17 290)",  "tonalRamp": ["#3a1870","#502490","#6840ac","#8a67d4","#9e82de","#b29de8","#c6b8f0","#dad4f8"] }
+    },
+    "typographyMeta": {
+      "headline": { "displayName": "Headline", "purpose": "Page titles and study card question text." },
+      "title":    { "displayName": "Title",    "purpose": "Domain names, section headings, card option labels." },
+      "body":     { "displayName": "Body",     "purpose": "Explanations, metadata paragraphs. Max 68ch." },
+      "label":    { "displayName": "Label",    "purpose": "Badges, keyboard hints, metadata keys. All-caps only." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "standard",   "value": "cubic-bezier(0.4, 0, 0.2, 1)", "duration": "150ms", "purpose": "Default state transitions (opacity, background, border-color)." },
+      { "name": "card-flip",  "value": "cubic-bezier(0.4, 0, 0.2, 1)", "duration": "420ms", "purpose": "Study card face flip (rotateY 180deg)." },
+      { "name": "press",      "value": "linear",                        "duration": "80ms",  "purpose": "Button active press — scale(0.97)." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "600px", "purpose": "Stack domain grid 2-up, reduce card font sizes, compact rating buttons." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action. Platinum on void — maximum contrast, used sparingly.",
+      "html": "<button class=\"ds-btn-primary\">Start Studying</button>",
+      "css": ".ds-btn-primary { background: #eceef8; color: #0a0b0e; padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; border: none; cursor: pointer; transition: opacity 150ms cubic-bezier(0.4,0,0.2,1), transform 80ms linear; } .ds-btn-primary:hover { background: #ffffff; } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action — transparent at rest, panel tint on hover.",
+      "html": "<button class=\"ds-btn-ghost\">View Stats</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #6e7286; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #23262f; cursor: pointer; transition: background 150ms cubic-bezier(0.4,0,0.2,1), color 150ms; } .ds-btn-ghost:hover { background: #181c24; color: #e4e6f0; border-color: #23262f; } .ds-btn-ghost:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Domain Tile",
+      "kind": "card",
+      "refersTo": "domain-tile",
+      "description": "Home screen grid card for a single CIIP exam domain.",
+      "html": "<div class=\"ds-domain-tile\"><div class=\"ds-tile-label\">Domain F</div><div class=\"ds-tile-name\">Image Management</div><div class=\"ds-tile-due\">12 due</div><div class=\"ds-maturity-bar\"><span class=\"ds-mat-new\" style=\"flex:2\"></span><span class=\"ds-mat-learning\" style=\"flex:3\"></span><span class=\"ds-mat-review\" style=\"flex:10\"></span><span class=\"ds-mat-mastered\" style=\"flex:8\"></span></div></div>",
+      "css": ".ds-domain-tile { background: #181c24; border-radius: 10px; padding: 16px; cursor: pointer; transition: background 150ms cubic-bezier(0.4,0,0.2,1); position: relative; } .ds-domain-tile:hover { background: #1e2230; } .ds-domain-tile:hover .ds-tile-name { color: #eceef8; } .ds-tile-label { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #6e7286; margin-bottom: 4px; } .ds-tile-name { font-size: 14px; font-weight: 600; color: #e4e6f0; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3; transition: color 150ms; } .ds-tile-due { font-size: 12px; font-weight: 600; color: #eceef8; margin-bottom: 10px; } .ds-tile-due.zero { color: #6e7286; } .ds-maturity-bar { display: flex; height: 3px; border-radius: 2px; overflow: hidden; } .ds-mat-new { background: #6e7286; } .ds-mat-learning { background: #c69138; } .ds-mat-review { background: #3ea658; } .ds-mat-mastered { background: #8a67d4; }"
+    },
+    {
+      "name": "Study Card — Front",
+      "kind": "card",
+      "refersTo": "card-face",
+      "description": "Flashcard front face — question stem only.",
+      "html": "<div class=\"ds-card-front\"><div class=\"ds-card-hint\">Question</div><div class=\"ds-card-question\">Which DICOM service class is used to push image objects to a remote storage provider?</div><div class=\"ds-card-flip-hint\">Space or click to reveal</div></div>",
+      "css": ".ds-card-front { background: #181c24; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; min-height: 300px; } .ds-card-hint { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #6e7286; margin-bottom: 16px; } .ds-card-question { font-size: 20px; font-weight: 700; color: #e4e6f0; line-height: 1.4; letter-spacing: -0.02em; flex: 1; display: flex; align-items: center; } .ds-card-flip-hint { font-size: 11px; color: #6e7286; text-align: center; margin-top: auto; padding-top: 16px; }"
+    },
+    {
+      "name": "Rating Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "SRS self-rating button — four variants (again/hard/good/easy).",
+      "html": "<div class=\"ds-rating-row\"><button class=\"ds-rate ds-rate-again\">Again<span class=\"ds-key\">1</span></button><button class=\"ds-rate ds-rate-hard\">Hard<span class=\"ds-key\">2</span></button><button class=\"ds-rate ds-rate-good\">Good<span class=\"ds-key\">3</span></button><button class=\"ds-rate ds-rate-easy\">Easy<span class=\"ds-key\">4</span></button></div>",
+      "css": ".ds-rating-row { display: flex; gap: 10px; } .ds-rate { flex: 1; padding: 11px 8px; border-radius: 6px; font-size: 13px; font-weight: 700; border: 1px solid transparent; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; transition: background 150ms; } .ds-key { font-size: 10px; font-weight: 400; opacity: 0.65; font-family: monospace; } .ds-rate-again { background: rgba(208,79,70,0.12); color: #d04f46; border-color: rgba(208,79,70,0.28); } .ds-rate-again:hover { background: rgba(208,79,70,0.22); } .ds-rate-hard { background: rgba(198,145,56,0.12); color: #c69138; border-color: rgba(198,145,56,0.28); } .ds-rate-hard:hover { background: rgba(198,145,56,0.22); } .ds-rate-good { background: rgba(62,166,88,0.12); color: #3ea658; border-color: rgba(62,166,88,0.28); } .ds-rate-good:hover { background: rgba(62,166,88,0.22); } .ds-rate-easy { background: rgba(236,238,248,0.10); color: #eceef8; border-color: rgba(236,238,248,0.22); } .ds-rate-easy:hover { background: rgba(236,238,248,0.18); }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "button-ghost",
+      "description": "Search input and settings fields.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Search cards...\">",
+      "css": ".ds-input { background: #181c24; border: 1px solid #23262f; border-radius: 6px; color: #e4e6f0; padding: 8px 12px; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; width: 100%; } .ds-input::placeholder { color: #6e7286; } .ds-input:focus { outline: none; border-color: #6e7286; }"
+    },
+    {
+      "name": "Difficulty Badge",
+      "kind": "chip",
+      "refersTo": "button-ghost",
+      "description": "Card difficulty tag — easy / medium / hard.",
+      "html": "<span class=\"ds-badge ds-badge-medium\">Medium</span>",
+      "css": ".ds-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; display: inline-block; } .ds-badge-easy { background: rgba(62,166,88,0.15); color: #3ea658; } .ds-badge-medium { background: rgba(198,145,56,0.15); color: #c69138; } .ds-badge-hard { background: rgba(208,79,70,0.15); color: #d04f46; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Diagnostic Console",
+    "overview": "This is a precision instrument for a high-stakes professional credential. The CIIP exam is real — the person studying for it is technically literate and under real pressure. Every design decision should reflect that context. The interface behaves like a clinical workstation: information is displayed with maximal clarity, interactive elements announce themselves without decoration, and nothing exists on screen without a reason. The emotional register is calm, capable, and focused — not motivational, not playful, not celebratory.\n\nDepth comes from tonal layering, not borders or shadows. The darkest layer (#0a0b0e) is the ground. Surfaces (#12141b), panels (#181c24), and elevated cards lift off it through value alone — borders are reserved for structural divisions, not decorative frames. The platinum accent (#eceef8) is used with extreme restraint: it is the one bright signal in a field of near-black. When it appears, it means 'this is the action.'",
+    "keyCharacteristics": [
+      "Tonal elevation — depth from value, not shadow or border density",
+      "Platinum as the one accent — rare, decisive, never decorative",
+      "Clinical typography — tight tracking on headings, generous line-height on body",
+      "Semantic color kept functional — red/amber/green/violet are SRS ratings only",
+      "Keyboard-first affordances — every primary action has a key hint"
+    ],
+    "rules": [
+      { "name": "The One Voice Rule",       "body": "Platinum is the only accent. It does not share accent duties with any semantic color.",                                                                         "section": "colors" },
+      { "name": "The No-Inversion Rule",    "body": "Do not use semantic colors for backgrounds. Tints (rgba) permitted only for rating buttons — nowhere else.",                                              "section": "colors" },
+      { "name": "The No-Caps-Creep Rule",   "body": "Uppercase labels are permitted only at 11px or smaller. Never uppercase at 12px or above.",                                                               "section": "typography" },
+      { "name": "The Weight Discipline Rule","body": "Two weights only: 400 and 600–700. Never 300 or 500.",                                                                                                    "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at all times. Tonal contrast from Void → Panel provides elevation. No box-shadow on cards at rest.",                                   "section": "elevation" },
+      { "name": "The Single Border Weight", "body": "All structural borders are 1px solid Trace. No 2px borders, no colored accent borders, no left-stripe borders of any width.",                            "section": "elevation" }
+    ],
+    "dos": [
+      "Do use tonal steps (Void → Console → Panel) as the only depth mechanism.",
+      "Do use Platinum exclusively for primary interactive elements — one voice, one purpose.",
+      "Do keep semantic colors strictly tied to SRS rating feedback.",
+      "Do use uppercase Label style (11px, 0.07em) for badges and keyboard hints only.",
+      "Do include keyboard shortcut hints next to every primary action.",
+      "Do design the study card as the primary hero of the app."
+    ],
+    "donts": [
+      "Don't use border-left stripes of any width as colored accents.",
+      "Don't use the GitHub UI color palette (#0d1117, #58a6ff, #161b22).",
+      "Don't use gradient text (background-clip: text).",
+      "Don't use glassmorphism or decorative backdrop-filter blur.",
+      "Don't design for gamified engagement (confetti, streak-hero UIs, mascots).",
+      "Don't use Generic SaaS aesthetics (teal-white pairs, pill buttons, hero-metric dashboards).",
+      "Don't add shadows to cards or domain tiles at rest.",
+      "Don't use 500 font-weight — jump from 400 to 600.",
+      "Don't use colored accent borders on cards or list items."
+    ]
+  }
+}

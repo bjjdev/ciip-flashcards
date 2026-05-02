@@ -219,7 +219,7 @@
 
     const tags = (card.tags || []).map(t => `<span class="cli-tag">${t}</span>`).join("");
     const maturityLabel = isDue && maturity !== "new"
-      ? `<span class="cli-status" style="background:rgba(88,166,255,0.1);color:var(--accent)">due</span>`
+      ? `<span class="cli-status" style="background:rgba(236,238,248,0.10);color:var(--accent)">due</span>`
       : `<span class="cli-status">${fmtMaturity(maturity)}</span>`;
     const leechBadge = isLeech ? `<span style="font-size:11px;color:var(--again)">🩸 leech</span>` : "";
 
