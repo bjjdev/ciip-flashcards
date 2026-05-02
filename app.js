@@ -18,39 +18,110 @@ const DOMAINS = [
 ];
 
 // ── Storage ───────────────────────────────────────────────────────────────────
+// Progress and settings are loaded from Supabase into memory on initCards(),
+// then getProgress/getSettings return from cache synchronously so the rest of
+// the app doesn't need to change. updateCard/setSettings write through to
+// Supabase in the background (fire-and-forget) after updating the cache.
+
+let _userId = null;
+let _progressCache = null;
+let _settingsCache = null;
+
 const Storage = {
   getProgress() {
-    try { return JSON.parse(localStorage.getItem("ciip_progress") || "{}"); }
-    catch { return {}; }
+    return _progressCache || {};
   },
+
   setProgress(progress) {
-    localStorage.setItem("ciip_progress", JSON.stringify(progress));
+    _progressCache = progress;
   },
+
   updateCard(cardId, update) {
-    const p = this.getProgress();
-    p[cardId] = { ...(p[cardId] || {}), ...update };
-    this.setProgress(p);
+    if (!_progressCache) _progressCache = {};
+    _progressCache[cardId] = { ...(_progressCache[cardId] || {}), ...update };
+
+    if (_userId) {
+      const s = _progressCache[cardId];
+      _sb.from("progress").upsert({
+        user_id: _userId,
+        card_id: cardId,
+        interval:     s.interval     ?? 0,
+        repetitions:  s.repetitions  ?? 0,
+        ease_factor:  s.easeFactor   ?? 2.5,
+        next_due:     s.nextDue      ?? 0,
+        fail_count:   s.failCount    ?? 0,
+        starred:      s.starred      ?? false,
+        history:      s.history      ?? [],
+        updated_at:   new Date().toISOString()
+      }, { onConflict: "user_id,card_id" }).then(({ error }) => {
+        if (error) console.warn("progress write failed:", error.message);
+      });
+    }
   },
+
   getSettings() {
-    try { return JSON.parse(localStorage.getItem("ciip_settings") || "{}"); }
-    catch { return {}; }
+    return _settingsCache || {};
   },
+
   setSettings(settings) {
-    localStorage.setItem("ciip_settings", JSON.stringify(settings));
+    _settingsCache = settings;
+    if (_userId) {
+      _sb.from("settings").upsert({
+        user_id:    _userId,
+        exam_date:  settings.examDate  ?? null,
+        daily_goal: settings.dailyGoal ?? 20,
+        updated_at: new Date().toISOString()
+      }, { onConflict: "user_id" }).then(({ error }) => {
+        if (error) console.warn("settings write failed:", error.message);
+      });
+    }
   },
+
   getCards() {
     try { return JSON.parse(localStorage.getItem("ciip_cards") || "null") || SAMPLE_CARDS; }
     catch { return SAMPLE_CARDS; }
   },
+
   async initCards() {
+    // 1. Load cards (static — same for all users)
     try {
       const res = await fetch("cards.json");
       if (!res.ok) throw new Error(res.status);
       const cards = await res.json();
       localStorage.setItem("ciip_cards", JSON.stringify(cards));
-    } catch {
-      // Keep whatever is already in localStorage; SAMPLE_CARDS fallback handles cold start
+    } catch { /* keep cached version */ }
+
+    // 2. Get logged-in user
+    const { data: { session } } = await _sb.auth.getSession();
+    _userId = session?.user?.id ?? null;
+    if (!_userId) { _progressCache = {}; _settingsCache = {}; return; }
+
+    // 3. Load progress from Supabase into cache
+    const { data: rows, error: pErr } = await _sb
+      .from("progress").select("*").eq("user_id", _userId);
+    if (pErr) console.warn("progress load failed:", pErr.message);
+    _progressCache = {};
+    if (rows) {
+      rows.forEach(r => {
+        _progressCache[r.card_id] = {
+          interval:    r.interval,
+          repetitions: r.repetitions,
+          easeFactor:  r.ease_factor,
+          nextDue:     r.next_due,
+          failCount:   r.fail_count,
+          starred:     r.starred,
+          history:     r.history || []
+        };
+      });
     }
+
+    // 4. Load settings from Supabase into cache
+    const { data: cfg, error: sErr } = await _sb
+      .from("settings").select("*").eq("user_id", _userId).maybeSingle();
+    if (sErr) console.warn("settings load failed:", sErr.message);
+    _settingsCache = cfg
+      ? { examDate: cfg.exam_date, dailyGoal: cfg.daily_goal }
+      : {};
   }
 };
 
