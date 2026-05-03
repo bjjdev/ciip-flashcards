@@ -17,7 +17,13 @@ exports.handler = async (event) => {
       success_url: `${baseUrl}/checkout-success.html`,
       cancel_url: `${baseUrl}/upgrade.html`,
       metadata: { user_id: userId },
-      subscription_data: { metadata: { user_id: userId } }
+      subscription_data: { metadata: { user_id: userId } },
+      consent_collection: { terms_of_service: 'required' },
+      custom_text: {
+        terms_of_service_acceptance: {
+          message: `I agree to the <a href="${baseUrl}/tos.html">Terms of Service</a> and <a href="${baseUrl}/privacy.html">Privacy Policy</a>.`
+        }
+      }
     });
 
     return {
