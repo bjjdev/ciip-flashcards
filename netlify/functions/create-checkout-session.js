@@ -14,7 +14,7 @@ exports.handler = async (event) => {
       mode: 'subscription',
       customer_email: email,
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${baseUrl}/index.html?checkout=success`,
+      success_url: `${baseUrl}/checkout-success.html`,
       cancel_url: `${baseUrl}/upgrade.html`,
       metadata: { user_id: userId },
       subscription_data: { metadata: { user_id: userId } }
