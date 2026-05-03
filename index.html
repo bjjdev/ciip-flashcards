@@ -83,12 +83,11 @@
 <script src="app.js"></script>
 <script>
 (async () => {
-  const session = await Auth.requireAuth();
-  if (session) {
-    const initial = session.user.email[0].toUpperCase();
-    el("account-btn").textContent = initial;
-    el("account-btn").title = session.user.email;
-  }
+  const session = await Auth.requireSubscription();
+  if (!session) return;
+  const initial = session.user.email[0].toUpperCase();
+  el("account-btn").textContent = initial;
+  el("account-btn").title = session.user.email;
   await Storage.initCards();
   const allCards = Storage.getCards();
   const progress = Storage.getProgress();
@@ -299,7 +298,7 @@
   });
 
   el("account-btn").addEventListener("click", () => {
-    if (confirm("Sign out of " + session.user.email + "?")) Auth.signOut();
+    window.location.href = "account.html";
   });
 
   if (!settings.examDate) {

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .upgrade-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .upgrade-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .upgrade-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .upgrade-sub {
+      font-size: 14px;
+      color: var(--static);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      max-width: 560px;
+    }
+    .pricing-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pricing-card.featured {
+      outline: 1px solid var(--platinum);
+    }
+    .pricing-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--static);
+    }
+    .pricing-card.featured .pricing-label {
+      color: var(--platinum);
+    }
+    .pricing-amount {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .pricing-interval {
+      font-size: 13px;
+      color: var(--static);
+      margin-top: 4px;
+    }
+    .pricing-save {
+      font-size: 12px;
+      color: var(--nominal);
+      margin-top: 4px;
+    }
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--static);
+    }
+    .pricing-features li::before {
+      content: "✓ ";
+      color: var(--nominal);
+      font-weight: 700;
+    }
+    .pricing-cta { margin-top: auto; }
+    .pricing-cta .btn-primary,
+    .pricing-cta .btn-ghost {
+      width: 100%;
+      justify-content: center;
+    }
+    .upgrade-error {
+      font-size: 13px;
+      color: var(--critical);
+      margin-top: 16px;
+      display: none;
+    }
+    .upgrade-footer {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--static);
+      text-align: center;
+    }
+    .upgrade-footer a {
+      color: var(--platinum);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    @media (max-width: 480px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="upgrade-page">
+  <div class="upgrade-header">
+    <div class="upgrade-title">CIIP Flash Pro</div>
+    <div class="upgrade-sub">Full access to all exam domains, spaced repetition, and progress tracking</div>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-label">Monthly</div>
+      <div>
+        <div class="pricing-amount">$9.99</div>
+        <div class="pricing-interval">per month</div>
+      </div>
+      <ul class="pricing-features">
+        <li>All exam domains</li>
+        <li>SM-2 spaced repetition</li>
+        <li>Progress sync across devices</li>
+        <li>Stats and analytics</li>
+      </ul>
+      <div class="pricing-cta">
+        <button class="btn-ghost" id="monthly-btn">Subscribe Monthly</button>
+      </div>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="pricing-label">Annual — Best Value</div>
+      <div>
+        <div class="pricing-amount">$100</div>
+        <div class="pricing-interval">per year</div>
+        <div class="pricing-save">Save ~$20 vs monthly</div>
+      </div>
+      <ul class="pricing-features">
+        <li>All exam domains</li>
+        <li>SM-2 spaced repetition</li>
+        <li>Progress sync across devices</li>
+        <li>Stats and analytics</li>
+      </ul>
+      <div class="pricing-cta">
+        <button class="btn-primary" id="annual-btn">Subscribe Annually</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="upgrade-error" id="upgrade-error"></div>
+
+  <div class="upgrade-footer">
+    Already subscribed? <a href="account.html">View account</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="auth.js"></script>
+<script>
+(async () => {
+  const session = await Auth.requireAuth();
+  if (!session) return;
+
+  async function startCheckout(priceId) {
+    const monthlyBtn = document.getElementById('monthly-btn');
+    const annualBtn = document.getElementById('annual-btn');
+    const errEl = document.getElementById('upgrade-error');
+
+    monthlyBtn.disabled = true;
+    annualBtn.disabled = true;
+    monthlyBtn.textContent = '…';
+    annualBtn.textContent = '…';
+    errEl.style.display = 'none';
+
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId,
+          userId: session.user.id,
+          email: session.user.email
+        })
+      });
+      const { url, error } = await res.json();
+      if (error) throw new Error(error);
+      window.location.href = url;
+    } catch (err) {
+      errEl.textContent = err.message || 'Something went wrong. Try again.';
+      errEl.style.display = 'block';
+      monthlyBtn.disabled = false;
+      annualBtn.disabled = false;
+      monthlyBtn.textContent = 'Subscribe Monthly';
+      annualBtn.textContent = 'Subscribe Annually';
+    }
+  }
+
+  document.getElementById('monthly-btn').addEventListener('click', () =>
+    startCheckout('price_1TSzXUR9YlYNvpzfIh01pkuR')
+  );
+  document.getElementById('annual-btn').addEventListener('click', () =>
+    startCheckout('price_1TSzYAR9YlYNvpzf2ODnPx1Z')
+  );
+})();
+</script>
+</body>
+</html>

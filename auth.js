@@ -36,5 +36,28 @@ const Auth = {
       redirectTo: window.location.origin + "/index.html"
     });
     return { error };
+  },
+
+  async getSubscription() {
+    const session = await this.getSession();
+    if (!session) return null;
+    const { data } = await _sb
+      .from('subscriptions')
+      .select('status, stripe_customer_id, current_period_end')
+      .eq('user_id', session.user.id)
+      .single();
+    return data;
+  },
+
+  async requireSubscription() {
+    const session = await this.requireAuth();
+    if (!session) return null;
+    const sub = await this.getSubscription();
+    const active = sub && (sub.status === 'active' || sub.status === 'trialing');
+    if (!active) {
+      window.location.href = 'upgrade.html';
+      return null;
+    }
+    return session;
   }
 };

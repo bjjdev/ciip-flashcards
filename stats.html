@@ -137,7 +137,8 @@
 <script src="app.js"></script>
 <script>
 (async () => {
-  await Auth.requireAuth();
+  const session = await Auth.requireSubscription();
+  if (!session) return;
   await Storage.initCards();
   let allCards = Storage.getCards();
   const progress = Storage.getProgress();

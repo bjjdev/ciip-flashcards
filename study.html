@@ -114,7 +114,8 @@
 <script src="app.js"></script>
 <script>
 (async () => {
-  await Auth.requireAuth();
+  const session = await Auth.requireSubscription();
+  if (!session) return;
   await Storage.initCards();
   const allCards = Storage.getCards();
   const cardMap = Object.fromEntries(allCards.map(c => [c.id, c]));

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .account-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .account-box {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 100%;
+      max-width: 380px;
+    }
+    .account-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .account-field {
+      margin-bottom: 18px;
+    }
+    .account-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--static);
+      margin-bottom: 4px;
+    }
+    .account-value {
+      font-size: 14px;
+    }
+    .account-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .badge-active   { background: rgba(74,222,128,0.12); color: var(--nominal); }
+    .badge-trialing { background: rgba(236,238,248,0.10); color: var(--platinum); }
+    .badge-inactive { background: rgba(239,68,68,0.12); color: var(--critical); }
+    .account-divider {
+      border: none;
+      border-top: 1px solid var(--trace);
+      margin: 24px 0;
+    }
+    .account-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .account-actions button {
+      width: 100%;
+      justify-content: center;
+    }
+    .account-back {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .account-back a {
+      font-size: 13px;
+      color: var(--static);
+      text-decoration: none;
+    }
+    .account-back a:hover { color: var(--signal); }
+  </style>
+</head>
+<body>
+<div class="account-page">
+  <div class="account-box">
+    <div class="account-title">Account</div>
+
+    <div class="account-field">
+      <div class="account-label">Email</div>
+      <div class="account-value" id="acct-email">—</div>
+    </div>
+
+    <div class="account-field">
+      <div class="account-label">Plan</div>
+      <span class="account-badge" id="acct-status">—</span>
+    </div>
+
+    <div class="account-field" id="renewal-field" style="display:none">
+      <div class="account-label">Renews</div>
+      <div class="account-value" id="acct-renewal">—</div>
+    </div>
+
+    <hr class="account-divider">
+
+    <div class="account-actions">
+      <button class="btn-primary" id="portal-btn" style="display:none">Manage Subscription</button>
+      <button class="btn-ghost" id="upgrade-btn" style="display:none" onclick="window.location.href='upgrade.html'">Subscribe</button>
+      <button class="btn-ghost" id="signout-btn">Sign Out</button>
+    </div>
+
+    <div class="account-back"><a href="index.html">← Back to dashboard</a></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="auth.js"></script>
+<script>
+(async () => {
+  const session = await Auth.requireAuth();
+  if (!session) return;
+
+  document.getElementById('acct-email').textContent = session.user.email;
+
+  const sub = await Auth.getSubscription();
+  const statusEl = document.getElementById('acct-status');
+  const isActive = sub && (sub.status === 'active' || sub.status === 'trialing');
+
+  if (isActive) {
+    statusEl.textContent = sub.status;
+    statusEl.className = `account-badge badge-${sub.status}`;
+
+    if (sub.current_period_end) {
+      const d = new Date(sub.current_period_end);
+      document.getElementById('acct-renewal').textContent =
+        d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('renewal-field').style.display = 'block';
+    }
+
+    if (sub.stripe_customer_id) {
+      document.getElementById('portal-btn').style.display = 'block';
+    }
+  } else {
+    statusEl.textContent = 'inactive';
+    statusEl.className = 'account-badge badge-inactive';
+    document.getElementById('upgrade-btn').style.display = 'block';
+  }
+
+  document.getElementById('portal-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('portal-btn');
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const res = await fetch('/.netlify/functions/create-portal-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customerId: sub.stripe_customer_id })
+      });
+      const { url, error } = await res.json();
+      if (error) throw new Error(error);
+      window.location.href = url;
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Manage Subscription';
+      alert(err.message || 'Could not open billing portal.');
+    }
+  });
+
+  document.getElementById('signout-btn').addEventListener('click', () => {
+    if (confirm('Sign out of ' + session.user.email + '?')) Auth.signOut();
+  });
+})();
+</script>
+</body>
+</html>
