@@ -39,7 +39,8 @@
         </div>
         <div class="card-question" id="card-question">—</div>
         <div class="card-options" id="card-options-front"></div>
-        <div class="card-flip-hint">
+        <div class="card-options-mcq" id="card-options-mcq" style="display:none"></div>
+        <div class="card-flip-hint" id="card-flip-hint">
           Space / → / click to reveal &nbsp;<span class="kb-hint">S</span> star
         </div>
       </div>
@@ -65,6 +66,8 @@
     <button class="rate-btn rate-good"  data-q="3">Good<span class="key-hint">key: 3</span></button>
     <button class="rate-btn rate-easy"  data-q="5">Easy<span class="key-hint">key: 4</span></button>
   </div>
+
+  <button class="undo-btn" id="undo-btn" title="Undo last rating (Z)" style="display:none">↶ Undo</button>
 
 </div>
 
@@ -114,8 +117,8 @@
 <script src="app.js"></script>
 <script>
 (async () => {
-  const session = await Auth.requireSubscription();
-  if (!session) return;
+  const authSession = await Auth.requireSubscription();
+  if (!authSession) return;
   await Storage.initCards();
   const allCards = Storage.getCards();
   const cardMap = Object.fromEntries(allCards.map(c => [c.id, c]));
@@ -136,7 +139,12 @@
   let startTime = Date.now();
   const session = { reviewed: 0, again: 0, hard: 0, good: 0, easy: 0, leeches: [] };
 
-  function renderOptions(containerId, options, correctAnswer, revealed) {
+  const settings = Storage.getSettings();
+  const mcqFirst = !!settings.mcqFirst;
+  let mcqAnswered = false; // in MCQ mode, true once user has picked
+  let lastReview = null;   // { cardId, prevState, prevSession, prevIndex } for undo
+
+  function renderOptions(containerId, options, correctAnswer, revealed, pickedLetter) {
     const container = el(containerId);
     container.innerHTML = "";
     ["A", "B", "C", "D"].forEach(letter => {
@@ -144,10 +152,42 @@
       div.className = "mc-option";
       if (revealed) {
         if (letter === correctAnswer) div.classList.add("mc-correct");
-        else div.classList.add("mc-wrong");
+        else if (letter === pickedLetter) div.classList.add("mc-wrong");
       }
       div.innerHTML = `<span class="mc-letter">${letter}</span><span class="mc-text">${options[letter]}</span>`;
       container.appendChild(div);
+    });
+  }
+
+  function renderMcqFront(card) {
+    const container = el("card-options-mcq");
+    container.innerHTML = "";
+    ["A", "B", "C", "D"].forEach(letter => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "mc-option mc-option-clickable";
+      btn.dataset.letter = letter;
+      btn.innerHTML = `<span class="mc-letter">${letter}</span><span class="mc-text">${card.back.options[letter]}</span>`;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (mcqAnswered) return;
+        mcqAnswered = true;
+        const correct = letter === card.back.answer;
+        // Show selection state on front before flipping
+        container.querySelectorAll(".mc-option").forEach(o => {
+          const l = o.dataset.letter;
+          if (l === card.back.answer) o.classList.add("mc-correct");
+          else if (l === letter) o.classList.add("mc-wrong");
+          o.classList.add("mc-locked");
+        });
+        // Render back face with the picked letter highlighted as wrong if applicable
+        renderOptions("card-options-back", card.back.options, card.back.answer, true, letter);
+        setTimeout(() => {
+          flipCard();
+          rateCard(correct ? 3 : 0);
+        }, 450);
+      });
+      container.appendChild(btn);
     });
   }
 
@@ -164,7 +204,20 @@
     el("card-id-front").textContent = card.id;
     el("diff-badge-front").innerHTML = difficultyBadge(card.difficulty);
     el("card-question").textContent = card.front.question;
-    renderOptions("card-options-front", card.back.options, card.back.answer, false);
+
+    // In MCQ-first mode, hide preview options + flip hint, show clickable options
+    if (mcqFirst) {
+      el("card-options-front").style.display = "none";
+      el("card-options-mcq").style.display = "";
+      el("card-flip-hint").innerHTML = `Pick <span class="kb-hint">A</span> <span class="kb-hint">B</span> <span class="kb-hint">C</span> <span class="kb-hint">D</span> &nbsp;<span class="kb-hint">S</span> star`;
+      mcqAnswered = false;
+      renderMcqFront(card);
+    } else {
+      el("card-options-front").style.display = "";
+      el("card-options-mcq").style.display = "none";
+      el("card-flip-hint").innerHTML = `Space / → / click to reveal &nbsp;<span class="kb-hint">S</span> star`;
+      renderOptions("card-options-front", card.back.options, card.back.answer, false);
+    }
     el("leech-badge").style.display = isLeech ? "inline-flex" : "none";
 
     // Back
@@ -186,6 +239,9 @@
 
     el("progress-label").textContent = `${currentIndex + 1} / ${totalCards}`;
     el("session-fill").style.width = ((currentIndex / totalCards) * 100) + "%";
+
+    // Show/hide undo
+    el("undo-btn").style.display = lastReview ? "" : "none";
   }
 
   function flipCard() {
@@ -201,6 +257,10 @@
     const card = queue[currentIndex];
     const progress = Storage.getProgress();
     const oldState = progress[card.id] || {};
+    const prevState = JSON.parse(JSON.stringify(oldState)); // deep clone for undo
+    const prevSession = { ...session, leeches: [...session.leeches] };
+    const prevIndex = currentIndex;
+
     const newSM2 = sm2(oldState, quality);
     const failCount = quality < 3
       ? (oldState.failCount || 0) + 1
@@ -216,7 +276,27 @@
     else if (quality === 5) session.easy++;
     if (failCount >= 4 && !session.leeches.includes(card.id)) session.leeches.push(card.id);
 
+    lastReview = { cardId: card.id, prevState, prevSession, prevIndex };
     currentIndex++;
+    renderCard();
+  }
+
+  function undoLastRating() {
+    if (!lastReview) return;
+    // Restore card state (handles brand-new cards too — pass empty object → updateCard merges)
+    const restore = {
+      interval:    lastReview.prevState.interval    ?? 0,
+      repetitions: lastReview.prevState.repetitions ?? 0,
+      easeFactor:  lastReview.prevState.easeFactor  ?? 2.5,
+      nextDue:     lastReview.prevState.nextDue     ?? 0,
+      failCount:   lastReview.prevState.failCount   ?? 0,
+      starred:     lastReview.prevState.starred     ?? false,
+      history:     lastReview.prevState.history     ?? []
+    };
+    Storage.updateCard(lastReview.cardId, restore);
+    Object.assign(session, lastReview.prevSession);
+    currentIndex = lastReview.prevIndex;
+    lastReview = null;
     renderCard();
   }
 
@@ -257,7 +337,13 @@
     renderCard();
   });
 
-  el("card-scene").addEventListener("click", () => { if (!isFlipped) flipCard(); });
+  el("card-scene").addEventListener("click", (e) => {
+    // In MCQ-first mode, only the option buttons advance — clicking the card body should not flip
+    if (mcqFirst) return;
+    if (!isFlipped) flipCard();
+  });
+
+  el("undo-btn").addEventListener("click", undoLastRating);
 
   el("rating-area").querySelectorAll(".rate-btn").forEach(btn => {
     btn.addEventListener("click", () => rateCard(parseInt(btn.dataset.q)));
@@ -265,7 +351,22 @@
 
   document.addEventListener("keydown", (e) => {
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-    if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); if (!isFlipped) flipCard(); }
+
+    // MCQ-first letter shortcuts on front face
+    if (mcqFirst && !isFlipped && !mcqAnswered && currentIndex < queue.length) {
+      const map = { a: "A", A: "A", b: "B", B: "B", c: "C", C: "C", d: "D", D: "D" };
+      if (map[e.key]) {
+        const btn = el("card-options-mcq").querySelector(`[data-letter="${map[e.key]}"]`);
+        if (btn) btn.click();
+        return;
+      }
+    }
+
+    if (e.key === " " || e.key === "ArrowRight") {
+      if (mcqFirst && !isFlipped) return; // disable space-flip in MCQ mode
+      e.preventDefault();
+      if (!isFlipped) flipCard();
+    }
     else if (e.key === "ArrowLeft") {
       if (isFlipped) {
         isFlipped = false;
@@ -285,6 +386,7 @@
         renderCard();
       }
     }
+    else if (e.key === "z" || e.key === "Z") undoLastRating();
     else if (e.key === "Escape") showSummary();
   });
 

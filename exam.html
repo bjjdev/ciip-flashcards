@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Exam — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="exam-page">
+
+<header class="exam-header">
+  <div class="exam-header-inner">
+    <span class="exam-title">Mock Exam</span>
+    <div class="exam-progress-text">
+      <span id="progress-label">0 / 0</span>
+      <span class="progress-divider">•</span>
+      <span id="answered-label">0 answered</span>
+    </div>
+    <div class="exam-timer" id="exam-timer">0:00</div>
+    <button class="btn-ghost" id="submit-btn">Submit</button>
+  </div>
+</header>
+
+<main class="exam-main">
+
+  <aside class="exam-grid-panel">
+    <div class="exam-grid-title">Questions</div>
+    <div class="exam-grid" id="question-grid"></div>
+    <div class="exam-grid-legend">
+      <span class="legend-row"><span class="legend-swatch g-answered"></span>Answered</span>
+      <span class="legend-row"><span class="legend-swatch g-marked"></span>Marked for review</span>
+      <span class="legend-row"><span class="legend-swatch g-unanswered"></span>Unanswered</span>
+    </div>
+  </aside>
+
+  <section class="exam-question-panel">
+    <div class="exam-q-meta">
+      <span class="exam-q-number" id="q-number">Question 0 of 0</span>
+      <span class="exam-q-id" id="q-id">—</span>
+      <button class="exam-mark-btn" id="mark-btn" title="Mark for review">⚑ Mark</button>
+    </div>
+    <div class="exam-question-text" id="q-text">—</div>
+    <div class="exam-options" id="q-options"></div>
+    <div class="exam-nav">
+      <button class="btn-secondary" id="prev-btn">◄ Prev</button>
+      <button class="btn-primary" id="next-btn">Next ►</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Submit confirmation modal -->
+<div class="modal-overlay" id="submit-modal">
+  <div class="modal-box">
+    <h2>Submit exam?</h2>
+    <p id="submit-summary">—</p>
+    <p style="color:var(--static);font-size:13px;margin-top:8px">Missed questions will re-enter your SRS queue.</p>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="submit-cancel">Keep going</button>
+      <button class="btn-primary" id="submit-confirm">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const session = await Auth.requireSubscription();
+  if (!session) return;
+  await Storage.initCards();
+  const allCards = Storage.getCards();
+
+  let length = parseInt(sessionStorage.getItem("ciip_exam_length") || "0", 10);
+  if (![50, 100, 130].includes(length)) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  const queue = Exam.buildSample(allCards, length);
+  if (queue.length === 0) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  // State
+  const answers = {};   // cardId -> "A"|"B"|"C"|"D"
+  const marked = new Set();
+  let cur = 0;
+  const startTime = Date.now();
+  const totalSeconds = Math.round(3.5 * 3600 * (length / 130)); // proportional to 3.5h for 130
+
+  // Timer
+  function fmtTime(seconds) {
+    if (seconds < 0) seconds = 0;
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return h > 0
+      ? `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`
+      : `${m}:${String(s).padStart(2, "0")}`;
+  }
+  const timerEl = el("exam-timer");
+  function tickTimer() {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const remaining = totalSeconds - elapsed;
+    timerEl.textContent = fmtTime(remaining);
+    if (remaining <= 60) timerEl.classList.add("timer-warn");
+    if (remaining <= 0) {
+      timerEl.classList.add("timer-out");
+      submitExam(); // auto-submit
+    }
+  }
+  tickTimer();
+  const timerInterval = setInterval(tickTimer, 1000);
+
+  // Build question grid
+  const grid = el("question-grid");
+  queue.forEach((card, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "grid-cell";
+    btn.dataset.idx = idx;
+    btn.textContent = String(idx + 1);
+    btn.addEventListener("click", () => goTo(idx));
+    grid.appendChild(btn);
+  });
+
+  function refreshGrid() {
+    document.querySelectorAll(".grid-cell").forEach(cell => {
+      const idx = parseInt(cell.dataset.idx, 10);
+      const cardId = queue[idx].id;
+      cell.classList.toggle("g-answered", !!answers[cardId]);
+      cell.classList.toggle("g-marked", marked.has(cardId));
+      cell.classList.toggle("g-current", idx === cur);
+    });
+  }
+
+  function renderQ() {
+    const card = queue[cur];
+    el("q-number").textContent = `Question ${cur + 1} of ${queue.length}`;
+    el("q-id").textContent = card.id;
+    el("q-text").textContent = card.back.question;
+    el("mark-btn").classList.toggle("marked", marked.has(card.id));
+
+    const optsEl = el("q-options");
+    optsEl.innerHTML = "";
+    ["A", "B", "C", "D"].forEach(letter => {
+      const div = document.createElement("button");
+      div.type = "button";
+      div.className = "exam-option";
+      if (answers[card.id] === letter) div.classList.add("selected");
+      div.innerHTML = `<span class="exam-letter">${letter}</span><span class="exam-text">${card.back.options[letter]}</span>`;
+      div.addEventListener("click", () => {
+        answers[card.id] = letter;
+        renderQ();
+        refreshGrid();
+        updateAnsweredCount();
+      });
+      optsEl.appendChild(div);
+    });
+
+    el("progress-label").textContent = `${cur + 1} / ${queue.length}`;
+    el("prev-btn").disabled = cur === 0;
+    el("next-btn").disabled = cur === queue.length - 1;
+    refreshGrid();
+  }
+
+  function updateAnsweredCount() {
+    const n = Object.keys(answers).length;
+    el("answered-label").textContent = `${n} answered`;
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= queue.length) return;
+    cur = idx;
+    renderQ();
+  }
+
+  // Nav
+  el("prev-btn").addEventListener("click", () => goTo(cur - 1));
+  el("next-btn").addEventListener("click", () => goTo(cur + 1));
+  el("mark-btn").addEventListener("click", () => {
+    const id = queue[cur].id;
+    if (marked.has(id)) marked.delete(id);
+    else marked.add(id);
+    renderQ();
+  });
+
+  // Submit
+  function submitExam() {
+    clearInterval(timerInterval);
+    const graded = Exam.grade(queue, answers);
+    Exam.applyResults(graded.results);
+
+    // Stash for results page
+    sessionStorage.setItem("ciip_exam_results", JSON.stringify({
+      score: graded.score,
+      correctCount: graded.correctCount,
+      total: queue.length,
+      perDomain: graded.perDomain.map(p => ({
+        id: p.domain.id, name: p.domain.name, total: p.total, correct: p.correct, pct: p.pct
+      })),
+      missed: graded.results
+        .filter(r => !r.correct)
+        .map(r => ({
+          id: r.card.id,
+          question: r.card.back.question,
+          picked: r.picked,
+          correct: r.card.back.answer,
+          options: r.card.back.options,
+          explanation: r.card.back.explanation
+        })),
+      durationSec: Math.floor((Date.now() - startTime) / 1000),
+      length
+    }));
+    sessionStorage.removeItem("ciip_exam_length");
+    window.location.href = "exam-results.html";
+  }
+
+  el("submit-btn").addEventListener("click", () => {
+    const n = Object.keys(answers).length;
+    const unanswered = queue.length - n;
+    el("submit-summary").textContent =
+      unanswered === 0
+        ? `You've answered all ${queue.length} questions.`
+        : `${n} answered, ${unanswered} unanswered (will be marked wrong).`;
+    el("submit-modal").classList.add("visible");
+  });
+  el("submit-cancel").addEventListener("click", () => {
+    el("submit-modal").classList.remove("visible");
+  });
+  el("submit-confirm").addEventListener("click", submitExam);
+
+  // Keyboard
+  document.addEventListener("keydown", (e) => {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+    if (e.key === "ArrowRight") { e.preventDefault(); goTo(cur + 1); }
+    else if (e.key === "ArrowLeft")  { e.preventDefault(); goTo(cur - 1); }
+    else if (["a", "A", "1"].includes(e.key)) { answers[queue[cur].id] = "A"; renderQ(); updateAnsweredCount(); }
+    else if (["b", "B", "2"].includes(e.key)) { answers[queue[cur].id] = "B"; renderQ(); updateAnsweredCount(); }
+    else if (["c", "C", "3"].includes(e.key)) { answers[queue[cur].id] = "C"; renderQ(); updateAnsweredCount(); }
+    else if (["d", "D", "4"].includes(e.key)) { answers[queue[cur].id] = "D"; renderQ(); updateAnsweredCount(); }
+    else if (e.key === "m" || e.key === "M") {
+      const id = queue[cur].id;
+      if (marked.has(id)) marked.delete(id); else marked.add(id);
+      renderQ();
+    }
+  });
+
+  // Warn on accidental nav-away
+  window.addEventListener("beforeunload", (e) => {
+    if (Object.keys(answers).length > 0) {
+      e.preventDefault();
+      e.returnValue = "";
+    }
+  });
+
+  renderQ();
+  updateAnsweredCount();
+})();
+</script>
+</body>
+</html>

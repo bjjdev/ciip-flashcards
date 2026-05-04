@@ -36,6 +36,7 @@
       <button class="btn-primary" id="study-all-btn" style="font-size:13px;padding:7px 16px">
         Study All Due&nbsp;<span id="total-due-badge" style="opacity:0.7">0</span>
       </button>
+      <button class="btn-secondary" id="mock-exam-btn" style="font-size:13px;padding:7px 14px" title="Take a timed mock exam">Mock Exam</button>
       <a href="stats.html"><button class="icon-btn" title="Stats">📊</button></a>
       <button class="icon-btn" id="settings-btn" title="Settings">⚙️</button>
       <button class="icon-btn" id="account-btn" title="Account" style="font-size:12px;font-weight:700;letter-spacing:0.02em">—</button>
@@ -50,6 +51,31 @@
 
   <div class="domain-detail-panel" id="detail-panel">
     <div class="detail-empty">Select a domain</div>
+  </div>
+</div>
+
+<!-- Mock Exam Modal -->
+<div class="modal-overlay" id="exam-modal">
+  <div class="modal-box">
+    <h2>Mock Exam</h2>
+    <p>Timed multiple-choice, weighted across all 10 domains. Missed questions re-enter your SRS queue.</p>
+    <div class="exam-length-options">
+      <button class="exam-length-btn" data-length="50">
+        <span class="el-num">50</span>
+        <span class="el-lbl">Quick mock<br><span class="el-time">≈ 80 min</span></span>
+      </button>
+      <button class="exam-length-btn" data-length="100">
+        <span class="el-num">100</span>
+        <span class="el-lbl">Standard<br><span class="el-time">≈ 2h 40m</span></span>
+      </button>
+      <button class="exam-length-btn recommended" data-length="130">
+        <span class="el-num">130</span>
+        <span class="el-lbl">Full exam<br><span class="el-time">3h 30m</span></span>
+      </button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="exam-cancel">Cancel</button>
+    </div>
   </div>
 </div>
 
@@ -69,6 +95,13 @@
     <div class="form-group">
       <label class="form-label" for="daily-goal-input">Daily Card Goal</label>
       <input class="form-input" type="number" id="daily-goal-input" value="20" min="1" max="200">
+    </div>
+    <div class="form-group">
+      <label class="form-checkbox">
+        <input type="checkbox" id="mcq-first-input">
+        <span>MCQ-first study mode</span>
+      </label>
+      <p class="form-help">Pick an answer before revealing — SRS rates you automatically based on whether you got it right.</p>
     </div>
     <div class="modal-actions">
       <button class="btn-ghost" id="settings-cancel">Cancel</button>
@@ -261,6 +294,21 @@
     window.location.href = "study.html";
   });
 
+  // ── Mock Exam modal ──
+  el("mock-exam-btn").addEventListener("click", () => {
+    el("exam-modal").classList.add("visible");
+  });
+  el("exam-cancel").addEventListener("click", () => {
+    el("exam-modal").classList.remove("visible");
+  });
+  document.querySelectorAll(".exam-length-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const len = parseInt(btn.dataset.length, 10);
+      sessionStorage.setItem("ciip_exam_length", String(len));
+      window.location.href = "exam.html";
+    });
+  });
+
   // ── Settings modal ──
   function updateCountdownPreview() {
     const val = el("exam-date-input").value;
@@ -282,6 +330,7 @@
     const s = Storage.getSettings();
     if (s.examDate) el("exam-date-input").value = s.examDate;
     el("daily-goal-input").value = s.dailyGoal || 20;
+    el("mcq-first-input").checked = !!s.mcqFirst;
     el("settings-modal").classList.add("visible");
     updateCountdownPreview();
   });
@@ -292,6 +341,7 @@
     const s = Storage.getSettings();
     s.examDate = el("exam-date-input").value;
     s.dailyGoal = parseInt(el("daily-goal-input").value) || 20;
+    s.mcqFirst = el("mcq-first-input").checked;
     Storage.setSettings(s);
     el("settings-modal").classList.remove("visible");
     location.reload();

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Results — CIIP Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="results-page">
+
+<header class="app-header">
+  <div class="container">
+    <h1>Mock Exam Results</h1>
+    <a href="index.html"><button class="btn-ghost">◄ Home</button></a>
+  </div>
+</header>
+
+<main class="container results-main">
+
+  <section class="results-hero">
+    <div class="results-score-block">
+      <div class="results-score-num" id="score-num">—</div>
+      <div class="results-score-pct" id="score-pct">—%</div>
+      <div class="results-score-label">Overall</div>
+    </div>
+    <div class="results-meta">
+      <div class="results-meta-row">
+        <span class="results-meta-lbl">Correct</span>
+        <span class="results-meta-val" id="meta-correct">—</span>
+      </div>
+      <div class="results-meta-row">
+        <span class="results-meta-lbl">Length</span>
+        <span class="results-meta-val" id="meta-length">—</span>
+      </div>
+      <div class="results-meta-row">
+        <span class="results-meta-lbl">Time</span>
+        <span class="results-meta-val" id="meta-time">—</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="results-section">
+    <h2 class="results-h2">Per-Domain Breakdown</h2>
+    <div class="results-domain-table" id="domain-table"></div>
+  </section>
+
+  <section class="results-section">
+    <h2 class="results-h2">Missed Questions <span class="results-h2-count" id="missed-count">0</span></h2>
+    <div class="results-missed-list" id="missed-list">
+      <p class="results-empty">No missed questions — perfect score.</p>
+    </div>
+  </section>
+
+  <div class="results-actions">
+    <a href="index.html"><button class="btn-secondary">Back to Dashboard</button></a>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
+<script>
+(async () => {
+  const session = await Auth.requireSubscription();
+  if (!session) return;
+
+  let data = null;
+  try { data = JSON.parse(sessionStorage.getItem("ciip_exam_results") || "null"); } catch {}
+  if (!data) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  // Hero
+  el("score-num").textContent = `${data.correctCount} / ${data.total}`;
+  el("score-pct").textContent = `${data.score}%`;
+  const scoreClass = data.score >= 75 ? "score-good" : data.score >= 60 ? "score-warn" : "score-bad";
+  el("score-pct").classList.add(scoreClass);
+
+  el("meta-correct").textContent = `${data.correctCount} of ${data.total}`;
+  el("meta-length").textContent = `${data.length}-question mock`;
+  const m = Math.floor(data.durationSec / 60);
+  const s = data.durationSec % 60;
+  el("meta-time").textContent = `${m}m ${String(s).padStart(2, "0")}s`;
+
+  // Per-domain
+  const tbl = el("domain-table");
+  data.perDomain.forEach(p => {
+    const cls = p.pct === null ? "ret-none" : p.pct >= 75 ? "ret-good" : p.pct >= 60 ? "ret-warn" : "ret-bad";
+    const row = document.createElement("div");
+    row.className = "results-domain-row";
+    row.innerHTML = `
+      <span class="results-domain-letter">${p.id}</span>
+      <span class="results-domain-name">${p.name}</span>
+      <span class="results-domain-bar-wrap">
+        <span class="results-domain-bar ${cls}" style="width:${p.pct ?? 0}%"></span>
+      </span>
+      <span class="results-domain-pct ${cls}">${p.correct}/${p.total} · ${p.pct ?? "—"}%</span>
+    `;
+    tbl.appendChild(row);
+  });
+
+  // Missed list
+  el("missed-count").textContent = data.missed.length;
+  if (data.missed.length > 0) {
+    const list = el("missed-list");
+    list.innerHTML = "";
+    data.missed.forEach(m => {
+      const item = document.createElement("details");
+      item.className = "missed-item";
+      const pickedLabel = m.picked ? `Your answer: <strong>${m.picked}</strong>` : `<em>Unanswered</em>`;
+      item.innerHTML = `
+        <summary class="missed-summary">
+          <span class="missed-id">${m.id}</span>
+          <span class="missed-q">${m.question}</span>
+          <span class="missed-pick">${pickedLabel}</span>
+        </summary>
+        <div class="missed-body">
+          <div class="missed-options">
+            ${["A","B","C","D"].map(letter => {
+              let cls = "mc-option";
+              if (letter === m.correct) cls += " mc-correct";
+              else if (letter === m.picked) cls += " mc-wrong";
+              return `<div class="${cls}"><span class="mc-letter">${letter}</span><span class="mc-text">${m.options[letter]}</span></div>`;
+            }).join("")}
+          </div>
+          <div class="missed-explain"><strong>Correct: ${m.correct}.</strong> ${m.explanation}</div>
+        </div>
+      `;
+      list.appendChild(item);
+    });
+  }
+})();
+</script>
+</body>
+</html>

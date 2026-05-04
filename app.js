@@ -60,16 +60,25 @@ const Storage = {
   },
 
   getSettings() {
-    return _settingsCache || {};
+    const base = _settingsCache || {};
+    // Local-only prefs (not synced to Supabase — schema doesn't store them)
+    let local = {};
+    try { local = JSON.parse(localStorage.getItem("ciip_local_settings") || "{}"); } catch {}
+    return { ...base, ...local };
   },
 
   setSettings(settings) {
-    _settingsCache = settings;
+    // Split synced vs local prefs
+    const { mcqFirst, ...synced } = settings;
+    _settingsCache = synced;
+    try {
+      localStorage.setItem("ciip_local_settings", JSON.stringify({ mcqFirst: !!mcqFirst }));
+    } catch {}
     if (_userId) {
       _sb.from("settings").upsert({
         user_id:    _userId,
-        exam_date:  settings.examDate  ?? null,
-        daily_goal: settings.dailyGoal ?? 20,
+        exam_date:  synced.examDate  ?? null,
+        daily_goal: synced.dailyGoal ?? 20,
         updated_at: new Date().toISOString()
       }, { onConflict: "user_id" }).then(({ error }) => {
         if (error) console.warn("settings write failed:", error.message);
@@ -278,6 +287,86 @@ function shuffle(arr) {
   }
   return arr;
 }
+
+// ── Exam Mode ─────────────────────────────────────────────────────────────────
+const Exam = {
+  // Weighted random sample of `length` cards across all 10 domains.
+  // Weights come from DOMAINS[].scoredQ (official ABII CIIP distribution).
+  buildSample(allCards, length) {
+    const totalScored = DOMAINS.reduce((s, d) => s + d.scoredQ, 0);
+    const byDomain = {};
+    for (const d of DOMAINS) {
+      byDomain[d.id] = allCards.filter(c => c.id.startsWith(d.id + "-"));
+    }
+
+    // First pass: take floor(length * weight / total) per domain
+    let picks = [];
+    let remainders = [];
+    for (const d of DOMAINS) {
+      const exact = (length * d.scoredQ) / totalScored;
+      const take = Math.floor(exact);
+      const pool = shuffle([...byDomain[d.id]]);
+      picks.push(...pool.slice(0, take));
+      remainders.push({ domain: d, leftover: pool.slice(take), frac: exact - take });
+    }
+
+    // Second pass: fill the gap from highest-fractional domains
+    remainders.sort((a, b) => b.frac - a.frac);
+    let i = 0;
+    while (picks.length < length && i < remainders.length * 4) {
+      const r = remainders[i % remainders.length];
+      if (r.leftover.length > 0) picks.push(r.leftover.shift());
+      i++;
+    }
+
+    return shuffle(picks).slice(0, length);
+  },
+
+  // Grade a completed exam. answers: { [cardId]: "A" | "B" | "C" | "D" | null }
+  grade(cards, answers) {
+    const results = cards.map(card => {
+      const picked = answers[card.id] ?? null;
+      const correct = picked === card.back.answer;
+      return { card, picked, correct };
+    });
+    const correctCount = results.filter(r => r.correct).length;
+    const score = Math.round((correctCount / cards.length) * 100);
+
+    // Per-domain breakdown
+    const perDomain = DOMAINS.map(d => {
+      const inDomain = results.filter(r => r.card.id.startsWith(d.id + "-"));
+      const right = inDomain.filter(r => r.correct).length;
+      return {
+        domain: d,
+        total: inDomain.length,
+        correct: right,
+        pct: inDomain.length > 0 ? Math.round((right / inDomain.length) * 100) : null
+      };
+    }).filter(p => p.total > 0);
+
+    return { results, correctCount, score, perDomain };
+  },
+
+  // Apply exam outcome to SRS:
+  //   - Every answered card gets a history entry (so dashboard daily-goal counts).
+  //   - Missed/unanswered cards get an additional sm2 quality=0 update + failCount bump.
+  applyResults(results) {
+    const progress = Storage.getProgress();
+    const now = Date.now();
+    for (const { card, picked, correct } of results) {
+      const old = progress[card.id] || {};
+      const history = [...(old.history || []), { date: now, quality: correct ? 3 : 0, exam: true }];
+      if (correct) {
+        // Don't move SRS interval for correct exam answers — diagnostic only.
+        Storage.updateCard(card.id, { history, starred: old.starred || false });
+      } else {
+        const newSM2 = sm2(old, 0);
+        const failCount = (old.failCount || 0) + 1;
+        Storage.updateCard(card.id, { ...newSM2, failCount, history, starred: old.starred || false });
+      }
+    }
+  }
+};
 
 // ── Utility ───────────────────────────────────────────────────────────────────
 function fmtRetention(ret) {
