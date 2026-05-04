@@ -36,7 +36,6 @@
   <section class="exam-question-panel">
     <div class="exam-q-meta">
       <span class="exam-q-number" id="q-number">Question 0 of 0</span>
-      <span class="exam-q-id" id="q-id">—</span>
       <button class="exam-mark-btn" id="mark-btn" title="Mark for review">⚑ Mark</button>
     </div>
     <div class="exam-question-text" id="q-text">—</div>
@@ -140,7 +139,6 @@
   function renderQ() {
     const card = queue[cur];
     el("q-number").textContent = `Question ${cur + 1} of ${queue.length}`;
-    el("q-id").textContent = card.id;
     el("q-text").textContent = card.back.question;
     el("mark-btn").classList.toggle("marked", marked.has(card.id));
 
