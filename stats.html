@@ -106,27 +106,16 @@
 </div>
 </main>
 
-<!-- Edit Card Modal -->
-<div class="modal-overlay" id="edit-modal">
-  <div class="modal-box">
-    <h2>Edit Card</h2>
-    <p>Changes update your local card data.</p>
-    <div class="form-group">
-      <label class="form-label">Front (Question)</label>
-      <textarea class="form-input" id="edit-front" rows="3" style="resize:vertical"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Back (Answer)</label>
-      <textarea class="form-input" id="edit-back" rows="3" style="resize:vertical"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Context</label>
-      <textarea class="form-input" id="edit-context" rows="2" style="resize:vertical"></textarea>
-    </div>
-    <input type="hidden" id="edit-card-id">
+<!-- View Card Modal -->
+<div class="modal-overlay" id="view-modal">
+  <div class="modal-box modal-box-wide">
+    <h2 id="view-id">Card</h2>
+    <div class="view-question" id="view-question">—</div>
+    <div class="view-options" id="view-options"></div>
+    <div class="view-explanation" id="view-explanation">—</div>
+    <div class="view-tags" id="view-tags"></div>
     <div class="modal-actions">
-      <button class="btn-ghost" id="edit-cancel">Cancel</button>
-      <button class="btn-primary" id="edit-save">Save</button>
+      <button class="btn-primary" id="view-close">Close</button>
     </div>
   </div>
 </div>
@@ -228,15 +217,19 @@
       : `<span class="cli-status">${fmtMaturity(maturity)}</span>`;
     const leechBadge = isLeech ? `<span style="font-size:11px;color:var(--again)">🩸 leech</span>` : "";
 
+    const questionText = card.front?.question || "";
+    const answerLetter = card.back?.answer || "";
+    const answerText = card.back?.options?.[answerLetter] || "";
+
     div.innerHTML = `
       <div class="cli-content">
-        <div class="cli-front">${card.front}</div>
-        <div class="cli-back">${card.back}</div>
+        <div class="cli-front">${questionText}</div>
+        <div class="cli-back"><strong>${answerLetter}.</strong> ${answerText}</div>
         <div class="cli-meta">${tags} ${maturityLabel} ${leechBadge}</div>
       </div>
       <div class="cli-actions">
         <button class="cli-star ${isStarred ? "on" : ""}" title="Star">${isStarred ? "★" : "☆"}</button>
-        <button class="btn-ghost" style="font-size:12px;padding:4px 10px" data-edit="${card.id}">Edit</button>
+        <button class="btn-ghost" style="font-size:12px;padding:4px 10px" data-view="${card.id}">View</button>
       </div>
     `;
 
@@ -245,7 +238,7 @@
       location.reload();
     });
 
-    div.querySelector("[data-edit]").addEventListener("click", () => openEdit(card));
+    div.querySelector("[data-view]").addEventListener("click", () => openView(card));
 
     return div;
   }
@@ -305,7 +298,14 @@
       }
 
       if (query) {
-        const text = (card.front + " " + card.back + " " + card.context + " " + (card.tags || []).join(" ")).toLowerCase();
+        const opts = card.back?.options || {};
+        const text = [
+          card.front?.question || "",
+          card.back?.question || "",
+          card.back?.explanation || "",
+          opts.A, opts.B, opts.C, opts.D,
+          (card.tags || []).join(" ")
+        ].join(" ").toLowerCase();
         if (!text.includes(query)) return false;
       }
 
@@ -325,33 +325,28 @@
   el("filter-status").addEventListener("change", buildCardList);
   buildCardList();
 
-  // ── Edit modal ──
-  function openEdit(card) {
-    el("edit-front").value = card.front;
-    el("edit-back").value = card.back;
-    el("edit-context").value = card.context;
-    el("edit-card-id").value = card.id;
-    el("edit-modal").classList.add("visible");
+  // ── View modal ──
+  function openView(card) {
+    el("view-id").textContent = `Card ${card.id}`;
+    el("view-question").textContent = card.front?.question || "";
+
+    const opts = card.back?.options || {};
+    const answer = card.back?.answer;
+    el("view-options").innerHTML = ["A", "B", "C", "D"].map(letter => {
+      const cls = letter === answer ? "mc-option mc-correct" : "mc-option";
+      return `<div class="${cls}"><span class="mc-letter">${letter}</span><span class="mc-text">${opts[letter] || ""}</span></div>`;
+    }).join("");
+
+    el("view-explanation").innerHTML = card.back?.explanation
+      ? `<strong>Correct: ${answer}.</strong> ${card.back.explanation}`
+      : "";
+
+    el("view-tags").innerHTML = (card.tags || []).map(t => `<span class="cli-tag">${t}</span>`).join(" ");
+
+    el("view-modal").classList.add("visible");
   }
 
-  el("edit-cancel").addEventListener("click", () => el("edit-modal").classList.remove("visible"));
-
-  el("edit-save").addEventListener("click", () => {
-    const id = el("edit-card-id").value;
-    const updatedCards = allCards.map(c => {
-      if (c.id !== id) return c;
-      return {
-        ...c,
-        front: el("edit-front").value.trim(),
-        back: el("edit-back").value.trim(),
-        context: el("edit-context").value.trim()
-      };
-    });
-    localStorage.setItem("ciip_cards", JSON.stringify(updatedCards));
-    el("edit-modal").classList.remove("visible");
-    allCards = updatedCards;
-    buildCardList();
-  });
+  el("view-close").addEventListener("click", () => el("view-modal").classList.remove("visible"));
 })();
 </script>
 </body>

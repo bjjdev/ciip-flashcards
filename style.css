@@ -1148,6 +1148,40 @@ main { padding: 24px 0 60px; }
   .header-center { display: none; }
 }
 
+/* ── View card modal (stats browser) ─────────────────────────────────────────── */
+.modal-box-wide {
+  max-width: 640px;
+}
+.view-question {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--signal);
+  line-height: 1.55;
+  margin: 14px 0 16px;
+}
+.view-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.view-explanation {
+  font-size: 12.5px;
+  color: var(--static);
+  line-height: 1.6;
+  border-top: 1px solid var(--trace);
+  padding-top: 12px;
+  margin-bottom: 14px;
+}
+.view-explanation strong { color: var(--nominal); }
+.view-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.view-tags:empty { display: none; }
+
 /* ── Form checkbox + helper text ─────────────────────────────────────────────── */
 .form-checkbox {
   display: flex;
