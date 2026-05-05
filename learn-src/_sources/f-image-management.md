@@ -162,9 +162,27 @@ All sources below are publicly available. Each entry: source ID, title, URL, pub
 
 ---
 
+## De-identification (technical + regulatory)
+
+### [S19] DICOM Supplement 142 — Clinical Trial De-identification Profiles
+- **URL:** https://www.dicomstandard.org/News-dir/ftsup/docs/sups/sup142.pdf
+- **Publisher:** NEMA (DICOM Standards Committee, Working Group 18)
+- **Retrieved:** 2026-05-04
+- **Covers TCO subcategories:** F.3.f (research and clinical trials, de-identification)
+- **Notes:** The technical reference for de-identifying DICOM files. Defines named de-identification profiles (e.g., Basic Application Confidentiality Profile) plus optional add-ons that retain specific information needed for trial integrity (longitudinal temporal information, patient characteristics, descriptors, device identification, etc.). For each profile, specifies which DICOM attributes to remove, replace, or preserve. The basis for de-identification tooling like the RSNA Clinical Trial Processor. Companion: Supplement 55 (Attribute Level Confidentiality) and Part 15 Annex E (Attribute Confidentiality Profiles, the codified normative version).
+
+### [S20] HHS Guidance — De-identification of Protected Health Information under the HIPAA Privacy Rule
+- **URL:** https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html
+- **Publisher:** U.S. Department of Health and Human Services (Office for Civil Rights)
+- **Retrieved:** 2026-05-04
+- **Covers TCO subcategories:** F.3.f (regulatory framing for research/clinical trial workflows)
+- **Notes:** The U.S. regulatory side of the de-identification question. HHS guidance on the two methods recognized under the HIPAA Privacy Rule (45 CFR §164.514(b)): the **Safe Harbor** method (remove a specified list of identifier categories — names, geographic detail finer than state, dates other than year, contact info, account numbers, biometric identifiers, full-face photos, and so on) and the **Expert Determination** method (a qualified statistician documents that re-identification risk is very small). Pairs with [S19]: HHS guidance defines what "de-identified" means in law; DICOM Sup 142 defines how to do it at the DICOM-attribute level.
+
+---
+
 ## Coverage gaps to flag before phase 3
 
-1. **F.3.f (de-identification for research/clinical trials)** — no dedicated source above. Need to add NIST SP 800-188 (or HIPAA Safe Harbor / Expert Determination guidance from HHS) or the DICOM Supplement 142 (Clinical Trial De-identification Profiles). Recommend adding before drafting.
+1. ~~F.3.f (de-identification)~~ — **filled** by [S19] (DICOM Sup 142, technical) + [S20] (HHS HIPAA guidance, regulatory).
 2. **F.5 (retention and deletion policies)** — operational/regulatory topic with no single canonical source. Likely needs HIPAA retention rules + an example state regulation (e.g., NY, CA) or a SIIM/AHIMA practice brief on imaging records retention. Add during phase 3 or note as an explicit "consult-your-counsel" framing.
 3. **F.3.b (data compression — lossy vs lossless)** — no dedicated source above. Two options: (a) cite the DICOM Supplement on JPEG-2000 / lossy compression; (b) cite an ACR practice statement on acceptable use of lossy compression for diagnostic imaging. Either works; recommend (b) for the practice-of-medicine framing.
 4. **F.1.a (ergonomics)** — covered tangentially by [S08] and [S14] but no ergonomics-specific source. Optional addition: an OSHA computer-workstation guidance page or a SIIM practice paper on reading-room design. Skip if word-count is tight.
