@@ -1,0 +1,41 @@
+# Block internal working documents from being publicly readable.
+# These files are kept in git for audit / methodology continuity, but
+# they are not meant to be served on ciipflash.com. The actual public
+# Learn pages will be rendered HTML at /learn/<slug>.html, generated
+# from the markdown in learn-src/ at build time.
+
+[[redirects]]
+  from = "/METHODOLOGY.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/PRODUCT.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/DESIGN.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/DESIGN.json"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/decisions/*"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/learn-src/*"
+  to = "/"
+  status = 404
+  force = true
