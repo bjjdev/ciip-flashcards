@@ -39,3 +39,12 @@
   to = "/"
   status = 404
   force = true
+
+# Defense-in-depth: cards.json has been moved into the gated function bundle
+# at netlify/functions/get-cards/cards.json. Browsers/scripts that still
+# request the old static path get a 404 instead of any data.
+[[redirects]]
+  from = "/cards.json"
+  to = "/"
+  status = 404
+  force = true

@@ -92,17 +92,24 @@ const Storage = {
   },
 
   async initCards() {
-    // 1. Load cards (static — same for all users)
-    try {
-      const res = await fetch("cards.json");
-      if (!res.ok) throw new Error(res.status);
-      const cards = await res.json();
-      localStorage.setItem("ciip_cards", JSON.stringify(cards));
-    } catch { /* keep cached version */ }
-
-    // 2. Get logged-in user
+    // 1. Get logged-in user — cards endpoint requires an authenticated session
+    //    with an active subscription (gated by /.netlify/functions/get-cards).
     const { data: { session } } = await _sb.auth.getSession();
     _userId = session?.user?.id ?? null;
+
+    // 2. Fetch cards from the gated function. Falls back to cached cards in
+    //    localStorage if the request fails (e.g., offline, expired sub).
+    if (session?.access_token) {
+      try {
+        const res = await fetch("/.netlify/functions/get-cards", {
+          headers: { Authorization: `Bearer ${session.access_token}` }
+        });
+        if (!res.ok) throw new Error(res.status);
+        const cards = await res.json();
+        localStorage.setItem("ciip_cards", JSON.stringify(cards));
+      } catch { /* keep cached version */ }
+    }
+
     if (!_userId) { _progressCache = {}; _settingsCache = {}; return; }
 
     // 3. Load progress from Supabase into cache
